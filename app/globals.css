@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-title: "Jua";
+  --font-titleDark: "Dreadful";
+  --font-gory: "Galindo";
+  --font-body: "Poppins", sans-serif;
+  --font-body-bold: "Urbanist-600", sans-serif;
+  --article: "article";
+
+  --color-cradula-red: #FF3E41;
+  --color-cradula-dark-red: #A71315;
+  --color-cradula-green: #00C9A7;
+  --color-cradula-pink: #E18AD4;
+  --color-cradula-blue: #0081A7;
+  --color-cradula-yellow: #F1D302;
+  --color-cradula-purple: #6A7FDB;
+  --color-cradula-orange: #FF8A43;
+
+  --animate-draw: draw 1.2s ease-in-out forwards;
+  @keyframes draw {
+    0% { stroke-dashoffset: 200; }
+    100% { stroke-dashoffset: 0; }
+  }
+
+  --animate-wiggle: wiggle 1s ease-in-out forwards;
+  --animate-wiggle-infinite: wiggle 1s ease-in-out forwards infinite;
+  @keyframes wiggle {
+    25% { transform: rotate(12deg); }
+    75% { transform: rotate(-12deg); }
+  }
+
+  --animate-bounce-up: bounce-up 0.75s ease-in-out forwards;
+  @keyframes bounce-up {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10%); }
+  }
+
+  --animate-bounce-down: bounce-down 0.6s ease-in-out forwards;
+  @keyframes bounce-down {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10%); }
+  }
+
+  --animate-pulse: pulse 1s ease-in-out forwards;
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+  }
+
+  /* --animate-rotate: rotate 2s ease-in forwards infinite;
+  @keyframes rotate {
+    0% {  transform: rotate(0deg)}
+    50% {  transform: rotate(360deg)}
+    90% {  transform: rotate(-45deg)}
+  } */
+
+  --animate-shake: shake 0.3s ease-in-out forwards;
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8%); }
+    75% { transform: translateX(8%); }
+  }
+
+  --animate-beat-fast: beat 0.5s ease-in-out forwards;
+  --animate-beat-slow: beat 1s ease-in-out forwards;
+  @keyframes beat {
+    50% { transform: scale(1.2)  }
+  }
+  
+  --animate-back-bounce: back-bounce 1s ease-in-out forwards infinite;
+  @keyframes back-bounce {
+    0%, 100% { transform: scale(1) translateX(0); }
+    50% { transform: scale(1.2) translateX(-10%);}
+  }
+
+}
+
+.article {
+  @apply flex flex-col gap-3 font-body text-lg tracking-wide mb-20
+}
+
+.article > h1 {
+  @apply font-title dark:font-titleDark text-4xl dark:text-5xl text-center tracking-tight dark:tracking-normal underline decoration-cradula-green dark:decoration-cradula-red;
+}
+
+.article > h2 {
+  @apply font-title dark:font-titleDark text-3xl dark:text-4xl decoration-cradula-green dark:decoration-cradula-red;
+}
+
+.article > ol {
+  @apply list-decimal flex flex-col mx-10 gap-2;
+}
+
+.article > ul {
+  @apply list-disc flex flex-col mx-10 gap-2 marker:text-cradula-green dark:marker:text-cradula-red;
+}
+
+.article > pre {
+  @apply bg-neutral-950 text-neutral-50 p-5 overflow-scroll;
+}
+
+.article > hr {
+  @apply bg-cradula-green dark:bg-cradula-red rounded-sm h-1 border-0 w-3/4 justify-center mx-auto
+}
+
+.article > blockquote {
+  @apply pl-5 italic border-l-2 border-cradula-green/40 dark:border-cradula-red/40;
+}
+
+.article > p > img {
+  @apply w-1/2 mx-auto;
+}
+
+
+.custom-shape-divider-top-1759064640 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1759064640 svg {
+  position: relative;
+  display: block;
+  width: calc(120% + 1.3px);
+  height: 142px;
+  transform: rotateY(180deg);
+}
