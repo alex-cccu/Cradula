@@ -27,7 +27,7 @@ const ArticleItemList = ({ category, articles }: Props) => {
           i++;
           return (
             <Link
-              href={`/${article.category}/${article.id}`}
+              href={`/articles/${article.category}/${article.id}`}
               key={id}
               className="group text-neutral-900 dark:text-neutral-100 hover:scale-110 ease-in-out hover:font-bold transition duration-250"
             >

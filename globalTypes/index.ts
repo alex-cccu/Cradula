@@ -4,3 +4,14 @@ export type ArticleItem = {
     date: string;
     category: string;
 }
+
+export type Page = {
+    id: string;
+    title: string;
+}
+
+export type Category = 
+    {
+        category: string,
+        articles: ArticleItem[],
+    };
