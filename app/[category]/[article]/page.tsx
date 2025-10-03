@@ -4,9 +4,16 @@ import { getArticleContent } from "@/lib/articles";
 import Splodge from "@/assets/Splodge";
 import Splodge2 from "@/assets/Splodge2";
 
-const Article = async ({ params }: { params: { slug: string } }) => {
+const Article = async ({
+  params,
+}: {
+  params: { category: string; article: string };
+}) => {
   const loadedParams = await params;
-  const articleContent = await getArticleContent(loadedParams.slug);
+  const articleContent = await getArticleContent({
+    category: loadedParams.category,
+    article: loadedParams.article,
+  });
 
   return (
     <section className="mx-auto w-10/12 md:w-1/2 mt-20 flex flex-col gap-5">

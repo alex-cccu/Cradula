@@ -11,26 +11,41 @@ const articlesDirectory = path.join(process.cwd(), 'articles');
 
 const dateFormat = "MM-DD-YYYY";
 
-const getSortedArticles = (): ArticleItem[] => {
-    const fileNames = fs.readdirSync(articlesDirectory);
+export type Category = 
+    {
+        category: string,
+        articles: ArticleItem[],
+    };
 
-    const allArticlesData = fileNames.map(fileName => {
+const getAllFromCategory = (category: string): Category => {
+    const folderPath = path.join(articlesDirectory, category);
+    const fileNames = fs.readdirSync(folderPath);
+
+    const unsortedArticles = fileNames.map(fileName => {
         const id = fileName.replace(/\.md$/, '');
+        const fullPath = path.join(folderPath, fileName);
 
-        const fullPath = path.join(articlesDirectory, fileName);
         const fileContents = fs.readFileSync(fullPath, 'utf8');
-
-        const matterResult = matter(fileContents);
+        const articleData = matter(fileContents);
 
         return {
             id,
-            title: matterResult.data.title,
-            date: matterResult.data.date,
-            category: matterResult.data.category,
+            title: articleData.data.title,
+            date: articleData.data.date,
+            category: articleData.data.category,
         };
     });
 
-    return allArticlesData.sort((a, b) => {
+    const articles = sortArticles(unsortedArticles);
+
+    return {
+        category,
+        articles,
+    };
+};
+
+const sortArticles = (articles: ArticleItem[]): ArticleItem[] => {
+    return articles.sort((a, b) => {
         const dateOne = moment(a.date, dateFormat);
         const dateTwo = moment(b.date, dateFormat);
 
@@ -44,22 +59,14 @@ const getSortedArticles = (): ArticleItem[] => {
     });
 }
 
-export const getCategorisedArticles = (): Record<string, ArticleItem[]> => {
-    const sortedArticles = getSortedArticles();
-    const categorisedArticles: Record<string, ArticleItem[]> = {};
+export const getAllArticles = (): Category[] => {
+    const folderNames = fs.readdirSync(articlesDirectory);
+    return folderNames.map(folder => getAllFromCategory(folder));
 
-    sortedArticles.forEach(article => {
-        if (!categorisedArticles[article.category]) {
-            categorisedArticles[article.category] = [];
-        }
-        categorisedArticles[article.category].push(article);
-    });
-
-    return categorisedArticles;
 }
 
-export const getArticleContent = async (id: string) => {
-    const fullPath = path.join(articlesDirectory, `${id}.md`);
+export const getArticleContent = async ({category, article}: {category: string, article: string}) => {
+    const fullPath = path.join(articlesDirectory,`${decodeURIComponent(category)}`, `${decodeURIComponent(article)}.md`);
 
     const fileContents = fs.readFileSync(fullPath, 'utf8');
 
@@ -69,8 +76,9 @@ export const getArticleContent = async (id: string) => {
 
     const contentHtml = processedContent.toString();
 
+
     return {
-        id,
+        article,
         contentHtml,
         title: matterResult.data.title,
         category: matterResult.data.category,
