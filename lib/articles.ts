@@ -60,13 +60,27 @@ const sortArticles = (articles: ArticleItem[]): ArticleItem[] => {
 }
 
 export const getAllArticles = (): Category[] => {
-    const folderNames = fs.readdirSync(articlesDirectory);
-    return folderNames.map(folder => getAllFromCategory(folder));
+    const folderNames = fs.readdirSync(articlesDirectory).filter(name => {
+        return fs.statSync(path.join(articlesDirectory, name)).isDirectory();
+    });
 
+    return folderNames.map(folder => getAllFromCategory(folder));
+}
+
+const safeDecodeURIComponent = (segment: string): string => {
+    if (
+        segment !== '' &&
+        !segment.includes('..') &&
+        !segment.includes('/') &&
+        !segment.includes('\\') &&
+        !path.isAbsolute(segment)
+    ) return decodeURIComponent(segment);
+
+    return ''
 }
 
 export const getArticleContent = async ({category, article}: {category: string, article: string}) => {
-    const fullPath = path.join(articlesDirectory, `${decodeURIComponent(category)}`, `${decodeURIComponent(article)}.md`);
+    const fullPath = path.join(articlesDirectory, `${safeDecodeURIComponent(category)}`, `${safeDecodeURIComponent(article)}.md`);
 
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const matterResult = matter(fileContents);
