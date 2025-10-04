@@ -1,5 +1,6 @@
+import { Category } from "@/globalTypes";
 import ArticleItemList from "./ArticleListItem";
-import { Category, getAllArticles } from "@/lib/articles";
+import { getAllArticles } from "@/lib/articles";
 
 const HomePageContent = () => {
   const articles = getAllArticles();

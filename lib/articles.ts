@@ -4,18 +4,13 @@ import path from 'path';
 import moment from 'moment';
 import { remark } from 'remark';
 import html from 'remark-html';
+import safeDecodeURIComponent from './utils/safeDecodeURIComponent';
 
-import type { ArticleItem } from '@/globalTypes';
+import type { ArticleItem, Category } from '@/globalTypes';
 
-const articlesDirectory = path.join(process.cwd(), 'articles');
+const articlesDirectory = path.join(process.cwd(), 'app/articles');
 
 const dateFormat = "MM-DD-YYYY";
-
-export type Category = 
-    {
-        category: string,
-        articles: ArticleItem[],
-    };
 
 const getAllFromCategory = (category: string): Category => {
     const folderPath = path.join(articlesDirectory, category);
@@ -61,22 +56,16 @@ const sortArticles = (articles: ArticleItem[]): ArticleItem[] => {
 
 export const getAllArticles = (): Category[] => {
     const folderNames = fs.readdirSync(articlesDirectory).filter(name => {
-        return fs.statSync(path.join(articlesDirectory, name)).isDirectory();
-    });
+        const fullPath = path.join(articlesDirectory, name);
+        const isDir = fs.statSync(fullPath).isDirectory();
+      
+        // Exclude folders like [category]
+        const isBracketed = /^\[.*\]$/.test(name);
+      
+        return isDir && !isBracketed;
+      });
 
     return folderNames.map(folder => getAllFromCategory(folder));
-}
-
-const safeDecodeURIComponent = (segment: string): string => {
-    if (
-        segment !== '' &&
-        !segment.includes('..') &&
-        !segment.includes('/') &&
-        !segment.includes('\\') &&
-        !path.isAbsolute(segment)
-    ) return decodeURIComponent(segment);
-
-    return ''
 }
 
 export const getArticleContent = async ({category, article}: {category: string, article: string}) => {
