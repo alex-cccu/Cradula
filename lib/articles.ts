@@ -12,7 +12,8 @@ const articlesDirectory = path.join(process.cwd(), 'app/articles');
 
 const dateFormat = "MM-DD-YYYY";
 
-const getAllFromCategory = (category: string): Category => {
+export const getAllFromCategory = (category: string, limit?: number): Category => {
+    category = safeDecodeURIComponent(category);
     const folderPath = path.join(articlesDirectory, category);
     const fileNames = fs.readdirSync(folderPath);
 
@@ -31,7 +32,10 @@ const getAllFromCategory = (category: string): Category => {
         };
     });
 
-    const articles = sortArticles(unsortedArticles);
+    let articles = sortArticles(unsortedArticles);
+    if (limit) {
+        articles = articles.slice(0, limit);
+    }
 
     return {
         category,
@@ -51,7 +55,7 @@ const sortArticles = (articles: ArticleItem[]): ArticleItem[] => {
         } else { 
             return 0
         }
-    });
+    }).reverse();
 }
 
 export const getAllArticles = (): Category[] => {
@@ -65,7 +69,7 @@ export const getAllArticles = (): Category[] => {
         return isDir && !isBracketed;
       });
 
-    return folderNames.map(folder => getAllFromCategory(folder));
+    return folderNames.map(folder => getAllFromCategory(folder, 5));
 }
 
 export const getArticleContent = async ({category, article}: {category: string, article: string}) => {
