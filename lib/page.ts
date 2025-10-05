@@ -5,22 +5,27 @@ import { remark } from 'remark';
 import html from 'remark-html';
 import safeDecodeURIComponent from './utils/safeDecodeURIComponent';
 import { Page } from '@/globalTypes';
+import { notFound } from 'next/navigation';
 
 const pageDirectory = path.join(process.cwd(), 'miscPages');
 
 export const getPageContent = async (slug: string) => {
-    const fullPath = path.join(pageDirectory, safeDecodeURIComponent(slug) + '.md');
+    try {
+        const fullPath = path.join(pageDirectory, safeDecodeURIComponent(slug) + '.md');
 
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const matterResult = matter(fileContents);
-    
-    const processedContent = await remark().use(html).process(matterResult.content);
-    const contentHtml = processedContent.toString();
+        const fileContents = fs.readFileSync(fullPath, 'utf8');
+        const matterResult = matter(fileContents);
+        
+        const processedContent = await remark().use(html).process(matterResult.content);
+        const contentHtml = processedContent.toString();
 
-    return {
-        slug,
-        contentHtml,
-        title: matterResult.data.title,
+        return {
+            slug,
+            contentHtml,
+            title: matterResult.data.title,
+        }
+    } catch (error) {
+        return notFound();
     }
 }
 
