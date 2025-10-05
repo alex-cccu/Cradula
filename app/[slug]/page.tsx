@@ -22,7 +22,6 @@ const Page = async ({ params }: { params: { slug: string } }) => {
             />
             <p>Back to safety</p>
           </Link>
-          {/* <p>{pageContent.date.toString()}</p> */}
         </div>
         <article
           className="article z-1"

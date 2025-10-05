@@ -7,40 +7,45 @@ import html from 'remark-html';
 import safeDecodeURIComponent from './utils/safeDecodeURIComponent';
 
 import type { ArticleItem, Category } from '@/globalTypes';
+import { notFound } from 'next/navigation';
 
 const articlesDirectory = path.join(process.cwd(), 'app/articles');
 
 const dateFormat = "MM-DD-YYYY";
 
-export const getAllFromCategory = (category: string, limit?: number): Category => {
-    category = safeDecodeURIComponent(category);
-    const folderPath = path.join(articlesDirectory, category);
-    const fileNames = fs.readdirSync(folderPath);
+export const getAllFromCategory = (category: string, limit?: number): Category | never => {
+    try {
+        category = safeDecodeURIComponent(category);
+        const folderPath = path.join(articlesDirectory, category);
+        const fileNames = fs.readdirSync(folderPath);
 
-    const unsortedArticles = fileNames.map(fileName => {
-        const id = fileName.replace(/\.md$/, '');
-        const fullPath = path.join(folderPath, fileName);
+        const unsortedArticles = fileNames.map(fileName => {
+            const id = fileName.replace(/\.md$/, '');
+            const fullPath = path.join(folderPath, fileName);
 
-        const fileContents = fs.readFileSync(fullPath, 'utf8');
-        const articleData = matter(fileContents);
+            const fileContents = fs.readFileSync(fullPath, 'utf8');
+            const articleData = matter(fileContents);
+
+            return {
+                id,
+                title: articleData.data.title,
+                date: articleData.data.date,
+                category: articleData.data.category,
+            };
+        });
+
+        let articles = sortArticles(unsortedArticles);
+        if (limit) {
+            articles = articles.slice(0, limit);
+        }
 
         return {
-            id,
-            title: articleData.data.title,
-            date: articleData.data.date,
-            category: articleData.data.category,
+            category,
+            articles,
         };
-    });
-
-    let articles = sortArticles(unsortedArticles);
-    if (limit) {
-        articles = articles.slice(0, limit);
+    } catch (error) {
+        return notFound();
     }
-
-    return {
-        category,
-        articles,
-    };
 };
 
 const sortArticles = (articles: ArticleItem[]): ArticleItem[] => {
@@ -73,19 +78,23 @@ export const getAllArticles = (): Category[] => {
 }
 
 export const getArticleContent = async ({category, article}: {category: string, article: string}) => {
-    const fullPath = path.join(articlesDirectory, `${safeDecodeURIComponent(category)}`, `${safeDecodeURIComponent(article)}.md`);
+    try {
+        const fullPath = path.join(articlesDirectory, `${safeDecodeURIComponent(category)}`, `${safeDecodeURIComponent(article)}.md`);
 
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const matterResult = matter(fileContents);
-    
-    const processedContent = await remark().use(html).process(matterResult.content);
-    const contentHtml = processedContent.toString();
+        const fileContents = fs.readFileSync(fullPath, 'utf8');
+        const matterResult = matter(fileContents);
+        
+        const processedContent = await remark().use(html).process(matterResult.content);
+        const contentHtml = processedContent.toString();
 
-    return {
-        article,
-        contentHtml,
-        title: matterResult.data.title,
-        category: matterResult.data.category,
-        date: moment(matterResult.data.date, dateFormat).format("MMMM Do YYYY"),
+        return {
+            article,
+            contentHtml,
+            title: matterResult.data.title,
+            category: matterResult.data.category,
+            date: moment(matterResult.data.date, dateFormat).format("MMMM Do YYYY"),
+        }
+    } catch (error) {
+        return notFound();
     }
 }
