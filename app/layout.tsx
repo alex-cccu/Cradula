@@ -61,14 +61,20 @@ export default function RootLayout({
   // const { theme } = useTheme();
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={"bg-neutral-100 dark:bg-neutral-900 overflow-x-hidden"}>
+      <body
+        className={
+          "bg-neutral-100 dark:bg-neutral-900 overflow-x-hidden overflow-y-visible"
+        }
+      >
         <Providers>
           <div>
-            <div className="absolute top-5 left-5 z-20 fill-black">
+            <header className="absolute top-5 left-5 z-20 fill-black">
               <ThemeToggle />
-            </div>
-            {children}
-            <Footer />
+            </header>
+            <main className="">{children}</main>
+            <footer>
+              <Footer />
+            </footer>
           </div>
         </Providers>
       </body>

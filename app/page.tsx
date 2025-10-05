@@ -11,7 +11,7 @@ const HomePage = () => {
         <div className="-z-0 absolute right-1/8 top-1/4 lg:top-1/6">
           <Splodge />
         </div>
-        <div className="top-14/15 z-1 absolute left-1/8 lg:top-2/3">
+        <div className="top-14/15 z-1 absolute left-1/8 lg:top-3/5 hidden lg:block">
           <Splodge2 />
         </div>
         <HomePageContent />

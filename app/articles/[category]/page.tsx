@@ -1,16 +1,17 @@
 import Link from "next/link";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
-import { getPageContent } from "@/lib/page";
+import { getAllFromCategory } from "@/lib/articles";
 import Splodge from "@/assets/Splodge";
 import Splodge2 from "@/assets/Splodge2";
+import ArticleItemList from "@/components/HomePage/ArticleListItem";
 
-const Page = async ({ params }: { params: { slug: string } }) => {
+const Category = async ({ params }: { params: { category: string } }) => {
   const loadedParams = await params;
-  const pageContent = await getPageContent(loadedParams.slug);
+  const { articles, category } = getAllFromCategory(loadedParams.category);
 
   return (
     <div className="relative overflow-x-hidden overflow-y-hidden min-h-svh w-screen">
-      <section className="mx-auto w-10/12 md:w-1/2 mt-20 flex flex-col gap-5 z-2">
+      <section className="mx-auto w-10/12 md:w-1/2 mt-20 flex flex-col gap-5">
         <div className="flex justify-between font-body">
           <Link
             href={"/"}
@@ -22,12 +23,13 @@ const Page = async ({ params }: { params: { slug: string } }) => {
             />
             <p>Back to safety</p>
           </Link>
-          {/* <p>{pageContent.date.toString()}</p> */}
         </div>
-        <article
-          className="article z-1"
-          dangerouslySetInnerHTML={{ __html: pageContent.contentHtml }}
-        />
+        <section className="flex flex-col gap-5 text-center z-2">
+          <h2 className="font-title dark:font-titleDark text-4xl dark:text-5xl text-center tracking-tight dark:tracking-normal underline decoration-cradula-green dark:decoration-cradula-red">
+            {category}
+          </h2>
+          <ArticleItemList category={category} articles={articles} />
+        </section>
       </section>
       <div className="z-1 absolute md:-right-[180px] -right-[300px] top-1/4 lg:top-1/6">
         <Splodge />
@@ -39,4 +41,4 @@ const Page = async ({ params }: { params: { slug: string } }) => {
   );
 };
 
-export default Page;
+export default Category;
