@@ -19,6 +19,12 @@
   --color-cradula-purple: #6A7FDB;
   --color-cradula-orange: #FF8A43;
 
+  --animate-appear: appear 1s ease-in-out;
+  @keyframes appear {
+    0% { opacity: 0 }
+    100% { opacity: 1 }
+  }
+
   --animate-draw: draw 1.2s ease-in-out forwards;
   @keyframes draw {
     0% { stroke-dashoffset: 200; }
@@ -111,7 +117,7 @@
 }
 
 .article > p > img {
-  @apply w-1/2 mx-auto;
+  @apply w-full sm:w-7/8 md:w-3/4 mx-auto;
 }
 
 

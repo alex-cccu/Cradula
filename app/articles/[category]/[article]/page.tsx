@@ -31,21 +31,21 @@ const Article = async ({
           </Link>
           <Link
             href={`/articles/${articleContent.category}`}
-            className="font-title text-2xl dark:font-titleDark"
+            className="font-title text-2xl dark:font-titleDark animate-appear"
           >
             {articleContent.category}
           </Link>
-          <p>{articleContent.date.toString()}</p>
+          <p className="animate-appear">{articleContent.date.toString()}</p>
         </div>
         <article
-          className="article z-1"
+          className="article z-1 animate-appear"
           dangerouslySetInnerHTML={{ __html: articleContent.contentHtml }}
         />
       </section>
-      <div className="z-0 absolute md:-right-[180px] -right-[300px] top-1/4 lg:top-1/6">
+      <div className="z-0 absolute md:-right-[180px] -right-[300px] top-1/4 lg:top-1/6 animate-appear">
         <Splodge />
       </div>
-      <div className="bottom-60 z-0 absolute md:-left-[120px] -left-[220px]">
+      <div className="bottom-60 z-0 absolute md:-left-[120px] -left-[200px] animate-appear">
         <Splodge2 />
       </div>
     </div>

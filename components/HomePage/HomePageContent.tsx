@@ -6,7 +6,7 @@ import Link from "next/link";
 const HomePageContent = () => {
   const articles = getAllArticles();
   return (
-    <section className="md:grid md:grid-cols-2 flex flex-col gap-15 lg:gap-10 z-2">
+    <section className="md:grid md:grid-cols-2 flex flex-col gap-15 lg:gap-10 z-2 animate-appear">
       {articles !== null &&
         articles.map((category: Category) => (
           <div

@@ -25,11 +25,11 @@ const ArticleItemList = ({ category, articles }: Props) => {
           <Link
             href={`/articles/${article.category}/${article.id}`}
             key={id}
-            className="group text-neutral-900 dark:text-neutral-100 hover:scale-110 ease-in-out hover:font-bold transition duration-250"
+            className="group text-neutral-900 dark:text-neutral-100 hover:scale-110 ease-in-out hover:font-bold transition duration-250 mx-auto"
           >
             {article.title}
             <svg
-              className="mx-auto block w-[75%] h-3"
+              className="mx-auto block w-[100%] h-3"
               viewBox="0 0 100 10"
               preserveAspectRatio="none"
             >
