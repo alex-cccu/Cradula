@@ -24,16 +24,16 @@ const Page = async ({ params }: { params: { slug: string } }) => {
           </Link>
         </div>
         <article
-          className="article z-1"
+          className="article z-2"
           dangerouslySetInnerHTML={{ __html: pageContent.contentHtml }}
         />
       </section>
       <div className="z-1 absolute md:-right-[180px] -right-[300px] top-1/4 lg:top-1/6">
         <Splodge />
       </div>
-      {/* <div className="z-1 absolute md:-left-[120px] top-3/4 -left-[180px]">
+      <div className="z-1 absolute md:-left-[120px] top-3/4 -left-[180px]">
         <Splodge2 />
-      </div> */}
+      </div>
     </div>
   );
 };

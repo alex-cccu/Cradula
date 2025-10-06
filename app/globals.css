@@ -104,11 +104,11 @@
 }
 
 .article > pre {
-  @apply bg-neutral-950 text-neutral-50 p-5 overflow-scroll;
+  @apply dark:bg-neutral-950 dark:text-neutral-100 bg-neutral-200 text-neutral-900 p-5 overflow-scroll border-2 rounded-md border-cradula-green dark:border-cradula-red;
 }
 
 .article > hr {
-  @apply bg-cradula-green dark:bg-cradula-red rounded-sm h-1 border-0 w-3/4 justify-center mx-auto
+  @apply bg-cradula-green dark:bg-cradula-red rounded-sm h-1 border-0 w-3/4 justify-center m-5 mx-auto
 }
 
 .article > blockquote {
@@ -116,7 +116,11 @@
 }
 
 .article > p > img {
-  @apply w-full sm:w-7/8 md:w-3/4 mx-auto;
+  @apply max-w-full sm:max-w-7/8 md:max-w-3/4 max-h-[400px] mx-auto;
+}
+
+.article > p > strong > em {
+  @apply font-title dark:font-titleDark not-italic dark:uppercase text-xl leading-normal dark:tracking-wider;
 }
 
 
