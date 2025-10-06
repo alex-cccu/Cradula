@@ -18,6 +18,14 @@ const Article = async ({
   return (
     <div className="relative overflow-x-hidden overflow-y-hidden w-screen">
       <section className="mx-auto w-10/12 md:w-1/2 mt-20 flex flex-col gap-5">
+        <div className="flex justify-between font-body place-items-center flex-col sm:flex-row sm:hidden">
+          <Link
+            href={`/articles/${articleContent.category}`}
+            className="font-title text-2xl dark:font-titleDark animate-appear hover:scale-115 ease-in-out transition-transform duration-500"
+          >
+            {articleContent.category}
+          </Link>
+        </div>
         <div className="flex justify-between font-body place-items-center">
           <Link
             href={"/"}
@@ -31,7 +39,7 @@ const Article = async ({
           </Link>
           <Link
             href={`/articles/${articleContent.category}`}
-            className="font-title text-2xl dark:font-titleDark animate-appear hover:scale-115 ease-in-out transition-transform duration-500"
+            className="font-title text-2xl dark:font-titleDark animate-appear hover:scale-115 ease-in-out transition-transform duration-500 hidden sm:block"
           >
             {articleContent.category}
           </Link>
