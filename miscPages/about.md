@@ -4,4 +4,30 @@ title: "About Me"
 
 # About Me
 
-Welcome to Cradula, my website. My name is Alex and it looks like you're a nosey one! We don't mind a bit of nosing around here though
+![Art](/AlexAndGoose.jpeg)
+
+```
+Oh! Hello World! 👋
+```
+
+I’m Alex, a software engineer based in **London, England 🇬🇧**, and this is **_cradula_**; a space for me to share some of the cool projects I've worked on, show off some of my photography, experiment with different technology and blog a little about my life and the experience of being a developer.
+
+I've been an engineer professionally since 2020, starting out in Tesco's graduate scheme as my first job out of University. Since then I've worked on some awesome projects in the retail space, with a bulk of my time spent developing for Tesco Tills UI application, which serves millions of customers a day. Chances are, if you live in the UK, you've used some of my code!
+
+Though I'm a frontend engineer at heart, I love trying out new things and am more than comfortable working in fullstack spaces; working with **TypeScript, React, Next.js, Node.js**, and a bunch of supporting tools like **RTL, Jest, Vitest, and Grafana**.
+
+---
+
+When I’m not writing code, chances are you might find me spending time on one of my ever growing list of hobbies:
+
+- 0-2 dropping a Magic: The Gathering event at my local game store
+- Trying out new video games for 45 minutes before resorting back to my comfort pick
+- Beating my partner at Carcassonne for the 15th time in a row. Victory must be earned, not gifted.
+- Hanging out with Goose my golden retriever, who is somehow both the goodest of boys and the most conniving of rascals.
+
+---
+
+This site is totally for me, to learn and have my own space. However, if you're interested in what **_Cradula_** is about or what I have to say then I'd love it if you bookmarked this page, followed me on my socials or got in touch!
+
+Thanks for stopping by 👋  
+— Alex
