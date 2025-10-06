@@ -24,14 +24,14 @@ const Category = async ({ params }: { params: { category: string } }) => {
             <p>Back to safety</p>
           </Link>
         </div>
-        <section className="flex flex-col gap-5 text-center z-2">
+        <section className="flex flex-col gap-5 text-center z-2 animate-appear">
           <h2 className="font-title dark:font-titleDark text-4xl dark:text-5xl text-center tracking-tight dark:tracking-normal underline decoration-cradula-green dark:decoration-cradula-red">
             {category}
           </h2>
           <ArticleItemList category={category} articles={articles} />
         </section>
       </section>
-      <div className="z-1 absolute md:-right-[180px] -right-[300px] top-1/4 lg:top-1/6">
+      <div className="z-1 absolute md:-right-[180px] -right-[300px] top-1/4 lg:top-1/6 animate-appear">
         <Splodge />
       </div>
       {/* <div className="z-1 absolute md:-left-[120px] top-3/4 -left-[180px]">

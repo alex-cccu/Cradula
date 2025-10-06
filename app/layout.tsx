@@ -68,7 +68,10 @@ export default function RootLayout({
       >
         <Providers>
           <div>
-            <header className="absolute top-5 left-5 z-20 fill-black">
+            <header
+              className="absolute top-5 left-5 z-20 fill-black"
+              suppressHydrationWarning
+            >
               <ThemeToggle />
             </header>
             <main className="">{children}</main>
