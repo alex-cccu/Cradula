@@ -31,7 +31,7 @@ const Article = async ({
           </Link>
           <Link
             href={`/articles/${articleContent.category}`}
-            className="font-title text-2xl dark:font-titleDark animate-appear"
+            className="font-title text-2xl dark:font-titleDark animate-appear hover:scale-115 ease-in-out transition-transform duration-500"
           >
             {articleContent.category}
           </Link>

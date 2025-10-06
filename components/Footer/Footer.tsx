@@ -1,7 +1,5 @@
 import LinkedIn from "@/assets/LinkedIn";
-import UnderlinedLink from "./UnderlinedLink";
 import Github from "@/assets/Github";
-import Goose from "@/assets/Goose";
 import Cradula from "../../assets/Cradula";
 import { getAllPages } from "@/lib/page";
 
@@ -39,21 +37,6 @@ const Footer = () => {
                   </a>
                 );
               })}
-              {/* <a href="/">
-                <h2 className="text-sm uppercase text-neutral-100 hover:scale-115 ease-in-out transition-transform duration-500">
-                  Privacy
-                </h2>
-              </a>
-              <a href="/About">
-                <h2 className="text-sm uppercase text-neutral-100 hover:scale-115 ease-in-out transition-transform duration-500">
-                  About
-                </h2>
-              </a>
-              <a href="/">
-                <h2 className="text-sm uppercase text-neutral-100 hover:scale-115 ease-in-out transition-transform duration-500">
-                  Contact
-                </h2>
-              </a> */}
             </div>
           </div>
           <hr className="my-6 border-neutral-100 sm:mx-auto lg:my-8" />

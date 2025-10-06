@@ -6,7 +6,7 @@ import type { Easing } from "framer-motion";
 
 type Props = {
   words?: string[];
-  interval?: number; // total ms between the start of each cycle (default 4500)
+  interval?: number;
   className?: string;
 };
 
@@ -16,7 +16,7 @@ export default function AnimatedWords({
   className = "",
 }: Props) {
   const [index, setIndex] = React.useState(0);
-  const [isVisible, setIsVisible] = React.useState(true); // controls show/hide phase
+  const [isVisible, setIsVisible] = React.useState(true);
 
   // refs for timers & to read latest index from inside timeouts
   const visibleTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(
@@ -110,7 +110,7 @@ export default function AnimatedWords({
   const longest = words.reduce((a, b) => (a.length >= b.length ? a : b), "");
   const boxWidth = `${Math.max(longest.length, 1)}ch`;
 
-  // easing arrays for framer-motion (typed properly)
+  // easing arrays for framer-motion
   const easeIn: Easing = [0.4, 0, 0.2, 1];
   const easeOut: Easing = [0.25, 0.8, 0.25, 1];
 
