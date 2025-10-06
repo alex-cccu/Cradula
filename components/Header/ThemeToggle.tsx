@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 
 export default function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [flash, setFlash] = useState(false);
 
@@ -25,7 +25,7 @@ export default function ThemeToggle() {
       <button
         onClick={toggleTheme}
         aria-label="Toggle dark mode"
-        className="w-12 h-12 flex items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-900 hover:scale-115 hover:-rotate-6 transition-transform ease-in-out duration-500"
+        className="w-12 h-12 flex items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-900 hover:scale-115 hover:-rotate-6 transition-transform ease-in-out duration-500 animate-appear"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +41,7 @@ export default function ThemeToggle() {
           </g>
         </svg>
         <div className="z-2 pb-0.5 pl-0.5">
-          {theme === "dark" ? (
+          {!mounted || !resolvedTheme ? null : theme === "dark" ? (
             <MoonIcon className="w-8 h-8 md:w-20 md:h-20 text-neutral-900" />
           ) : (
             <SunIcon className="w-8 h-8 md:w-20 md:h-20 text-cradula-yellow dark:text-gray-200" />

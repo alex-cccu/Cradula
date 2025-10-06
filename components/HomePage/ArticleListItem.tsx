@@ -35,7 +35,6 @@ const ArticleItemList = ({ category, articles }: Props) => {
             >
               <path
                 d="M0 8 L10 2 L20 8 L30 2 L40 8 L50 2 L60 8 L70 2 L80 8 L90 2 L100 8"
-                //   stroke={colors[i]}
                 strokeWidth="4"
                 strokeLinecap="round"
                 fill="none"

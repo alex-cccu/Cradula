@@ -1,16 +1,10 @@
 import type { Metadata } from "next";
-import {
-  Poppins,
-  Fontdiner_Swanky,
-  Jua,
-  New_Rocker,
-  Galindo,
-} from "next/font/google";
+import { Poppins, Jua } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "./providers";
 import Footer from "@/components/Footer/Footer";
-import ThemeToggle from "@/components/Title/ThemeToggle";
+import ThemeToggle from "@/components/Header/ThemeToggle";
 
 const dreadful = localFont({
   src: "fonts/Dreadful-Regular.ttf",
@@ -23,27 +17,9 @@ const poppins = Poppins({
   weight: ["400", "600"],
 });
 
-const fontdinerSwanky = Fontdiner_Swanky({
-  subsets: ["latin"],
-  variable: "--font-fontdiner-swanky",
-  weight: ["400"],
-});
-
 const jua = Jua({
   subsets: ["latin"],
   variable: "--font-jua",
-  weight: ["400"],
-});
-
-const newRocker = New_Rocker({
-  subsets: ["latin"],
-  variable: "--font-new-rocker",
-  weight: ["400"],
-});
-
-const galindo = Galindo({
-  subsets: ["latin"],
-  variable: "--font-galindo",
   weight: ["400"],
 });
 
@@ -58,7 +34,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // const { theme } = useTheme();
   return (
     <html lang="en" suppressHydrationWarning>
       <body
