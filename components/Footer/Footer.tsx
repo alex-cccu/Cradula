@@ -30,7 +30,7 @@ const Footer = () => {
             <div className="grid grid-cols-3 gap-8 sm:gap-6 sm:grid-cols-3 items-center text-center font-body font-extrabold">
               {pages.map((page) => {
                 return (
-                  <a href={`/${page.id}`} key={page.title}>
+                  <a href={`/${encodeURIComponent(page.id)}`} key={page.title}>
                     <h2 className="text-sm uppercase text-neutral-100 hover:scale-115 ease-in-out transition-transform duration-500">
                       {page.title}
                     </h2>

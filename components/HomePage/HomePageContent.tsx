@@ -18,7 +18,7 @@ const HomePageContent = () => {
           >
             <h2 className="font-title dark:font-titleDark dark:uppercase dark:text-neutral-100 dark:tracking-wide text-4xl">
               <Link
-                href={`/articles/${category.category}`}
+                href={`/articles/${encodeURIComponent(category.category)}`}
                 className="inline-block hover:scale-115 ease-in-out transition-transform duration-500"
               >
                 {category.category}
