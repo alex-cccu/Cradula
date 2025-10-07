@@ -44,6 +44,7 @@ export const getAllFromCategory = (category: string, limit?: number): Category |
             articles,
         };
     } catch (error) {
+        console.error(error);
         return notFound();
     }
 };
@@ -95,6 +96,7 @@ export const getArticleContent = async ({category, article}: {category: string, 
             date: moment(matterResult.data.date, dateFormat).format("MMMM Do YYYY"),
         }
     } catch (error) {
+        console.error(error);
         return notFound();
     }
 }

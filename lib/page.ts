@@ -25,6 +25,7 @@ export const getPageContent = async (slug: string) => {
             title: matterResult.data.title,
         }
     } catch (error) {
+        console.error(error);
         return notFound();
     }
 }

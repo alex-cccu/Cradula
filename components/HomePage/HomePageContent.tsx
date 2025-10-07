@@ -24,10 +24,7 @@ const HomePageContent = () => {
                 {category.category}
               </Link>
             </h2>
-            <ArticleItemList
-              category={category.category}
-              articles={category.articles}
-            />
+            <ArticleItemList articles={category.articles} />
           </div>
         ))}
     </section>

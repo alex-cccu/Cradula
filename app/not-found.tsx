@@ -12,7 +12,7 @@ const FourZeroFour = () => {
             404
           </h1>
           <h2 className="p-5 font-title dark:font-titleDark text-3xl text-neutral-900 dark:text-neutral-100 dark:tracking-wide">
-            oops! that doesn't exist
+            oops! that doesn&apos;t exist
           </h2>
           <hr className="bg-cradula-green dark:bg-cradula-red rounded-sm h-1 border-0 w-3/4 justify-center mx-auto" />
           <div className="flex justify-center p-5 font-body">

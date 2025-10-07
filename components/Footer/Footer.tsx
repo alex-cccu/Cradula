@@ -2,6 +2,7 @@ import LinkedIn from "@/assets/LinkedIn";
 import Github from "@/assets/Github";
 import Cradula from "../../assets/Cradula";
 import { getAllPages } from "@/lib/page";
+import Link from "next/link";
 
 const Footer = () => {
   const pages = getAllPages();
@@ -20,21 +21,24 @@ const Footer = () => {
         <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8 z-5">
           <div className="sm:flex sm:justify-between">
             <div className="mb-6 sm:mb-0">
-              <a
+              <Link
                 href="/"
                 className="flex items-center mb-4 sm:mb-0 justify-center space-x-3 rtl:space-x-reverse font-title dark:font-titleDark group z-3"
               >
                 <Cradula isColour={false} />
-              </a>
+              </Link>
             </div>
             <div className="grid grid-cols-3 gap-8 sm:gap-6 sm:grid-cols-3 items-center text-center font-body font-extrabold">
               {pages.map((page) => {
                 return (
-                  <a href={`/${encodeURIComponent(page.id)}`} key={page.title}>
+                  <Link
+                    href={`/${encodeURIComponent(page.id)}`}
+                    key={page.title}
+                  >
                     <h2 className="text-sm uppercase text-neutral-100 hover:scale-115 ease-in-out transition-transform duration-500">
                       {page.title}
                     </h2>
-                  </a>
+                  </Link>
                 );
               })}
             </div>

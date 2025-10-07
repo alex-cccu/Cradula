@@ -1,4 +1,3 @@
-import LoadingImage from "@/components/Loading/LoadingImage";
 import LoadingTextBlock from "@/components/Loading/LoadingTextBlock";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
