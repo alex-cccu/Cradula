@@ -21,7 +21,7 @@ const Article = async ({
         <div className="flex justify-between font-body place-items-center flex-col sm:hidden">
           <Link
             href={`/articles/${articleContent.category}`}
-            className="font-title text-2xl dark:font-titleDark animate-appear hover:scale-115 ease-in-out transition-transform duration-500"
+            className="font-title text-2xl dark:font-titleDark animate-appear-fast hover:scale-115 ease-in-out transition-transform duration-500"
           >
             {articleContent.category}
           </Link>
@@ -39,21 +39,23 @@ const Article = async ({
           </Link>
           <Link
             href={`/articles/${articleContent.category}`}
-            className="font-title text-2xl dark:font-titleDark animate-appear hover:scale-115 ease-in-out transition-transform duration-500 hidden sm:block"
+            className="font-title text-2xl dark:font-titleDark animate-appear-fast hover:scale-115 ease-in-out transition-transform duration-500 hidden sm:block"
           >
             {articleContent.category}
           </Link>
-          <p className="animate-appear">{articleContent.date.toString()}</p>
+          <p className="animate-appear-fast">
+            {articleContent.date.toString()}
+          </p>
         </div>
         <article
           className="article z-1 animate-appear"
           dangerouslySetInnerHTML={{ __html: articleContent.contentHtml }}
         />
       </section>
-      <div className="z-0 absolute md:-right-[180px] -right-[300px] top-1/4 lg:top-1/6 animate-appear">
+      <div className="z-0 absolute md:-right-[180px] -right-[300px] top-1/4 lg:top-1/6 animate-appear-slow">
         <Splodge />
       </div>
-      <div className="bottom-60 z-0 absolute md:-left-[120px] -left-[200px] animate-appear">
+      <div className="bottom-60 z-0 absolute md:-left-[120px] -left-[200px] animate-appear-slow">
         <Splodge2 />
       </div>
     </div>

@@ -14,7 +14,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
         <div className="flex justify-between font-body">
           <Link
             href={"/"}
-            className="group hover:scale-105 ease-in-out transition-transform duration-500 flex flex-row gap-1 place-items-center"
+            className="group hover:scale-105 ease-in-out transition-transform duration-500 flex flex-row gap-1 place-items-center animate-appear-fast"
           >
             <ArrowLeftIcon
               width={20}
@@ -24,14 +24,14 @@ const Page = async ({ params }: { params: { slug: string } }) => {
           </Link>
         </div>
         <article
-          className="article z-2"
+          className="article z-2 animate-appear"
           dangerouslySetInnerHTML={{ __html: pageContent.contentHtml }}
         />
       </section>
-      <div className="z-1 absolute md:-right-[180px] -right-[300px] top-1/4 lg:top-1/6">
+      <div className="z-1 absolute md:-right-[180px] -right-[300px] top-1/4 lg:top-1/6 animate-appear-slow">
         <Splodge />
       </div>
-      <div className="z-1 absolute md:-left-[120px] top-3/4 -left-[180px]">
+      <div className="z-1 absolute md:-left-[120px] top-3/4 -left-[180px] animate-appear-slow">
         <Splodge2 />
       </div>
     </div>
