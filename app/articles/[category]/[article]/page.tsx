@@ -20,7 +20,7 @@ const Article = async ({
       <section className="mx-auto w-10/12 md:w-1/2 mt-20 flex flex-col gap-5">
         <div className="flex justify-between font-body place-items-center flex-col sm:hidden">
           <Link
-            href={`/articles/${articleContent.category}`}
+            href={`/articles/${encodeURIComponent(articleContent.category)}`}
             className="font-title text-2xl dark:font-titleDark animate-appear-fast hover:scale-115 ease-in-out transition-transform duration-500"
           >
             {articleContent.category}
@@ -38,7 +38,7 @@ const Article = async ({
             <p>Back to safety</p>
           </Link>
           <Link
-            href={`/articles/${articleContent.category}`}
+            href={`/articles/${encodeURIComponent(articleContent.category)}`}
             className="font-title text-2xl dark:font-titleDark animate-appear-fast hover:scale-115 ease-in-out transition-transform duration-500 hidden sm:block"
           >
             {articleContent.category}
