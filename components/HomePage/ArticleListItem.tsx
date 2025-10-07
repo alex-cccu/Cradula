@@ -2,12 +2,7 @@ import Link from "next/link";
 import type { ArticleItem } from "@/globalTypes";
 import { shuffle } from "@/lib/shuffle";
 
-interface Props {
-  category: string;
-  articles: ArticleItem[];
-}
-
-const ArticleItemList = ({ category, articles }: Props) => {
+const ArticleItemList = ({ articles }: { articles: ArticleItem[] }) => {
   const colors = [
     "stroke-cradula-red",
     "stroke-cradula-green",

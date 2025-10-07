@@ -6,17 +6,20 @@ import { Providers } from "./providers";
 import Footer from "@/components/Footer/Footer";
 import ThemeToggle from "@/components/Header/ThemeToggle";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const dreadful = localFont({
   src: "fonts/Dreadful-Regular.ttf",
   variable: "--font-dreadful",
 });
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const poppins = Poppins({
   subsets: ["latin"],
   variable: "--font-poppins",
   weight: ["400", "600"],
 });
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const jua = Jua({
   subsets: ["latin"],
   variable: "--font-jua",
