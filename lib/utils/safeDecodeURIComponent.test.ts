@@ -12,25 +12,15 @@ describe('Given I want to safely decode a URI component', () => {
     });
 
     describe('When a malicious string is provided', () => {
-        it('Should return empty if it contains ".."', () => {
-            const encoded = 'Hello..World';
-            const decoded = safeDecodeURIComponent(encoded);
+        const maliciousStrings = ['..', '/', '\\'];
 
-            expect(decoded).toBe('');
-        });
+        maliciousStrings.forEach(maliciousString => {
+            it(`Should return empty if it contains "${maliciousString}"`, () => {
+                const encoded = `Hello${maliciousString}World`;
+                const decoded = safeDecodeURIComponent(encoded);
 
-        it('Should return empty if it contains "/"', () => {
-            const encoded = 'Hello/World';
-            const decoded = safeDecodeURIComponent(encoded);
-
-            expect(decoded).toBe('');
-        });
-
-        it('Should return empty if it contains "\\"', () => {
-            const encoded = 'Hello\\World';
-            const decoded = safeDecodeURIComponent(encoded);
-
-            expect(decoded).toBe('');
+                expect(decoded).toBe('');
+            });
         });
     });
 
