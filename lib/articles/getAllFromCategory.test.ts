@@ -1,5 +1,6 @@
 import { Mock, beforeEach, describe, expect, it, vi, afterEach } from "vitest";
 import getAllFromCategory from "./getAllFromCategory";
+import matter from "gray-matter";
 import * as fs from "fs";
 
 vi.mock("fs", async () => {
@@ -14,11 +15,17 @@ vi.mock("fs", async () => {
   };
 });
 
+vi.mock("gray-matter", () => ({
+  default: vi.fn(),
+}));
+
 describe("Given I am trying to get all articles from a category", () => {
   let mockReaddirSync: Mock;
+  let mockMatter: Mock;
 
   beforeEach(() => {
     mockReaddirSync = vi.mocked(fs.readdirSync);
+    mockMatter = vi.mocked(matter);
   });
 
   afterEach(() => {
@@ -46,6 +53,13 @@ describe("Given I am trying to get all articles from a category", () => {
             "article2.md",
             "article3.md",
           ]);
+          mockMatter.mockReturnValue({
+            data: {
+              title: undefined,
+              date: "01-20-2000",
+              category: undefined,
+            },
+          });
         });
 
         it("Should return a category with a limited number of articles", () => {
@@ -59,13 +73,13 @@ describe("Given I am trying to get all articles from a category", () => {
               {
                 id: "article3",
                 title: undefined,
-                date: undefined,
+                date: "01-20-2000",
                 category: undefined,
               },
               {
                 id: "article2",
                 title: undefined,
-                date: undefined,
+                date: "01-20-2000",
                 category: undefined,
               },
             ],
@@ -75,6 +89,45 @@ describe("Given I am trying to get all articles from a category", () => {
             id: "article1",
             title: undefined,
             date: undefined,
+            category: undefined,
+          });
+        });
+
+        it("Should not return articles with a future date", () => {
+          mockMatter.mockReturnValueOnce({
+            data: {
+              title: "future article",
+              date: "01-20-2100",
+              category: undefined,
+            },
+          });
+
+          const result = getAllFromCategory("existing-category");
+
+          expect(result.articles).toHaveLength(2);
+
+          expect(result).toEqual({
+            category: "existing-category",
+            articles: [
+              {
+                id: "article3",
+                title: undefined,
+                date: "01-20-2000",
+                category: undefined,
+              },
+              {
+                id: "article2",
+                title: undefined,
+                date: "01-20-2000",
+                category: undefined,
+              },
+            ],
+          });
+
+          expect(result.articles).not.toContain({
+            id: "article1",
+            title: undefined,
+            date: "01-20-2100",
             category: undefined,
           });
         });
@@ -118,6 +171,13 @@ describe("Given I am trying to get all articles from a category", () => {
             "article2.md",
             "article3.md",
           ]);
+          mockMatter.mockReturnValue({
+            data: {
+              title: undefined,
+              date: "01-20-2000",
+              category: undefined,
+            },
+          });
         });
 
         it("Should return a category with a limited number of articles", () => {
@@ -131,22 +191,61 @@ describe("Given I am trying to get all articles from a category", () => {
               {
                 id: "article3",
                 title: undefined,
-                date: undefined,
+                date: "01-20-2000",
                 category: undefined,
               },
               {
                 id: "article2",
                 title: undefined,
-                date: undefined,
+                date: "01-20-2000",
                 category: undefined,
               },
               {
                 id: "article1",
                 title: undefined,
-                date: undefined,
+                date: "01-20-2000",
                 category: undefined,
               },
             ],
+          });
+        });
+
+        it("Should not return articles with a future date", () => {
+          mockMatter.mockReturnValueOnce({
+            data: {
+              title: "future article",
+              date: "01-20-2100",
+              category: undefined,
+            },
+          });
+
+          const result = getAllFromCategory("existing-category");
+
+          expect(result.articles).toHaveLength(2);
+
+          expect(result).toEqual({
+            category: "existing-category",
+            articles: [
+              {
+                id: "article3",
+                title: undefined,
+                date: "01-20-2000",
+                category: undefined,
+              },
+              {
+                id: "article2",
+                title: undefined,
+                date: "01-20-2000",
+                category: undefined,
+              },
+            ],
+          });
+
+          expect(result.articles).not.toContain({
+            id: "article1",
+            title: undefined,
+            date: "01-20-2100",
+            category: undefined,
           });
         });
       });
