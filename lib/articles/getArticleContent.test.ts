@@ -39,7 +39,7 @@ describe("Given I want to get the content of an article", () => {
         data: {
           title: "mocked title",
           category: "mocked category",
-          date: "01-01-2000",
+          date: "01-20-2000",
         },
       });
     });
@@ -53,7 +53,7 @@ describe("Given I want to get the content of an article", () => {
         article: "article 1",
         category: "mocked category",
         contentHtml: "<p>hello world</p>\n",
-        date: "January 1st 2000",
+        date: "January 20th 2000",
         title: "mocked title",
       });
     });
@@ -84,7 +84,7 @@ describe("Given I want to get the content of an article", () => {
       mockMatter.mockReturnValue({
         data: {
           title: "future article",
-          date: "01-01-2100",
+          date: "01-20-2100",
           category: undefined,
         },
       });

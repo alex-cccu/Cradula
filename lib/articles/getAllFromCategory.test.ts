@@ -56,7 +56,7 @@ describe("Given I am trying to get all articles from a category", () => {
           mockMatter.mockReturnValue({
             data: {
               title: undefined,
-              date: "01-01-2000",
+              date: "01-20-2000",
               category: undefined,
             },
           });
@@ -73,13 +73,13 @@ describe("Given I am trying to get all articles from a category", () => {
               {
                 id: "article3",
                 title: undefined,
-                date: "01-01-2000",
+                date: "01-20-2000",
                 category: undefined,
               },
               {
                 id: "article2",
                 title: undefined,
-                date: "01-01-2000",
+                date: "01-20-2000",
                 category: undefined,
               },
             ],
@@ -97,7 +97,7 @@ describe("Given I am trying to get all articles from a category", () => {
           mockMatter.mockReturnValueOnce({
             data: {
               title: "future article",
-              date: "01-01-2100",
+              date: "01-20-2100",
               category: undefined,
             },
           });
@@ -112,13 +112,13 @@ describe("Given I am trying to get all articles from a category", () => {
               {
                 id: "article3",
                 title: undefined,
-                date: "01-01-2000",
+                date: "01-20-2000",
                 category: undefined,
               },
               {
                 id: "article2",
                 title: undefined,
-                date: "01-01-2000",
+                date: "01-20-2000",
                 category: undefined,
               },
             ],
@@ -127,7 +127,7 @@ describe("Given I am trying to get all articles from a category", () => {
           expect(result.articles).not.toContain({
             id: "article1",
             title: undefined,
-            date: "2100-01-01",
+            date: "01-20-2100",
             category: undefined,
           });
         });
@@ -174,7 +174,7 @@ describe("Given I am trying to get all articles from a category", () => {
           mockMatter.mockReturnValue({
             data: {
               title: undefined,
-              date: "01-01-2000",
+              date: "01-20-2000",
               category: undefined,
             },
           });
@@ -191,19 +191,19 @@ describe("Given I am trying to get all articles from a category", () => {
               {
                 id: "article3",
                 title: undefined,
-                date: "01-01-2000",
+                date: "01-20-2000",
                 category: undefined,
               },
               {
                 id: "article2",
                 title: undefined,
-                date: "01-01-2000",
+                date: "01-20-2000",
                 category: undefined,
               },
               {
                 id: "article1",
                 title: undefined,
-                date: "01-01-2000",
+                date: "01-20-2000",
                 category: undefined,
               },
             ],
@@ -214,7 +214,7 @@ describe("Given I am trying to get all articles from a category", () => {
           mockMatter.mockReturnValueOnce({
             data: {
               title: "future article",
-              date: "01-01-2100",
+              date: "01-20-2100",
               category: undefined,
             },
           });
@@ -229,13 +229,13 @@ describe("Given I am trying to get all articles from a category", () => {
               {
                 id: "article3",
                 title: undefined,
-                date: "01-01-2000",
+                date: "01-20-2000",
                 category: undefined,
               },
               {
                 id: "article2",
                 title: undefined,
-                date: "01-01-2000",
+                date: "01-20-2000",
                 category: undefined,
               },
             ],
@@ -244,7 +244,7 @@ describe("Given I am trying to get all articles from a category", () => {
           expect(result.articles).not.toContain({
             id: "article1",
             title: undefined,
-            date: "2100-01-01",
+            date: "01-20-2100",
             category: undefined,
           });
         });
