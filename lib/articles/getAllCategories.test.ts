@@ -2,7 +2,6 @@ import { Mock, beforeEach, describe, expect, it, vi, afterEach } from "vitest";
 import * as fs from "fs";
 import getAllFromCategory from "./getAllFromCategory";
 import getAllCategories from "./getAllCategories";
-import matter from "gray-matter";
 
 vi.mock("fs", async () => {
   const actualFs = await vi.importActual("fs");

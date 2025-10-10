@@ -18,7 +18,7 @@ vi.mock("gray-matter", () => ({
   default: vi.fn(),
 }));
 
-describe("Given I want to get the content of an article", () => {
+describe("Given I want to get the content of an page", () => {
   let mockFileSync: Mock;
   let mockMatter: Mock;
 
@@ -42,7 +42,7 @@ describe("Given I want to get the content of an article", () => {
       });
     });
 
-    it("Should return the content of the article", async () => {
+    it("Should return the content of the page", async () => {
       const result = await getPageContent("page 1");
       expect(result).toStrictEqual({
         slug: "page 1",
@@ -68,7 +68,7 @@ describe("Given I want to get the content of an article", () => {
     });
   });
 
-  describe("When the article has no content", () => {
+  describe("When the page has no content", () => {
     beforeEach(() => {
       mockFileSync.mockReturnValue("mocked content");
       mockMatter.mockReturnValue({
