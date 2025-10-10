@@ -32,8 +32,9 @@ const getAllFromCategory = (
       };
     });
 
+    const date = new Date();
     unsortedArticles = unsortedArticles.filter(
-      (article) => new Date(article.date) < new Date()
+      (article) => new Date(article.date) < date
     );
 
     let articles = sortArticles(unsortedArticles);
