@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
-import { getPageContent } from "@/lib/page";
 import Splodge from "@/assets/Splodge";
 import Splodge2 from "@/assets/Splodge2";
+import getPageContent from "@/lib/pages/getPageContent";
 
 const Page = async ({ params }: { params: { slug: string } }) => {
   const loadedParams = await params;

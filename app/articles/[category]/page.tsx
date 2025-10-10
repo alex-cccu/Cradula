@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
-import { getAllFromCategory } from "@/lib/articles";
 import Splodge from "@/assets/Splodge";
 import ArticleItemList from "@/components/HomePage/ArticleListItem";
+import getAllFromCategory from "@/lib/articles/getAllFromCategory";
 
 const Category = async ({ params }: { params: { category: string } }) => {
   const loadedParams = await params;

@@ -1,6 +1,5 @@
-import { Mock, beforeEach, describe, expect, it, vi } from "vitest";
+import { Mock, beforeEach, describe, expect, it, vi, afterEach } from "vitest";
 import getAllFromCategory from "./getAllFromCategory";
-import { afterEach } from "node:test";
 import * as fs from "fs";
 
 vi.mock("fs", async () => {

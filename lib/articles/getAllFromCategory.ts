@@ -6,8 +6,7 @@ import sortArticles from "./sortArticles";
 import { notFound } from "next/navigation";
 
 import type { Category } from "@/globalTypes";
-
-const articlesDirectory = path.join(process.cwd(), "app/articles");
+import { articlesDirectory } from "./constants";
 
 const getAllFromCategory = (
   category: string,

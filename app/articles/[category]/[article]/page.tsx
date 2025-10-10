@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
-import { getArticleContent } from "@/lib/articles";
 import Splodge from "@/assets/Splodge";
 import Splodge2 from "@/assets/Splodge2";
+import getArticleContent from "@/lib/articles/getArticleContent";
 
 const Article = async ({
   params,

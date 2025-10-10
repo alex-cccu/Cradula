@@ -1,8 +1,8 @@
 import LinkedIn from "@/assets/LinkedIn";
 import Github from "@/assets/Github";
 import Cradula from "../../assets/Cradula";
-import { getAllPages } from "@/lib/page";
 import Link from "next/link";
+import getAllPages from "@/lib/pages/getAllPages";
 
 const Footer = () => {
   const pages = getAllPages();
