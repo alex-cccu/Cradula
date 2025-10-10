@@ -1,17 +1,17 @@
 import { Category } from "@/globalTypes";
 import ArticleItemList from "./ArticleListItem";
-import { getAllArticles } from "@/lib/articles";
 import Link from "next/link";
+import getAllCategories from "@/lib/articles/getAllCategories";
 
 const HomePageContent = () => {
-  const articles = getAllArticles();
-  const cols = articles.length > 1 ? "md:grid-cols-2" : "md:grid-cols-1";
+  const categories = getAllCategories();
+  const cols = categories.length > 1 ? "md:grid-cols-2" : "md:grid-cols-1";
   return (
     <section
       className={`md:grid ${cols} flex flex-col gap-15 lg:gap-10 z-2 animate-appear`}
     >
-      {articles !== null &&
-        articles.map((category: Category) => (
+      {categories !== null &&
+        categories.map((category: Category) => (
           <div
             className="flex flex-col gap-5 text-center"
             key={category.category}
