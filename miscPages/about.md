@@ -4,7 +4,7 @@ title: "About Me"
 
 # About Me
 
-![Art](/AlexAndGoose.jpeg)
+![A picture of Alex and Goose the Golden Retriever](/AlexAndGoose.jpeg)
 
 ```
 Oh! Hello World! 👋
@@ -14,7 +14,7 @@ I’m Alex, a software engineer based in **London, England 🇬🇧**, and this 
 
 I've been an engineer professionally since 2020, starting out in Tesco's graduate scheme as my first job out of University. Since then I've worked on some awesome projects in the retail space, with a bulk of my time spent developing for Tesco Tills UI application, which serves millions of customers a day. Chances are, if you live in the UK, you've used some of my code!
 
-Though I'm a frontend engineer at heart, I love trying out new things and am more than comfortable working in fullstack spaces; working with **TypeScript, React, Next.js, Node.js**, and a bunch of supporting tools like **RTL, Jest, Vitest, and Grafana**.
+Though I'm a frontend engineer at heart, I love trying out new things and am more than comfortable working in fullstack spaces; working with **TypeScript, React, Next.js, Node.js**, and a bunch of supporting tools like **RTL, Jest, Vitest,** and **Grafana**.
 
 ---
 
@@ -27,7 +27,7 @@ When I’m not writing code, chances are you might find me spending time on one 
 
 ---
 
-This site is totally for me, to learn and have my own space. However, if you're interested in what **_Cradula_** is about or what I have to say then I'd love it if you bookmarked this page, followed me on my socials or got in touch!
+This site is totally for me, to learn and have my own space. However, if you're interested in what **_cradula_** is about or what I have to say then I'd love it if you bookmarked this page, followed me on my socials or got in touch!
 
 Thanks for stopping by 👋  
 — Alex
