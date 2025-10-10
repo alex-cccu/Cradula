@@ -17,7 +17,7 @@ const getAllFromCategory = (
     const folderPath = path.join(articlesDirectory, category);
     const fileNames = fs.readdirSync(folderPath);
 
-    const unsortedArticles = fileNames.map((fileName) => {
+    let unsortedArticles = fileNames.map((fileName) => {
       const id = fileName.replace(/\.md$/, "");
       const fullPath = path.join(folderPath, fileName);
 
@@ -31,6 +31,10 @@ const getAllFromCategory = (
         category: articleData.data.category,
       };
     });
+
+    unsortedArticles = unsortedArticles.filter(
+      (article) => new Date(article.date) < new Date()
+    );
 
     let articles = sortArticles(unsortedArticles);
     if (limit) {

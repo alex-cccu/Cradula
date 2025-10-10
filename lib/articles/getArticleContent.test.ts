@@ -39,7 +39,7 @@ describe("Given I want to get the content of an article", () => {
         data: {
           title: "mocked title",
           category: "mocked category",
-          date: "01-01-2025",
+          date: "01-01-2000",
         },
       });
     });
@@ -53,7 +53,7 @@ describe("Given I want to get the content of an article", () => {
         article: "article 1",
         category: "mocked category",
         contentHtml: "<p>hello world</p>\n",
-        date: "January 1st 2025",
+        date: "January 1st 2000",
         title: "mocked title",
       });
     });
@@ -75,6 +75,30 @@ describe("Given I want to get the content of an article", () => {
       ).rejects.toThrow("NEXT_HTTP_ERROR_FALLBACK;404");
 
       expect(mockMatter).not.toHaveBeenCalled();
+    });
+  });
+
+  describe("When the article has a date in the future", () => {
+    beforeEach(() => {
+      mockFileSync.mockReturnValue("mocked content");
+      mockMatter.mockReturnValue({
+        data: {
+          title: "future article",
+          date: "01-01-2100",
+          category: undefined,
+        },
+      });
+    });
+
+    it("Should error with a 404 response", async () => {
+      await expect(
+        getArticleContent({
+          category: "category",
+          article: "unreleased article",
+        })
+      ).rejects.toThrow("NEXT_HTTP_ERROR_FALLBACK;404");
+
+      expect(mockMatter).toHaveBeenCalledOnce();
     });
   });
 

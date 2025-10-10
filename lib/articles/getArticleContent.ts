@@ -30,6 +30,10 @@ const getArticleContent = async ({
       .process(matterResult.content);
     const contentHtml = processedContent.toString();
 
+    if (new Date(matterResult.data.date) > new Date()) {
+      return notFound();
+    }
+
     return {
       article,
       contentHtml,
