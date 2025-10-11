@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ArticleItem } from "@/globalTypes";
-import { shuffle } from "@/lib/shuffle";
+import { shuffle } from "@/lib/utils/shuffle";
 
 const ArticleItemList = ({ articles }: { articles: ArticleItem[] }) => {
   const colors = [
@@ -15,7 +15,7 @@ const ArticleItemList = ({ articles }: { articles: ArticleItem[] }) => {
   return (
     <div className="flex flex-col gap-2.5 font-body text-lg">
       {articles.map((article, id) => {
-        i++;
+        i = (i + 1) % colors.length;
         return (
           <Link
             href={`/articles/${encodeURIComponent(
