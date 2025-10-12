@@ -1,0 +1,89 @@
+---
+title: "Hello World! Now what?"
+subtitle: "A guide to graduate schemes and their application process"
+category: "software engineering"
+date: "10-10-2025"
+---
+
+# Hello World! Now what?
+
+## Intro
+
+Having started out my career as a software engineer through a graduate scheme and then becoming involved in its recruitment process as a mid-weight, I feel I have some wisdom that I might be able to share with any up and coming engineers fresh out of Uni and looking to apply.
+
+In this article I hope to outline some of my experience, what to expect, and some advice on how to get recruited and make the most out of your scheme once you're in!
+
+---
+
+## In the beginning
+
+_"Now what?"_ A question that we all end up asking ourselves when first starting out our journey into software engineering.
+
+Several years ago I was there too, fumbling my way through University with not just the deadlines of exams and coursework looming overhead - but also the reality of having to find my own way in the world once that final submission was handed in.
+
+So when the helping hand of nepotism didn't extend its open palm my way, I felt I was left with a few options;
+
+1. I could sit in my bedroom thinking long and hard about what to do next while wasting away the hours playing Minecraft.
+2. I could get a _normal_ job, working in an office or upping my hours in the supermarket job I had at the time.
+3. Jump into the junior engineer market with everyone else (which as I understand it has gotten even harder to get your foot in the door than when I had the opportunity to try)
+
+None of these seemed like the right option for me, and I could feel the stress building so I decided to talk to one of my lecturers about these options and see what he thought. It was in that very conversation that I first heard of a **graduate scheme**. My lecturer, who was relatively young, had started his own career on one just a few years prior and he sold them well. So after going away and doing some of my own research into what various courses offered, I decided that this was the perfect way forward for me.
+
+Now I just had to convince someone to let me on one!
+
+---
+
+## Application fever
+
+Here comes my first piece of highly quotable and life changing advice:
+
+> "Don't be too picky"
+
+Genius right? Well I very nearly didn't manage to get myself onto a graduate scheme for doing the exact opposite of this. I began by picking exclusively _cool_ companies. For the most part this consisted of games companies, both computer and tabletop, and anything else that had some glamour attached to the name.
+
+When I tell you that I ended up at Tesco, a supermarket chain in the UK, you'll be unsurprised to hear that this did not fit my initial criteria. However my experience on that scheme was invaluable and I wouldn't change it for the world.
+
+The first problem with my approach, one which I think many people will try to begin with, was that you need to apply for **a lot** of schemes. It's a tough market out there, and it has only gotten harder in the years since I was fighting in it. Each scheme has hundreds (if not thousands for the most popular ones) of applicants, and only a handful of positions available. This means that even if you're an excellent candidate, you still have a very reasonable chance of not making the cut.
+
+The best way to tackle this problem is to play the numbers game. Only applying for your 5 favourite schemes doesn't particularly swing the pendulum in your favour. However grinding out 25, 50 or even 100 applications gives you a real fighting chance. I know those numbers seem daunting, especially when you've got plenty of other things to be juggling alongside this, but this is the reality whether you're applying for graduate schemes or junior jobs these days. I do promise you that with time these do get easier. A lot of the applications you write will end up being reusable, and with such low conversion rates, you'll likely not have to face too many interviews.
+
+The second problem with this approach is time. Graduate schemes are only open for a small window in the year. Typically from September through to the end of the year, and though you may still find some available in January and February, there are many more that close applications in October and November. Typically as well, you can only apply for these during your final year at University (though this does include Masters and PHD years), as well as the year after you graduate. Which gives you two very short windows to apply within before the opportunity is missed.
+
+Sometimes you'll get a reply pretty quickly. More and more, the initial application process is automated due the volume of applicants. However other times it might take several months to get a confirmation of whether you've made it through or not. So when you put all your job hunting eggs in one basket, holding out for a reply from that one perfect company you've always dreamt of working for, if that company then turns you down you'll have likely missed the boat on hundreds of other perfectly good opportunities.
+
+Luckily I was able to quickly pivot my method of attack from just a few handpicked applications to machine gunning them out before it was too late. Though I must stress, please do at least a little reading about the companies you're applying for or you might end up on a graduate scheme for litter picking.
+
+---
+
+## Applying for dummies
+
+Now for my second piece of groundbreaking advice:
+
+> "Don't use AI"
+
+Yep. A pretty simple one I know, but advice that I fear a lot of people need. Now when I was applying back in the time before time, the ripe old year of 2019, I didn't even have the option. I had to do everything myself, applying and coding by hand. Now however its hard to move for it. And I can totally understand the temptation, especially when you're submitting so many applications. But for your own sake, don't.
+
+When applying for one of these schemes, though this also applies for junior developer roles too, you'll often have to provide some sort of CV, Cover letter or Portfolio. And as you'll probably know yourself, the market is crowded with more applicants than available jobs. As such, you need to stand out here. The people who's job it is to read through these will often have to sift through hundreds. So unfortunately, tapping "Write me a cover letter for X role at Y company" into your favourite AI chatbot doesn't quite cut it. Once you've seen a few cookie cutter AI applications you can sniff them a mile off, and I guarantee the recruiters will know.
+
+Make it creative, make it unique, make it yours.
+
+Lets say however that you manage to make it through this first stage. Some of the larger companies might automate some of the initial checks and maybe your AI statement slips through. Well then you're faced with a coding assessment and maybe some video questions.
+
+This happens to be the part I spent a lot of time helping out in the recruitment process later on in my career and I was shocked at the number of candidates trying to get through the process using AI. I think this stems from a misunderstanding of what companies want from their applicants. I believe that most people faced with a coding assessment assume that they have to complete the problem and get the right answer in order to proceed, which is often not the case.
+
+When apply for graduate schemes, differently from other junior developer roles, the expectation is that you are very limited in experience. They want to be able to take you under their wing and mould you into the perfect little engineer for their company. But this means that they're less interested in you getting to the answer and more interested in how you attempt to get there. Are you able to think about problems in the right way? Are you showing the signs of what it takes to be a good engineer? Are you able to fail forwards?
+
+So when another engineer, like myself, goes back to review your code and sees that you were inactive on the assessment tab for 2 minutes before pasting in a perfect answer, that tells us nothing about how skilled you are as a developer. Oh, sorry! Did I forget to mention that we can see everything you do? I'm afraid so. While I was reviewing applications in 2024 and 2025, I would estimate that around 2 out of 3 copy and pasted the entire answer. There are some incredible tools out there that companies are using that track everything you do within the browser tab whilst doing a coding assessment. We can watch a full timeline of the tab and see every character you type and every time you paste in a perfectly crafted and commented answer.
+
+I think people also forget that they're not the only people to have ever used AI. The engineers who review your applications have all used it as well to write code on their own projects. There are tells that we've all seen 1000 times. Everyone knows what you're doing.
+
+Now this should not be a call to arms to find out how to mask what you're doing, or make it look like you're typing it out yourself. No, the takeaway here should be to just give it a go on your own. Write your own code. Show us that you're human and that you get things wrong.
+
+---
+
+## The takeaways
+
+If you're applying for a graduate then make sure you're doing these two things.
+
+- Apply for plenty. You might be surprised that some of the more boring sounding companies actually have the most interesting problems to solve and opportunities available.
+- Don't use AI. You'll get caught. Graduate schemes are companies taking a chance on an inexperienced developer. If you're not willing to give them the time for a proper application, then why would they give you their time and money to train you up?
