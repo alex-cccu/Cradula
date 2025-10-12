@@ -9,7 +9,7 @@ date: "10-10-2025"
 
 ## Intro
 
-Having started out my career as a software engineer through a graduate scheme and then becoming involved in it's recruitment process as a mid-weight, I feel I have some wisdom that I might be able to share with any up and coming engineers fresh out of Uni and looking to apply.
+Having started out my career as a software engineer through a graduate scheme and then becoming involved in its recruitment process as a mid-weight, I feel I have some wisdom that I might be able to share with any up and coming engineers fresh out of Uni and looking to apply.
 
 In this article I hope to outline some of my experience, what to expect, and some advice on how to get recruited and make the most out of your scheme once you're in!
 
@@ -39,11 +39,11 @@ Here comes my first piece of highly quotable and life changing advice:
 
 > "Don't be too picky"
 
-Genius right? Well I very nearly didn't manage to get myself onto a gradate scheme for doing the exact opposite of this. I began by picking exclusively _cool_ companies. For the most part this consisted of games companies, both computer and tabletop, and anything else that had some glamour attached to the name.
+Genius right? Well I very nearly didn't manage to get myself onto a graduate scheme for doing the exact opposite of this. I began by picking exclusively _cool_ companies. For the most part this consisted of games companies, both computer and tabletop, and anything else that had some glamour attached to the name.
 
 When I tell you that I ended up at Tesco, a supermarket chain in the UK, you'll be unsurprised to hear that this did not fit my initial criteria. However my experience on that scheme was invaluable and I wouldn't change it for the world.
 
-The first problem with my approach, one which I think many people will try to begin with, was that you need to apply for **alot** of schemes. It's a tough market out there, and it has only gotten harder in the years since I was fighting in it. Each scheme has hundreds (if not thousands for the most popular ones) of applicants, and only a handful of positions available. This means that even if you're an excellent candidate, you still have a very reasonable chance of not making the cut.
+The first problem with my approach, one which I think many people will try to begin with, was that you need to apply for **a lot** of schemes. It's a tough market out there, and it has only gotten harder in the years since I was fighting in it. Each scheme has hundreds (if not thousands for the most popular ones) of applicants, and only a handful of positions available. This means that even if you're an excellent candidate, you still have a very reasonable chance of not making the cut.
 
 The best way to tackle this problem is to play the numbers game. Only applying for your 5 favourite schemes doesn't particularly swing the pendulum in your favour. However grinding out 25, 50 or even 100 applications gives you a real fighting chance. I know those numbers seem daunting, especially when you've got plenty of other things to be juggling alongside this, but this is the reality whether you're applying for graduate schemes or junior jobs these days. I do promise you that with time these do get easier. A lot of the applications you write will end up being reusable, and with such low conversion rates, you'll likely not have to face too many interviews.
 
@@ -73,7 +73,7 @@ This happens to be the part I spent a lot of time helping out in the recruitment
 
 When apply for graduate schemes, differently from other junior developer roles, the expectation is that you are very limited in experience. They want to be able to take you under their wing and mould you into the perfect little engineer for their company. But this means that they're less interested in you getting to the answer and more interested in how you attempt to get there. Are you able to think about problems in the right way? Are you showing the signs of what it takes to be a good engineer? Are you able to fail forwards?
 
-So when another engineer, like myself, goes back to review your code and see's that you were inactive on the assessment tab for 2 minutes before pasting in a perfect answer, that tells us nothing about how skilled you are as a developer. Oh, sorry! Did I forget to mention that we can see everything you do? I'm afraid so. While I was reviewing applications in 2024 and 2025, I would estimate that around 2 out of 3 copy and pasted the entire answer. There are some incredible tools out there that companies are using that track everything you do within the browser tab whilst doing a coding assessment. We can watch a full timeline of the tab and see every character you type and every time you paste in a perfectly crafted and commented answer.
+So when another engineer, like myself, goes back to review your code and sees that you were inactive on the assessment tab for 2 minutes before pasting in a perfect answer, that tells us nothing about how skilled you are as a developer. Oh, sorry! Did I forget to mention that we can see everything you do? I'm afraid so. While I was reviewing applications in 2024 and 2025, I would estimate that around 2 out of 3 copy and pasted the entire answer. There are some incredible tools out there that companies are using that track everything you do within the browser tab whilst doing a coding assessment. We can watch a full timeline of the tab and see every character you type and every time you paste in a perfectly crafted and commented answer.
 
 I think people also forget that they're not the only people to have ever used AI. The engineers who review your applications have all used it as well to write code on their own projects. There are tells that we've all seen 1000 times. Everyone knows what you're doing.
 
