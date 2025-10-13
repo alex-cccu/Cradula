@@ -7,6 +7,8 @@ import html from "remark-html";
 import safeDecodeURIComponent from "../utils/safeDecodeURIComponent";
 import { notFound } from "next/navigation";
 import { articlesDirectory, dateFormat } from "./constants";
+import getReadTime from "./getReadTime";
+import { ArticleItem } from "@/globalTypes";
 
 const getArticleContent = async ({
   category,
@@ -25,14 +27,14 @@ const getArticleContent = async ({
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const matterResult = matter(fileContents);
 
+    if (new Date(matterResult.data.date) > new Date()) {
+      return notFound();
+    }
+
     const processedContent = await remark()
       .use(html)
       .process(matterResult.content);
     const contentHtml = processedContent.toString();
-
-    if (new Date(matterResult.data.date) > new Date()) {
-      return notFound();
-    }
 
     return {
       article,
@@ -40,6 +42,7 @@ const getArticleContent = async ({
       title: matterResult.data.title,
       category: matterResult.data.category,
       date: moment(matterResult.data.date, dateFormat).format("MMMM Do YYYY"),
+      readTime: getReadTime(matterResult.content),
     };
   } catch (error) {
     console.error(error);

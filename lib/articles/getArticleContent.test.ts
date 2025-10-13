@@ -54,6 +54,7 @@ describe("Given I want to get the content of an article", () => {
         category: "mocked category",
         contentHtml: "<p>hello world</p>\n",
         date: "January 20th 2000",
+        readTime: "1 min read",
         title: "mocked title",
       });
     });
@@ -126,6 +127,7 @@ describe("Given I want to get the content of an article", () => {
         category: "",
         contentHtml: "",
         date: "Invalid date",
+        readTime: "1 min read",
         title: "",
       });
     });
