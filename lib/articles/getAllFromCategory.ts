@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 
 import type { Category } from "@/globalTypes";
 import { articlesDirectory } from "./constants";
+import getReadTime from "./getReadTime";
 
 const getAllFromCategory = (
   category: string,
@@ -29,6 +30,7 @@ const getAllFromCategory = (
         title: articleData.data.title,
         date: articleData.data.date,
         category: articleData.data.category,
+        readTime: getReadTime(articleData.content),
       };
     });
 

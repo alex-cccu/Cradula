@@ -59,6 +59,7 @@ describe("Given I am trying to get all articles from a category", () => {
               date: "01-20-2000",
               category: undefined,
             },
+            content: "mocked content",
           });
         });
 
@@ -71,25 +72,28 @@ describe("Given I am trying to get all articles from a category", () => {
             category: "existing-category",
             articles: [
               {
-                id: "article3",
-                title: undefined,
-                date: "01-20-2000",
                 category: undefined,
+                date: "01-20-2000",
+                id: "article3",
+                readTime: "1 min read",
+                title: undefined,
               },
               {
-                id: "article2",
-                title: undefined,
-                date: "01-20-2000",
                 category: undefined,
+                date: "01-20-2000",
+                id: "article2",
+                readTime: "1 min read",
+                title: undefined,
               },
             ],
           });
 
           expect(result.articles).not.toContain({
-            id: "article1",
-            title: undefined,
-            date: undefined,
             category: undefined,
+            date: undefined,
+            id: "article1",
+            readTime: "1 min read",
+            title: undefined,
           });
         });
 
@@ -100,6 +104,7 @@ describe("Given I am trying to get all articles from a category", () => {
               date: "01-20-2100",
               category: undefined,
             },
+            content: "mocked content",
           });
 
           const result = getAllFromCategory("existing-category");
@@ -110,25 +115,28 @@ describe("Given I am trying to get all articles from a category", () => {
             category: "existing-category",
             articles: [
               {
-                id: "article3",
-                title: undefined,
-                date: "01-20-2000",
                 category: undefined,
+                date: "01-20-2000",
+                id: "article3",
+                readTime: "1 min read",
+                title: undefined,
               },
               {
-                id: "article2",
-                title: undefined,
-                date: "01-20-2000",
                 category: undefined,
+                date: "01-20-2000",
+                id: "article2",
+                readTime: "1 min read",
+                title: undefined,
               },
             ],
           });
 
           expect(result.articles).not.toContain({
-            id: "article1",
-            title: undefined,
-            date: "01-20-2100",
             category: undefined,
+            date: "01-20-2100",
+            id: "article1",
+            readTime: "1 min read",
+            title: undefined,
           });
         });
       });
@@ -177,6 +185,7 @@ describe("Given I am trying to get all articles from a category", () => {
               date: "01-20-2000",
               category: undefined,
             },
+            content: "mocked content",
           });
         });
 
@@ -189,22 +198,25 @@ describe("Given I am trying to get all articles from a category", () => {
             category: "existing-category",
             articles: [
               {
+                category: undefined,
+                date: "01-20-2000",
                 id: "article3",
+                readTime: "1 min read",
                 title: undefined,
-                date: "01-20-2000",
-                category: undefined,
               },
               {
+                category: undefined,
+                date: "01-20-2000",
                 id: "article2",
+                readTime: "1 min read",
                 title: undefined,
-                date: "01-20-2000",
-                category: undefined,
               },
               {
-                id: "article1",
-                title: undefined,
-                date: "01-20-2000",
                 category: undefined,
+                date: "01-20-2000",
+                id: "article1",
+                readTime: "1 min read",
+                title: undefined,
               },
             ],
           });
@@ -217,6 +229,7 @@ describe("Given I am trying to get all articles from a category", () => {
               date: "01-20-2100",
               category: undefined,
             },
+            content: "mocked content",
           });
 
           const result = getAllFromCategory("existing-category");
@@ -227,25 +240,28 @@ describe("Given I am trying to get all articles from a category", () => {
             category: "existing-category",
             articles: [
               {
-                id: "article3",
-                title: undefined,
-                date: "01-20-2000",
                 category: undefined,
+                date: "01-20-2000",
+                id: "article3",
+                readTime: "1 min read",
+                title: undefined,
               },
               {
-                id: "article2",
-                title: undefined,
-                date: "01-20-2000",
                 category: undefined,
+                date: "01-20-2000",
+                id: "article2",
+                readTime: "1 min read",
+                title: undefined,
               },
             ],
           });
 
           expect(result.articles).not.toContain({
-            id: "article1",
-            title: undefined,
-            date: "01-20-2100",
             category: undefined,
+            date: "01-20-2100",
+            id: "article1",
+            readTime: "1 min read",
+            title: undefined,
           });
         });
       });
