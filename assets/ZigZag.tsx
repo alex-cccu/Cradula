@@ -6,20 +6,16 @@ const ZigZag = ({
   animated: boolean;
 }) => {
   // Some unfortunate nastiness to do with the way Tailwind handles dynamic class names
-  const stroke =
-    colour === "cradula-pink"
-      ? "stroke-cradula-pink"
-      : colour === "cradula-blue"
-      ? "stroke-cradula-blue"
-      : colour === "cradula-yellow"
-      ? "stroke-cradula-yellow"
-      : colour === "cradula-purple"
-      ? "stroke-cradula-purple"
-      : colour === "cradula-orange"
-      ? "stroke-cradula-orange"
-      : colour === "cradula-green"
-      ? "stroke-cradula-green"
-      : "stroke-cradula-red";
+  const strokeColours: { [key: string]: string } = {
+    "cradula-pink": "stroke-cradula-pink",
+    "cradula-blue": "stroke-cradula-blue",
+    "cradula-yellow": "stroke-cradula-yellow",
+    "cradula-purple": "stroke-cradula-purple",
+    "cradula-orange": "stroke-cradula-orange",
+    "cradula-green": "stroke-cradula-green",
+    "cradula-red": "stroke-cradula-red",
+  };
+  const stroke = strokeColours[colour] || "stroke-neutral-900";
 
   return (
     <svg

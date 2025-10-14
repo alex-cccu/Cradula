@@ -9,20 +9,16 @@ const ArticleHeader = ({
   colour: string;
 }) => {
   // Some unfortunate nastiness to do with the way Tailwind handles dynamic class names
-  const decoration =
-    colour === "cradula-pink"
-      ? "decoration-cradula-pink"
-      : colour === "cradula-blue"
-      ? "decoration-cradula-blue"
-      : colour === "cradula-yellow"
-      ? "decoration-cradula-yellow"
-      : colour === "cradula-purple"
-      ? "decoration-cradula-purple"
-      : colour === "cradula-orange"
-      ? "decoration-cradula-orange"
-      : colour === "cradula-green"
-      ? "decoration-cradula-green"
-      : "decoration-cradula-red";
+  const decorationColours: { [key: string]: string } = {
+    "cradula-pink": "decoration-cradula-pink",
+    "cradula-blue": "decoration-cradula-blue",
+    "cradula-yellow": "decoration-cradula-yellow",
+    "cradula-purple": "decoration-cradula-purple",
+    "cradula-orange": "decoration-cradula-orange",
+    "cradula-green": "decoration-cradula-green",
+    "cradula-red": "decoration-cradula-red",
+  };
+  const decoration = decorationColours[colour] || "decoration-neutral-900";
 
   return (
     <div className="flex justify-between font-body place-items-center">
