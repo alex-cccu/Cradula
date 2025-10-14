@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins, Jua } from "next/font/google";
+import { Jua, Quicksand } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "./providers";
@@ -13,10 +13,10 @@ const dreadful = localFont({
 });
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const poppins = Poppins({
+const quicksand = Quicksand({
   subsets: ["latin"],
-  variable: "--font-poppins",
-  weight: ["400", "600"],
+  variable: "--font-quicksand",
+  weight: ["400", "700"],
 });
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
