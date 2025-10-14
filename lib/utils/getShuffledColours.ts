@@ -3,10 +3,12 @@ import { shuffle } from "./shuffle";
 
 const getShuffledColours = (remove?: string[]): string[] => {
   const colours = [...allColours];
-  if (remove?.length && remove.length > 0) {
+  if (remove && remove.length > 0) {
     remove.forEach((colour) => {
       const index = colours.indexOf(colour);
-      colours.splice(index, 1);
+      if (index > -1) {
+        colours.splice(index, 1);
+      }
     });
   }
   shuffle(colours);
