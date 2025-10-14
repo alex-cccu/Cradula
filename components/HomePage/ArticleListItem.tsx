@@ -1,16 +1,10 @@
 import Link from "next/link";
 import type { ArticleItem } from "@/globalTypes";
-import { shuffle } from "@/lib/utils/shuffle";
+import getShuffledColours from "@/lib/utils/getShuffledColours";
+import ZigZag from "@/assets/ZigZag";
 
 const ArticleItemList = ({ articles }: { articles: ArticleItem[] }) => {
-  const colors = [
-    "stroke-cradula-red",
-    "stroke-cradula-green",
-    "stroke-cradula-blue",
-    "stroke-cradula-yellow",
-    "stroke-cradula-purple",
-  ];
-  shuffle(colors);
+  const colors = getShuffledColours(["cradula-orange", "cradula-pink"]);
   let i = -1;
   return (
     <div className="flex flex-col gap-2.5 font-body text-lg">
@@ -25,21 +19,7 @@ const ArticleItemList = ({ articles }: { articles: ArticleItem[] }) => {
             className="group text-neutral-900 dark:text-neutral-100 hover:scale-110 ease-in-out hover:font-bold transition duration-250 mx-auto"
           >
             {article.title}
-            <svg
-              className="mx-auto block w-[100%] h-3"
-              viewBox="0 0 100 10"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M0 8 L10 2 L20 8 L30 2 L40 8 L50 2 L60 8 L70 2 L80 8 L90 2 L100 8"
-                strokeWidth="4"
-                strokeLinecap="round"
-                fill="none"
-                strokeDasharray="200"
-                strokeDashoffset="200"
-                className={`group-hover:animate-draw ease-in-out duration-300 dark:stroke-cradula-red ${colors[i]}`}
-              />
-            </svg>
+            <ZigZag colour={colors[i]} animated={true} />
           </Link>
         );
       })}

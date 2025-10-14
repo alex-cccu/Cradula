@@ -3,10 +3,20 @@ import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import Splodge from "@/assets/Splodge";
 import ArticleItemList from "@/components/HomePage/ArticleListItem";
 import getAllFromCategory from "@/lib/articles/getAllFromCategory";
+import getShuffledColours from "@/lib/utils/getShuffledColours";
 
 const Category = async ({ params }: { params: { category: string } }) => {
   const loadedParams = await params;
   const { articles, category } = getAllFromCategory(loadedParams.category);
+  const colors = getShuffledColours([
+    "cradula-green",
+    "cradula-red",
+    "cradula-blue",
+    "cradula-yellow",
+    "cradula-purple",
+  ]);
+
+  const articleCount = articles.length > 1 ? " articles" : " article";
 
   return (
     <div className="relative overflow-x-hidden overflow-y-hidden min-h-svh w-screen">
@@ -22,11 +32,21 @@ const Category = async ({ params }: { params: { category: string } }) => {
             />
             <p>Back to safety</p>
           </Link>
+          <span>
+            <span className="text-cradula-green dark:text-cradula-red">
+              {articles.length}
+            </span>
+            {articleCount}
+          </span>
         </div>
         <section className="flex flex-col gap-5 text-center z-2 animate-appear">
-          <h2 className="font-title dark:font-titleDark text-4xl dark:text-5xl text-center tracking-tight dark:tracking-normal underline decoration-cradula-green dark:decoration-cradula-red">
-            {category}
-          </h2>
+          <div className="mx-auto">
+            <h1
+              className={`font-title dark:font-titleDark text-4xl dark:text-5xl text-center tracking-tight dark:tracking-normal underline decoration-${colors[0]} dark:decoration-cradula-red`}
+            >
+              {category}
+            </h1>
+          </div>
           <ArticleItemList articles={articles} />
         </section>
       </section>
