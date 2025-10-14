@@ -5,8 +5,6 @@ category: "software engineering"
 date: "10-10-2025"
 ---
 
-# Hello World! Now what?
-
 ## Intro
 
 Having started out my career as a software engineer through a graduate scheme and then becoming involved in its recruitment process as a mid-weight, I feel I have some wisdom that I might be able to share with any up and coming engineers fresh out of Uni and looking to apply.
