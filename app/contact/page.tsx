@@ -30,7 +30,7 @@ const Contact = () => {
         </div>
         <div className="px-4 mx-auto max-w-screen-md z-2">
           <p className="font-light text-center text-neutral-900 dark:text-neutral-100 sm:text-xl">
-            So you want to get in touch with me eh? Well you've come to the
+            So you want to get in touch with me eh? Well you&apos;ve come to the
             right place!
           </p>
           <p className="mb-8 lg:mb-12 font-light text-center text-neutral-900 dark:text-neutral-100 sm:text-xl">
