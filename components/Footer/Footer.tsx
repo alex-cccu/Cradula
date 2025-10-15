@@ -35,12 +35,17 @@ const Footer = () => {
                     href={`/${encodeURIComponent(page.id)}`}
                     key={page.title}
                   >
-                    <h2 className="text-sm uppercase text-neutral-100 hover:scale-115 ease-in-out transition-transform duration-500">
+                    <h2 className="text-md uppercase text-neutral-100 hover:scale-115 ease-in-out transition-transform duration-500">
                       {page.title}
                     </h2>
                   </Link>
                 );
               })}
+              <Link href={"/contact"}>
+                <h2 className="text-md uppercase text-neutral-100 hover:scale-115 ease-in-out transition-transform duration-500">
+                  Contact
+                </h2>
+              </Link>
             </div>
           </div>
           <hr className="my-6 border-neutral-100 sm:mx-auto lg:my-8" />
