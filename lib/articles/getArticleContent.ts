@@ -8,7 +8,6 @@ import safeDecodeURIComponent from "../utils/safeDecodeURIComponent";
 import { notFound } from "next/navigation";
 import { articlesDirectory, dateFormat } from "./constants";
 import getReadTime from "./getReadTime";
-import { ArticleItem } from "@/globalTypes";
 
 const getArticleContent = async ({
   category,
