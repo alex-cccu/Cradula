@@ -81,7 +81,9 @@ Now this should not be a call to arms to find out how to mask what you're doing,
 
 ## The takeaways
 
-If you're applying for a graduate then make sure you're doing these two things.
+If you're applying for a graduate scheme then make sure you're doing these two things.
 
 - Apply for plenty. You might be surprised that some of the more boring sounding companies actually have the most interesting problems to solve and opportunities available.
 - Don't use AI. You'll get caught. Graduate schemes are companies taking a chance on an inexperienced developer. If you're not willing to give them the time for a proper application, then why would they give you their time and money to train you up?
+
+Thanks for taking the time to read my article, and I wish you the best of luck in your search!
