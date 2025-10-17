@@ -86,7 +86,7 @@
 }
 
 .article {
-  @apply flex flex-col gap-3 font-body text-lg tracking-wide mb-20
+  @apply flex flex-col gap-3 font-body text-lg tracking-wide mb-10
 }
 
 .article > h1 {

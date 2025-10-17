@@ -4,6 +4,8 @@ import getArticleContent from "@/lib/articles/getArticleContent";
 import getShuffledColours from "@/lib/utils/getShuffledColours";
 import ZigZag from "@/assets/ZigZag";
 import ArticleHeader from "@/components/Articles/ArticleHeader";
+import getRecommendedArticles from "@/lib/articles/getRecommendedArticles";
+import RecommendedArticles from "@/components/Articles/RecommendedArticles";
 
 const Article = async ({
   params,
@@ -14,6 +16,10 @@ const Article = async ({
   const articleContent = await getArticleContent({
     category: loadedParams.category,
     article: loadedParams.article,
+  });
+  const recommendedArticles = await getRecommendedArticles({
+    currentArticleId: loadedParams.article,
+    currentCategory: loadedParams.category,
   });
   const colours = getShuffledColours(["cradula-green"]);
 
@@ -34,6 +40,8 @@ const Article = async ({
           className="article z-1 animate-appear"
           dangerouslySetInnerHTML={{ __html: articleContent.contentHtml }}
         />
+        <hr className="bg-cradula-green dark:bg-cradula-red rounded-sm h-1 border-0 w-full justify-center m-5 mx-auto" />
+        <RecommendedArticles articles={recommendedArticles} />
       </section>
       <div className="z-0 absolute md:-right-[180px] -right-[300px] top-1/4 lg:top-1/6 animate-appear-slow">
         <Splodge />
