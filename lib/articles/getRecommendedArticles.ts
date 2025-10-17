@@ -9,7 +9,7 @@ const getRecommendedArticles = async ({
   currentArticleId: string;
   currentCategory: string;
 }) => {
-  const articles = getAllFromCategory(currentCategory);
+  const articles = await getAllFromCategory(currentCategory);
   const recommendedArticles = articles.articles.filter(
     (article) => article.id !== currentArticleId
   );
