@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach, Mock } from "vitest";
+import { describe, it, expect, vi, beforeEach, Mock, afterEach } from "vitest";
 import getRecommendedArticles from "./getRecommendedArticles";
 import * as getAllFromCategory from "./getAllFromCategory";
 import * as getAllCategories from "./getAllCategories";
@@ -19,6 +19,11 @@ describe("Given I am trying to get recommended articles", () => {
     mockGetAllFromCategory = vi.mocked(getAllFromCategory.default);
     mockGetAllCategories = vi.mocked(getAllCategories.default);
   });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+  });
+
   describe("When there are enough articles in the current category", () => {
     beforeEach(() => {
       mockGetAllFromCategory.mockResolvedValue({
@@ -34,12 +39,12 @@ describe("Given I am trying to get recommended articles", () => {
     it("Should return two articles from the current category", async () => {
       const recommendedArticles = await getRecommendedArticles({
         currentArticleId: "article-1",
-        currentCategory: "category",
+        currentCategory: "category1",
       });
 
       expect(recommendedArticles).toHaveLength(2);
       expect(recommendedArticles).not.toContainEqual({ id: "article-1" });
-      expect(mockGetAllFromCategory).toHaveBeenCalledWith("category");
+      expect(mockGetAllFromCategory).toHaveBeenCalledWith("category1");
       expect(mockGetAllCategories).not.toHaveBeenCalled();
     });
   });
