@@ -28,7 +28,7 @@ const Contact = () => {
           </h1>
           <ZigZag colour={colours[0]} animated={false} />
         </div>
-        <div className="px-4 mx-auto max-w-screen-md z-2">
+        <div className="px-4 mx-auto max-w-screen-md z-2 animate-appear">
           <p className="font-light text-center text-neutral-900 dark:text-neutral-100 sm:text-xl">
             So you want to get in touch with me eh? Well you&apos;ve come to the
             right place!

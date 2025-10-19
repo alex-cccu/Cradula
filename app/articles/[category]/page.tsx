@@ -16,7 +16,7 @@ const Category = async ({ params }: { params: { category: string } }) => {
     "cradula-purple",
   ]);
 
-  const articleCount = articles.length > 1 ? " articles" : " article";
+  const articlePlural = articles.length > 1 ? " articles" : " article";
 
   return (
     <div className="relative overflow-x-hidden overflow-y-hidden min-h-svh w-screen">
@@ -32,11 +32,11 @@ const Category = async ({ params }: { params: { category: string } }) => {
             />
             <p>Back to safety</p>
           </Link>
-          <span>
+          <span className="animate-appear">
             <span className="text-cradula-green dark:text-cradula-red">
               {articles.length}
             </span>
-            {articleCount}
+            {articlePlural}
           </span>
         </div>
         <section className="flex flex-col gap-5 text-center z-2 animate-appear">
