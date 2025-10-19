@@ -1,5 +1,6 @@
 ---
 title: "Lessons from Steve Jobs"
+subtitle: "Useful quotes and advice from the founder of Apple"
 category: "business"
 date: "02-10-2025"
 ---

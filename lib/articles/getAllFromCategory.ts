@@ -5,7 +5,7 @@ import safeDecodeURIComponent from "../utils/safeDecodeURIComponent";
 import sortArticles from "./sortArticles";
 import { notFound } from "next/navigation";
 
-import type { Category } from "@/globalTypes";
+import type { ArticleItem, Category } from "@/globalTypes";
 import { articlesDirectory } from "./constants";
 import getReadTime from "./getReadTime";
 
@@ -23,30 +23,34 @@ const getAllFromCategory = (
       const fullPath = path.join(folderPath, fileName);
 
       const fileContents = fs.readFileSync(fullPath, "utf8");
-      const articleData = matter(fileContents);
+      const article = matter(fileContents);
+      const articleData = article.data as ArticleItem;
 
       return {
         id,
-        title: articleData.data.title,
-        date: articleData.data.date,
-        category: articleData.data.category,
-        readTime: getReadTime(articleData.content),
+        title: articleData.title,
+        subtitle: articleData.subtitle,
+        date: articleData.date,
+        category: articleData.category,
+        readTime: getReadTime(article.content),
       };
     });
 
+    // Strip out articles with a future date
     const date = new Date();
     unsortedArticles = unsortedArticles.filter(
       (article) => new Date(article.date) < date
     );
 
-    let articles = sortArticles(unsortedArticles);
+    let sortedArticles = sortArticles(unsortedArticles);
+
     if (limit) {
-      articles = articles.slice(0, limit);
+      sortedArticles = sortedArticles.slice(0, limit);
     }
 
     return {
       category,
-      articles,
+      articles: sortedArticles,
     };
   } catch (error) {
     console.error(error);
