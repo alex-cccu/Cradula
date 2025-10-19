@@ -1,5 +1,6 @@
 ---
 title: "How to write clean code"
+subtitle: "A guide on how to write clean and consistent code"
 category: "software engineering"
 date: "02-10-2025"
 ---

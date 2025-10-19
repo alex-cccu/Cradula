@@ -7,9 +7,6 @@ vi.mock("fs", async () => {
   const actualFs = await vi.importActual("fs");
   return {
     ...actualFs,
-    default: {
-      ...actualFs,
-    },
     readFileSync: vi.fn(() => "mocked content"),
   };
 });
@@ -38,6 +35,7 @@ describe("Given I want to get the content of an article", () => {
         content: "hello world",
         data: {
           title: "mocked title",
+          subtitle: "mocked subtitle",
           category: "mocked category",
           date: "01-20-2000",
         },
@@ -55,6 +53,7 @@ describe("Given I want to get the content of an article", () => {
         contentHtml: "<p>hello world</p>\n",
         date: "January 20th 2000",
         readTime: "1 min read",
+        subtitle: "mocked subtitle",
         title: "mocked title",
       });
     });
@@ -85,6 +84,7 @@ describe("Given I want to get the content of an article", () => {
       mockMatter.mockReturnValue({
         data: {
           title: "future article",
+          subtitle: "future subtitle",
           date: "01-20-2100",
           category: undefined,
         },
@@ -110,6 +110,7 @@ describe("Given I want to get the content of an article", () => {
         content: "",
         data: {
           title: "",
+          subtitle: "",
           category: "",
           date: "",
         },
@@ -129,6 +130,7 @@ describe("Given I want to get the content of an article", () => {
         date: "Invalid date",
         readTime: "1 min read",
         title: "",
+        subtitle: "",
       });
     });
   });

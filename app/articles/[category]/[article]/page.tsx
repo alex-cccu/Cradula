@@ -18,8 +18,8 @@ const Article = async ({
     article: loadedParams.article,
   });
   const recommendedArticles = await getRecommendedArticles({
-    currentArticleId: loadedParams.article,
-    currentCategory: loadedParams.category,
+    currentArticleId: articleContent.article,
+    currentCategory: articleContent.category,
   });
   const colours = getShuffledColours(["cradula-green"]);
 

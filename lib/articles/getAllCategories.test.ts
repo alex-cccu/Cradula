@@ -7,9 +7,6 @@ vi.mock("fs", async () => {
   const actualFs = await vi.importActual("fs");
   return {
     ...actualFs,
-    default: {
-      ...actualFs,
-    },
     readdirSync: vi.fn(),
     readFileSync: vi.fn(() => "mocked content"),
     statSync: vi.fn(() => ({

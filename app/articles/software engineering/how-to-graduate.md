@@ -21,9 +21,9 @@ Several years ago I was there too, fumbling my way through University with not j
 
 So when the helping hand of nepotism didn't extend its open palm my way, I felt I was left with a few options;
 
-1. I could sit in my bedroom thinking long and hard about what to do next while wasting away the hours playing Minecraft.
-2. I could get a _normal_ job, working in an office or upping my hours in the supermarket job I had at the time.
-3. Jump into the junior engineer market with everyone else (which as I understand it has gotten even harder to get your foot in the door than when I had the opportunity to try)
+- I could sit in my bedroom thinking long and hard about what to do next while wasting away the hours playing Minecraft.
+- I could get a _normal_ job, working in an office or upping my hours in the supermarket job I had at the time.
+- Jump into the junior engineer market with everyone else (which as I understand it has gotten even harder to get your foot in the door than when I had the opportunity to try)
 
 None of these seemed like the right option for me, and I could feel the stress building so I decided to talk to one of my lecturers about these options and see what he thought. It was in that very conversation that I first heard of a **graduate scheme**. My lecturer, who was relatively young, had started his own career on one just a few years prior and he sold them well. So after going away and doing some of my own research into what various courses offered, I decided that this was the perfect way forward for me.
 

@@ -1,9 +1,10 @@
 export type ArticleItem = {
   id: string;
   title: string;
+  subtitle: string;
   date: string;
   category: string;
-  readTime: string;
+  readTime?: string;
 };
 
 export type Page = {

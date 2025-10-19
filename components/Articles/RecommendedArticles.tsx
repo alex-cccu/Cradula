@@ -9,13 +9,13 @@ const RecommendedArticles = ({ articles }: { articles: ArticleItem[] }) => {
 
   return (
     <div className="text-center flex flex-col mb-20">
-      <div className="mb-4">
+      <div className="mb-6 ">
         <h2 className="font-title text-3xl dark:font-titleDark dark:text-4xl">
           Enjoy this article?
         </h2>
         <p className="font-body">Why not take a look at some of our others!</p>
       </div>
-      <div className="grid grid-cols-2 gap-4 mt-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {articles.map((article) => {
           colourIndex++;
           return (
@@ -24,7 +24,7 @@ const RecommendedArticles = ({ articles }: { articles: ArticleItem[] }) => {
                 article.category
               )}/${encodeURIComponent(article.id)}`}
               key={article.id}
-              className="group mx-auto"
+              className="group mx-auto border border-cradula-green px-8 pt-8 rounded-3xl"
             >
               <h3 className="font-title dark:font-titleDark text-2xl dark:text-3xl">
                 {article.title}
@@ -33,6 +33,13 @@ const RecommendedArticles = ({ articles }: { articles: ArticleItem[] }) => {
                 colour={colours[colourIndex % colours.length]}
                 animated={true}
               />
+              <div className="flex flex-col mx-auto">
+                <p>{article.subtitle}</p>
+                <div className="flex flex-row justify-between mx-8 my-4">
+                  <small>{article.readTime}</small>
+                  <small>{article.date}</small>
+                </div>
+              </div>
             </Link>
           );
         })}

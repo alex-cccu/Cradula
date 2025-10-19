@@ -7,9 +7,6 @@ vi.mock("fs", async () => {
   const actualFs = await vi.importActual("fs");
   return {
     ...actualFs,
-    default: {
-      ...actualFs,
-    },
     readdirSync: vi.fn(),
     readFileSync: vi.fn(() => "mocked content"),
   };
@@ -56,6 +53,7 @@ describe("Given I am trying to get all articles from a category", () => {
           mockMatter.mockReturnValue({
             data: {
               title: undefined,
+              subtitle: undefined,
               date: "01-20-2000",
               category: undefined,
             },
@@ -77,6 +75,7 @@ describe("Given I am trying to get all articles from a category", () => {
                 id: "article3",
                 readTime: "1 min read",
                 title: undefined,
+                subtitle: undefined,
               },
               {
                 category: undefined,
@@ -84,6 +83,7 @@ describe("Given I am trying to get all articles from a category", () => {
                 id: "article2",
                 readTime: "1 min read",
                 title: undefined,
+                subtitle: undefined,
               },
             ],
           });
@@ -94,6 +94,7 @@ describe("Given I am trying to get all articles from a category", () => {
             id: "article1",
             readTime: "1 min read",
             title: undefined,
+            subtitle: undefined,
           });
         });
 
@@ -101,6 +102,7 @@ describe("Given I am trying to get all articles from a category", () => {
           mockMatter.mockReturnValueOnce({
             data: {
               title: "future article",
+              subtitle: "future subtitle",
               date: "01-20-2100",
               category: undefined,
             },
@@ -120,6 +122,7 @@ describe("Given I am trying to get all articles from a category", () => {
                 id: "article3",
                 readTime: "1 min read",
                 title: undefined,
+                subtitle: undefined,
               },
               {
                 category: undefined,
@@ -127,6 +130,7 @@ describe("Given I am trying to get all articles from a category", () => {
                 id: "article2",
                 readTime: "1 min read",
                 title: undefined,
+                subtitle: undefined,
               },
             ],
           });
@@ -137,6 +141,7 @@ describe("Given I am trying to get all articles from a category", () => {
             id: "article1",
             readTime: "1 min read",
             title: undefined,
+            subtitle: undefined,
           });
         });
       });
@@ -182,6 +187,7 @@ describe("Given I am trying to get all articles from a category", () => {
           mockMatter.mockReturnValue({
             data: {
               title: undefined,
+              subtitle: undefined,
               date: "01-20-2000",
               category: undefined,
             },
@@ -203,6 +209,7 @@ describe("Given I am trying to get all articles from a category", () => {
                 id: "article3",
                 readTime: "1 min read",
                 title: undefined,
+                subtitle: undefined,
               },
               {
                 category: undefined,
@@ -210,6 +217,7 @@ describe("Given I am trying to get all articles from a category", () => {
                 id: "article2",
                 readTime: "1 min read",
                 title: undefined,
+                subtitle: undefined,
               },
               {
                 category: undefined,
@@ -217,6 +225,7 @@ describe("Given I am trying to get all articles from a category", () => {
                 id: "article1",
                 readTime: "1 min read",
                 title: undefined,
+                subtitle: undefined,
               },
             ],
           });
@@ -226,6 +235,7 @@ describe("Given I am trying to get all articles from a category", () => {
           mockMatter.mockReturnValueOnce({
             data: {
               title: "future article",
+              subtitle: "future subtitle",
               date: "01-20-2100",
               category: undefined,
             },
@@ -245,6 +255,7 @@ describe("Given I am trying to get all articles from a category", () => {
                 id: "article3",
                 readTime: "1 min read",
                 title: undefined,
+                subtitle: undefined,
               },
               {
                 category: undefined,
@@ -252,6 +263,7 @@ describe("Given I am trying to get all articles from a category", () => {
                 id: "article2",
                 readTime: "1 min read",
                 title: undefined,
+                subtitle: undefined,
               },
             ],
           });
@@ -262,6 +274,7 @@ describe("Given I am trying to get all articles from a category", () => {
             id: "article1",
             readTime: "1 min read",
             title: undefined,
+            subtitle: undefined,
           });
         });
       });
