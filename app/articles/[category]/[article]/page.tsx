@@ -40,8 +40,10 @@ const Article = async ({
           className="article z-1 animate-appear"
           dangerouslySetInnerHTML={{ __html: articleContent.contentHtml }}
         />
-        <hr className="bg-cradula-green dark:bg-cradula-red rounded-sm h-1 border-0 w-full justify-center m-5 mx-auto" />
-        <RecommendedArticles articles={recommendedArticles} />
+        <div className="animate-appear">
+          <hr className="bg-cradula-green dark:bg-cradula-red rounded-sm h-1 border-0 w-full justify-center m-5 mx-auto" />
+          <RecommendedArticles articles={recommendedArticles} />
+        </div>
       </section>
       <div className="z-0 absolute md:-right-[180px] -right-[300px] top-1/4 lg:top-1/6 animate-appear-slow">
         <Splodge />
