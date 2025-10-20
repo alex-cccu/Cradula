@@ -7,7 +7,7 @@ const Splodge = () => {
         preserveAspectRatio="xMidYMid meet"
         width="500"
         height="500"
-        className="hover:scale-105 hover:-rotate-3 transition-transform duration-300"
+        className="animate-splodges"
       >
         <g id="Objects">
           <path
