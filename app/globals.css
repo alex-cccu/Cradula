@@ -57,13 +57,6 @@
     50% { transform: scale(1.05); opacity: 0.8; }
   }
 
-  /* --animate-rotate: rotate 2s ease-in forwards infinite;
-  @keyframes rotate {
-    0% {  transform: rotate(0deg)}
-    50% {  transform: rotate(360deg)}
-    90% {  transform: rotate(-45deg)}
-  } */
-
   --animate-shake: shake 0.3s ease-in-out forwards;
   @keyframes shake {
     0%, 100% { transform: translateX(0); }
@@ -123,22 +116,4 @@
 
 .article > p > strong > em {
   @apply font-title dark:font-titleDark not-italic dark:uppercase text-xl leading-normal dark:tracking-wider;
-}
-
-
-.custom-shape-divider-top-1759064640 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-}
-
-.custom-shape-divider-top-1759064640 svg {
-  position: relative;
-  display: block;
-  width: calc(120% + 1.3px);
-  height: 142px;
-  transform: rotateY(180deg);
 }

@@ -6,8 +6,9 @@ import sortArticles from "./sortArticles";
 import { notFound } from "next/navigation";
 
 import type { ArticleItem, Category } from "@/globalTypes";
-import { articlesDirectory } from "./constants";
+import { articlesDirectory, dateFormat } from "./constants";
 import getReadTime from "./getReadTime";
+import moment from "moment";
 
 const getAllFromCategory = (
   category: string,
@@ -47,6 +48,11 @@ const getAllFromCategory = (
     if (limit) {
       sortedArticles = sortedArticles.slice(0, limit);
     }
+
+    sortedArticles = sortedArticles.map((article) => ({
+      ...article,
+      date: moment(article.date, dateFormat).format("MMMM Do YYYY"),
+    }));
 
     return {
       category,

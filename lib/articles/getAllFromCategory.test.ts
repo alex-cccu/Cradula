@@ -71,7 +71,7 @@ describe("Given I am trying to get all articles from a category", () => {
             articles: [
               {
                 category: undefined,
-                date: "01-20-2000",
+                date: "January 20th 2000",
                 id: "article3",
                 readTime: "1 min read",
                 title: undefined,
@@ -79,7 +79,7 @@ describe("Given I am trying to get all articles from a category", () => {
               },
               {
                 category: undefined,
-                date: "01-20-2000",
+                date: "January 20th 2000",
                 id: "article2",
                 readTime: "1 min read",
                 title: undefined,
@@ -118,7 +118,7 @@ describe("Given I am trying to get all articles from a category", () => {
             articles: [
               {
                 category: undefined,
-                date: "01-20-2000",
+                date: "January 20th 2000",
                 id: "article3",
                 readTime: "1 min read",
                 title: undefined,
@@ -126,7 +126,7 @@ describe("Given I am trying to get all articles from a category", () => {
               },
               {
                 category: undefined,
-                date: "01-20-2000",
+                date: "January 20th 2000",
                 id: "article2",
                 readTime: "1 min read",
                 title: undefined,
@@ -137,7 +137,7 @@ describe("Given I am trying to get all articles from a category", () => {
 
           expect(result.articles).not.toContain({
             category: undefined,
-            date: "01-20-2100",
+            date: "January 20th 2100",
             id: "article1",
             readTime: "1 min read",
             title: undefined,
@@ -205,7 +205,7 @@ describe("Given I am trying to get all articles from a category", () => {
             articles: [
               {
                 category: undefined,
-                date: "01-20-2000",
+                date: "January 20th 2000",
                 id: "article3",
                 readTime: "1 min read",
                 title: undefined,
@@ -213,7 +213,7 @@ describe("Given I am trying to get all articles from a category", () => {
               },
               {
                 category: undefined,
-                date: "01-20-2000",
+                date: "January 20th 2000",
                 id: "article2",
                 readTime: "1 min read",
                 title: undefined,
@@ -221,7 +221,7 @@ describe("Given I am trying to get all articles from a category", () => {
               },
               {
                 category: undefined,
-                date: "01-20-2000",
+                date: "January 20th 2000",
                 id: "article1",
                 readTime: "1 min read",
                 title: undefined,
@@ -251,7 +251,7 @@ describe("Given I am trying to get all articles from a category", () => {
             articles: [
               {
                 category: undefined,
-                date: "01-20-2000",
+                date: "January 20th 2000",
                 id: "article3",
                 readTime: "1 min read",
                 title: undefined,
@@ -259,7 +259,7 @@ describe("Given I am trying to get all articles from a category", () => {
               },
               {
                 category: undefined,
-                date: "01-20-2000",
+                date: "January 20th 2000",
                 id: "article2",
                 readTime: "1 min read",
                 title: undefined,
@@ -270,7 +270,7 @@ describe("Given I am trying to get all articles from a category", () => {
 
           expect(result.articles).not.toContain({
             category: undefined,
-            date: "01-20-2100",
+            date: "January 20th 2100",
             id: "article1",
             readTime: "1 min read",
             title: undefined,
