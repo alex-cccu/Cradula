@@ -26,18 +26,6 @@
     100% { opacity: 1; transform: scale(1) }
   }
 
-  --animate-splodges: splodges 7s ease-in-out infinite;
-  @keyframes splodges {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1) rotate(3deg); }
-  } 
-
-  --animate-splodges-reverse: splodges-reverse 8s ease-in-out infinite;
-  @keyframes splodges-reverse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1) rotate(-3deg); }
-  } 
-
   --animate-draw: draw 1.2s ease-in-out forwards;
   @keyframes draw {
     0% { stroke-dashoffset: 200; }
@@ -90,6 +78,24 @@
 
 }
 
+.animate-splodges {
+  animation: splodges 7s ease-in-out infinite;
+} 
+
+@keyframes splodges {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1) rotate(3deg); }
+} 
+
+.animate-splodges-reverse {
+  animation: splodges-reverse 8s ease-in-out infinite;
+}
+
+@keyframes splodges-reverse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1) rotate(-3deg); }
+} 
+
 .article {
   @apply flex flex-col gap-3 font-body text-lg tracking-wide mb-10
 }
@@ -103,16 +109,16 @@
 }
 
 .article > ol {
-  @apply list-decimal flex flex-col mx-10 gap-2;
+  @apply list-decimal flex flex-col mx-4 lg:mx-10 gap-2;
 }
 
 .article > ul {
-  @apply list-disc flex flex-col mx-10 gap-2 marker:text-cradula-green dark:marker:text-cradula-red;
+  @apply list-disc flex flex-col mx-4 lg:mx-10 gap-2 marker:text-cradula-green dark:marker:text-cradula-red;
 }
 
 .article > pre {
-  @apply dark:bg-neutral-800 dark:text-neutral-100 dark:border-cradula-red bg-neutral-50 text-neutral-900 border-cradula-green;
-  @apply p-5 m-2 overflow-scroll border-2 rounded-md shadow-lg;
+  @apply dark:bg-neutral-900 dark:text-neutral-100 dark:border-cradula-red bg-neutral-100 text-neutral-900 border-cradula-green;
+  @apply p-5 lg:m-2 overflow-scroll border-2 rounded-md shadow-lg;
 }
 
 .article > hr {

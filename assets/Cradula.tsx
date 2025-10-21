@@ -22,7 +22,7 @@ const Cradula = ({ isColour }: { isColour: boolean }) => {
         {letters.map((l, i) => (
           <span
             key={i}
-            className={`inline-block transition-transform p-1 md:p-0.5 dark:px-3 ease dark:text-cradula-red ${l.effect}`}
+            className={`inline-block transition-transform p-0.5 sm:p-1 dark:px-2 sm:dark:px-3 ease dark:text-cradula-red ${l.effect}`}
           >
             {l.char}
           </span>
