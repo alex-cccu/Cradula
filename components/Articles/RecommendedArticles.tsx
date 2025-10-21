@@ -24,7 +24,9 @@ const RecommendedArticles = ({ articles }: { articles: ArticleItem[] }) => {
                 article.category
               )}/${encodeURIComponent(article.id)}`}
               key={article.id}
-              className="group mx-auto border bg-neutral-50 dark:bg-neutral-800 border-cradula-green dark:border-cradula-red px-8 pt-8 rounded-3xl shadow-lg transition-transform hover:scale-[1.1] ease-in-out duration-800"
+              className="group mx-auto border bg-neutral-100 dark:bg-neutral-900 border-cradula-green 
+              dark:border-cradula-red px-8 pt-8 rounded-3xl shadow-lg transition-transform hover:scale-[1.1] 
+              ease-in-out duration-800 z-2"
             >
               <h3 className="font-title dark:font-titleDark text-2xl dark:text-3xl">
                 {article.title}

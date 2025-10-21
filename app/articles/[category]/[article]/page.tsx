@@ -25,7 +25,7 @@ const Article = async ({
 
   return (
     <div className="relative overflow-x-hidden overflow-y-hidden w-screen">
-      <section className="mx-auto w-10/12 md:w-1/2 mt-20 flex flex-col gap-5">
+      <section className="mx-auto w-10/12 md:w-2/3 lg:w-1/2 mt-20 flex flex-col gap-5">
         <ArticleHeader category={articleContent.category} colour={colours[0]} />
         <div className="flex flex-col mx-auto text-center my-5 animate-appear-fast">
           <h1 className="font-title dark:font-titleDark text-4xl dark:text-5xl text-center tracking-tight dark:tracking-normal">
