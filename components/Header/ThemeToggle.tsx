@@ -4,6 +4,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
+import Image from "next/image";
 
 export default function ThemeToggle() {
   const { theme, setTheme, resolvedTheme } = useTheme();
@@ -25,13 +26,13 @@ export default function ThemeToggle() {
       <button
         onClick={toggleTheme}
         aria-label="Toggle dark mode"
-        className="w-12 h-12 flex items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-900 hover:scale-115 hover:-rotate-6 transition-transform ease-in-out duration-500 animate-appear"
+        className="flex items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-900 hover:scale-115 hover:-rotate-6 transition-transform ease-in-out duration-500 animate-appear"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="163.25 166.84 571.09 570.56"
           preserveAspectRatio="xMidYMid meet"
-          className="z-1 absolute w-[80px] h-[80px] md:w-[300px] md:h-[300px]"
+          className="z-1 absolute w-[80px] h-[80px] md:w-[350px] md:h-[350px]"
         >
           <g>
             <path
@@ -42,9 +43,15 @@ export default function ThemeToggle() {
         </svg>
         <div className="z-2 pb-0.5 pl-0.5">
           {!mounted || !resolvedTheme ? null : theme === "dark" ? (
-            <MoonIcon className="w-8 h-8 md:w-20 md:h-20 text-neutral-900" />
+            <Image
+              height={96}
+              width={96}
+              src="/Mooney.png"
+              className="-rotate-20"
+              alt="Moon Icon"
+            />
           ) : (
-            <SunIcon className="w-8 h-8 md:w-20 md:h-20 text-cradula-yellow dark:text-gray-200" />
+            <Image height={96} width={96} src="/Sunny.png" alt="Sun Icon" />
           )}
         </div>
       </button>
