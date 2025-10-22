@@ -118,4 +118,39 @@ describe("Given I am trying to get recommended articles", () => {
       expect(mockGetAllCategories).toHaveBeenCalled();
     });
   });
+
+  describe("When the current category has URL-encoded characters", () => {
+    beforeEach(() => {
+      mockGetAllFromCategory.mockResolvedValue({
+        category: "category with spaces",
+        articles: [{ id: "article-1" }, { id: "article-2" }],
+      });
+      mockGetAllCategories.mockResolvedValue([
+        {
+          category: "category with spaces",
+          articles: [{ id: "article-1" }, { id: "article-2" }],
+        },
+        {
+          category: "category2",
+          articles: [{ id: "article-3" }],
+        },
+      ]);
+    });
+
+    it("Should decode the category and return articles correctly", async () => {
+      const recommendedArticles = await getRecommendedArticles({
+        currentArticleId: "article-1",
+        currentCategory: "category%20with%20spaces",
+      });
+
+      expect(recommendedArticles).toHaveLength(2);
+      expect(recommendedArticles).not.toContainEqual({ id: "article-1" });
+      expect(mockGetAllFromCategory).toHaveBeenCalledWith(
+        "category with spaces"
+      );
+      expect(recommendedArticles).toContainEqual({ id: "article-2" });
+      expect(recommendedArticles).toContainEqual({ id: "article-3" });
+      expect(mockGetAllCategories).toHaveBeenCalled();
+    });
+  });
 });

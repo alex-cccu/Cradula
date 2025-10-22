@@ -13,14 +13,16 @@ const Article = async ({
   params: { category: string; article: string };
 }) => {
   const loadedParams = await params;
-  const articleContent = await getArticleContent({
-    category: loadedParams.category,
-    article: loadedParams.article,
-  });
-  const recommendedArticles = await getRecommendedArticles({
-    currentArticleId: articleContent.article,
-    currentCategory: articleContent.category,
-  });
+  const [articleContent, recommendedArticles] = await Promise.all([
+    getArticleContent({
+      category: loadedParams.category,
+      article: loadedParams.article,
+    }),
+    getRecommendedArticles({
+      currentArticleId: loadedParams.article,
+      currentCategory: loadedParams.category,
+    }),
+  ]);
   const colours = getShuffledColours(["cradula-green"]);
 
   return (
