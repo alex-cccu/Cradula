@@ -9,8 +9,8 @@ const RecommendedArticles = ({ articles }: { articles: ArticleItem[] }) => {
 
   return (
     <div className="text-center flex flex-col mb-20">
-      <div className="mb-6 ">
-        <h2 className="font-title text-3xl dark:font-titleDark dark:text-4xl">
+      <div className="mb-6 z-2">
+        <h2 className="font-title text-3xl/10 dark:font-titleDark dark:text-4xl">
           Enjoy this article?
         </h2>
         <p className="font-body">Why not take a look at some of our others!</p>
@@ -25,7 +25,7 @@ const RecommendedArticles = ({ articles }: { articles: ArticleItem[] }) => {
               )}/${encodeURIComponent(article.id)}`}
               key={article.id}
               className="group mx-auto border bg-neutral-100 dark:bg-neutral-900 border-cradula-green 
-              dark:border-cradula-red px-8 pt-8 rounded-3xl shadow-lg transition-transform hover:scale-[1.1] 
+              dark:border-cradula-red p-8 rounded-3xl shadow-lg transition-transform hover:scale-[1.1] 
               ease-in-out duration-800 z-2"
             >
               <h3 className="font-title dark:font-titleDark text-2xl dark:text-3xl">
@@ -37,7 +37,7 @@ const RecommendedArticles = ({ articles }: { articles: ArticleItem[] }) => {
               />
               <div className="flex flex-col mx-auto">
                 <p>{article.subtitle}</p>
-                <div className="flex flex-row justify-between mx-8 my-4">
+                <div className="flex flex-row justify-between mx-8 mt-4">
                   <small>{article.readTime}</small>
                   <small>{article.date}</small>
                 </div>

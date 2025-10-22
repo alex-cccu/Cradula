@@ -35,7 +35,7 @@ const ArticleHeader = ({
       </Link>
       <Link
         href={`/articles/${encodeURIComponent(category)}`}
-        className={`font-title dark:font-titleDark dark:tracking-wider text-xl dark:text-2xl animate-appear-fast 
+        className={`font-title dark:font-titleDark dark:tracking-wider text-xl/8 dark:text-2xl animate-appear-fast 
         hover:scale-115 ease-in-out transition-transform duration-500 underline ${decoration} dark:decoration-cradula-red`}
       >
         {category}
