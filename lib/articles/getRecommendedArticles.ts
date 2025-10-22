@@ -1,3 +1,4 @@
+import safeDecodeURIComponent from "../utils/safeDecodeURIComponent";
 import { shuffle } from "../utils/shuffle";
 import getAllCategories from "./getAllCategories";
 import getAllFromCategory from "./getAllFromCategory";
@@ -9,6 +10,7 @@ const getRecommendedArticles = async ({
   currentArticleId: string;
   currentCategory: string;
 }) => {
+  currentCategory = safeDecodeURIComponent(currentCategory);
   const articles = await getAllFromCategory(currentCategory);
   const recommendedArticles = articles.articles.filter(
     (article) => article.id !== currentArticleId

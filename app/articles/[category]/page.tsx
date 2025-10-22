@@ -7,13 +7,15 @@ import getShuffledColours from "@/lib/utils/getShuffledColours";
 
 const Category = async ({ params }: { params: { category: string } }) => {
   const loadedParams = await params;
-  const { articles, category } = getAllFromCategory(loadedParams.category);
-  const colors = getShuffledColours([
-    "cradula-green",
-    "cradula-red",
-    "cradula-blue",
-    "cradula-yellow",
-    "cradula-purple",
+  const [{ articles, category }, colors] = await Promise.all([
+    getAllFromCategory(loadedParams.category),
+    getShuffledColours([
+      "cradula-green",
+      "cradula-red",
+      "cradula-blue",
+      "cradula-yellow",
+      "cradula-purple",
+    ]),
   ]);
 
   const articlePlural = articles.length > 1 ? " articles" : " article";
