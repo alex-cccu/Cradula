@@ -42,7 +42,7 @@ const Category = async ({ params }: { params: { category: string } }) => {
         <section className="flex flex-col gap-5 text-center z-2 animate-appear">
           <div className="mx-auto">
             <h1
-              className={`font-title dark:font-titleDark text-4xl dark:text-5xl text-center tracking-tight dark:tracking-normal underline decoration-${colors[0]} dark:decoration-cradula-red`}
+              className={`font-title dark:font-titleDark text-4xl/12 dark:text-5xl text-center tracking-tight dark:tracking-normal underline decoration-${colors[0]} dark:decoration-cradula-red`}
             >
               {category}
             </h1>

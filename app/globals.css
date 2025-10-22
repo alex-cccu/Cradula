@@ -101,11 +101,11 @@
 }
 
 .article > h1 {
-  @apply font-title dark:font-titleDark text-4xl dark:text-5xl text-center tracking-tight dark:tracking-normal underline decoration-cradula-green dark:decoration-cradula-red my-8;
+  @apply font-title dark:font-titleDark text-4xl/12 dark:text-5xl text-center tracking-tight dark:tracking-normal underline decoration-cradula-green dark:decoration-cradula-red my-8;
 }
 
 .article > h2 {
-  @apply font-title dark:font-titleDark text-3xl dark:text-4xl decoration-cradula-green dark:decoration-cradula-red;
+  @apply font-title dark:font-titleDark text-3xl/10 dark:text-4xl decoration-cradula-green dark:decoration-cradula-red;
 }
 
 .article > ol {

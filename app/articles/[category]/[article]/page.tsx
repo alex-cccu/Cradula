@@ -28,7 +28,7 @@ const Article = async ({
       <section className="mx-auto w-10/12 md:w-2/3 lg:w-1/2 mt-20 flex flex-col gap-5">
         <ArticleHeader category={articleContent.category} colour={colours[0]} />
         <div className="flex flex-col mx-auto text-center my-5 animate-appear-fast">
-          <h1 className="font-title dark:font-titleDark text-4xl dark:text-5xl text-center tracking-tight dark:tracking-normal">
+          <h1 className="font-title dark:font-titleDark text-4xl/12 dark:text-5xl text-center tracking-tight dark:tracking-normal">
             {articleContent.title}
           </h1>
           <ZigZag colour={colours[0]} animated={false} />
@@ -37,11 +37,11 @@ const Article = async ({
           </small>
         </div>
         <article
-          className="article z-1 animate-appear"
+          className="article z-2 animate-appear"
           dangerouslySetInnerHTML={{ __html: articleContent.contentHtml }}
         />
         <div className="animate-appear">
-          <hr className="bg-cradula-green dark:bg-cradula-red rounded-sm h-1 border-0 w-full justify-center m-5 mx-auto" />
+          <hr className="bg-cradula-green dark:bg-cradula-red rounded-sm h-1 border-0 w-full justify-center m-5 mx-auto z-2" />
           <RecommendedArticles articles={recommendedArticles} />
         </div>
       </section>
