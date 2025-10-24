@@ -21,18 +21,16 @@ export default function ThemeToggle() {
 
   return (
     <div className="relative">
-      {/* Button */}
-
       <button
         onClick={toggleTheme}
         aria-label="Toggle dark mode"
-        className="flex items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-900 hover:scale-115 hover:-rotate-6 transition-transform ease-in-out duration-500 animate-appear"
+        className="flex items-center justify-center rounded-full bg-cradula-green dark:bg-neutral-900 hover:scale-115 hover:-rotate-6 transition-transform ease-in-out duration-500 animate-appear"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="163.25 166.84 571.09 570.56"
           preserveAspectRatio="xMidYMid meet"
-          className="z-1 absolute w-[80px] h-[80px] md:w-[350px] md:h-[350px]"
+          className="z-1 absolute w-[150px] h-[150px] md:w-[300px] md:h-[300px]"
         >
           <g>
             <path
@@ -47,11 +45,17 @@ export default function ThemeToggle() {
               height={96}
               width={96}
               src="/Mooney.png"
-              className="-rotate-20"
+              className="-rotate-20 h-12 w-12 md:h-24 md:w-24"
               alt="Moon Icon"
             />
           ) : (
-            <Image height={96} width={96} src="/Sunny.png" alt="Sun Icon" />
+            <Image
+              height={96}
+              width={96}
+              src="/Sunny.png"
+              alt="Sun Icon"
+              className="h-12 w-12 md:h-24 md:w-24"
+            />
           )}
         </div>
       </button>

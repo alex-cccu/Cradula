@@ -46,7 +46,7 @@ export default function RootLayout({
         <Providers>
           <div>
             <header
-              className="absolute top-5 left-5 z-20 fill-black"
+              className="absolute top-1 left-0 z-20 fill-black"
               suppressHydrationWarning
             >
               <ThemeToggle />
