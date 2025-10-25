@@ -28,13 +28,14 @@ const RecommendedArticles = ({ articles }: { articles: ArticleItem[] }) => {
               dark:border-cradula-red p-8 rounded-3xl shadow-lg transition-transform hover:scale-[1.1] 
               ease-in-out duration-800 z-2"
             >
-              <h3 className="font-title dark:font-titleDark text-2xl dark:text-3xl">
-                <ZigZag
-                  colour={colours[colourIndex % colours.length]}
-                  animated={true}
-                  text={article.title}
-                />
-              </h3>
+              <ZigZag
+                colour={colours[colourIndex % colours.length]}
+                animated={true}
+              >
+                <h3 className="font-title dark:font-titleDark text-2xl dark:text-3xl">
+                  {article.title}
+                </h3>
+              </ZigZag>
               <div className="flex flex-col mx-auto">
                 <p>{article.subtitle}</p>
                 <div className="flex flex-row justify-between mx-8 mt-4">

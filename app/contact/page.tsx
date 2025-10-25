@@ -23,10 +23,11 @@ const Contact = () => {
           </Link>
         </div>
         <div className="flex flex-col mx-auto text-center my-5 animate-appear-fast z-2">
-          <h1 className="font-title dark:font-titleDark text-4xl dark:text-5xl text-center tracking-tight dark:tracking-normal">
-            Contact Me
-          </h1>
-          <ZigZag colour={colours[0]} animated={false} />
+          <ZigZag colour={colours[0]} animated={false}>
+            <h1 className="font-title dark:font-titleDark text-4xl dark:text-5xl text-center tracking-tight dark:tracking-normal">
+              Contact Me
+            </h1>
+          </ZigZag>
         </div>
         <div className="px-4 mx-auto max-w-screen-md z-2 animate-appear">
           <p className="font-light text-center text-neutral-900 dark:text-neutral-100 sm:text-xl">

@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export default function ZigzagUnderline({
-  text,
+  children,
   colour,
   animated = true,
 }: {
-  text: string;
+  children: React.ReactNode;
   colour: string;
   animated?: boolean;
 }) {
@@ -43,7 +43,7 @@ export default function ZigzagUnderline({
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {text} {/* Text to be underlined */}
+        {children} {/* Text to be underlined */}
         <div className="absolute left-0 right-0 -bottom-3 h-4 overflow-hidden">
           <motion.div
             className="absolute inset-0"
