@@ -1,40 +1,72 @@
-const ZigZag = ({
+"use client";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
+export default function ZigzagUnderline({
+  children,
   colour,
-  animated,
+  animated = true,
 }: {
+  children: React.ReactNode;
   colour: string;
-  animated: boolean;
-}) => {
-  // Some unfortunate nastiness to do with the way Tailwind handles dynamic class names
-  const strokeColours: { [key: string]: string } = {
-    "cradula-pink": "stroke-cradula-pink",
-    "cradula-blue": "stroke-cradula-blue",
-    "cradula-yellow": "stroke-cradula-yellow",
-    "cradula-purple": "stroke-cradula-purple",
-    "cradula-orange": "stroke-cradula-orange",
-    "cradula-green": "stroke-cradula-green",
-    "cradula-red": "stroke-cradula-red",
-  };
-  const stroke = strokeColours[colour] || "stroke-neutral-900";
+  animated?: boolean;
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    // Check if dark mode is enabled
+    const checkDarkMode = () => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    };
+
+    checkDarkMode();
+
+    // Watch for dark mode changes
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const backgroundImage = isDark
+    ? "zigzag-cradula-red.png"
+    : `zigzag-${colour}.png`;
 
   return (
-    <svg
-      className="mx-auto block w-[100%] h-3"
-      viewBox="0 0 100 10"
-      preserveAspectRatio="none"
-    >
-      <path
-        d="M0 8 L10 2 L20 8 L30 2 L40 8 L50 2 L60 8 L70 2 L80 8 L90 2 L100 8"
-        strokeWidth="4"
-        strokeLinecap="round"
-        fill="none"
-        {...(animated
-          ? { strokeDasharray: "200", strokeDashoffset: "200" }
-          : {})}
-        className={`group-hover:animate-draw ease-in-out duration-300 dark:stroke-cradula-red ${stroke}`}
-      />
-    </svg>
+    <div className="flex items-center justify-center pb-2">
+      <div
+        className="relative inline-block"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {children} {/* Text to be underlined */}
+        <div className="absolute left-0 right-0 -bottom-3 h-4 overflow-hidden">
+          <motion.div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(/zigzags/${backgroundImage})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "100% 100%",
+              backgroundPosition: "left center",
+            }}
+            initial={{ clipPath: "inset(0 100% 0 0)" }}
+            animate={{
+              clipPath:
+                !animated || isHovered
+                  ? "inset(0 0% 0 0)"
+                  : "inset(0 100% 0 0)",
+            }}
+            transition={{
+              duration: 0.6,
+              ease: "easeInOut",
+            }}
+          />
+        </div>
+      </div>
+    </div>
   );
-};
-
-export default ZigZag;
+}

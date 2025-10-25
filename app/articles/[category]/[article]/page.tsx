@@ -30,10 +30,11 @@ const Article = async ({
       <section className="mx-auto w-10/12 md:w-2/3 lg:w-1/2 mt-20 flex flex-col gap-5">
         <ArticleHeader category={articleContent.category} colour={colours[0]} />
         <div className="flex flex-col mx-auto text-center my-5 animate-appear-fast">
-          <h1 className="font-title dark:font-titleDark text-4xl/12 dark:text-5xl text-center tracking-tight dark:tracking-normal">
-            {articleContent.title}
-          </h1>
-          <ZigZag colour={colours[0]} animated={false} />
+          <ZigZag colour={colours[0]} animated={false}>
+            <h1 className="font-title dark:font-titleDark text-4xl/12 dark:text-5xl text-center tracking-tight dark:tracking-normal">
+              {articleContent.title}
+            </h1>
+          </ZigZag>
           <small className="text-neutral-600 dark:text-neutral-300 font-body pt-1.5 dark:pt-1">
             {articleContent.readTime} | Published {articleContent.date}
           </small>
