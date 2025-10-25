@@ -12,7 +12,17 @@ export default function Title() {
             <div className="cursor-default -mt-4">
               <span className="dark:text-neutral-100 dark:uppercase text-xl">
                 <AnimatedWords
-                  words={["articles", "portfolio", "pictures", "website"]}
+                  words={[
+                    "articles",
+                    "portfolio",
+                    "pictures",
+                    "website",
+                    "ramblings",
+                    "projects",
+                    "sidequests",
+                    "nonsense",
+                    "bits'n'bobs",
+                  ]}
                 />
               </span>
             </div>
