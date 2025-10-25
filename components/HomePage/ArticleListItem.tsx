@@ -18,8 +18,7 @@ const ArticleItemList = ({ articles }: { articles: ArticleItem[] }) => {
             key={id}
             className="group text-neutral-900 dark:text-neutral-100 hover:scale-110 ease-in-out hover:font-bold transition duration-250 mx-auto"
           >
-            {article.title}
-            <ZigZag colour={colors[i]} animated={true} />
+            <ZigZag text={article.title} colour={colors[i]} />
           </Link>
         );
       })}

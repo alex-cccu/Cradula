@@ -29,12 +29,12 @@ const RecommendedArticles = ({ articles }: { articles: ArticleItem[] }) => {
               ease-in-out duration-800 z-2"
             >
               <h3 className="font-title dark:font-titleDark text-2xl dark:text-3xl">
-                {article.title}
+                <ZigZag
+                  colour={colours[colourIndex % colours.length]}
+                  animated={true}
+                  text={article.title}
+                />
               </h3>
-              <ZigZag
-                colour={colours[colourIndex % colours.length]}
-                animated={true}
-              />
               <div className="flex flex-col mx-auto">
                 <p>{article.subtitle}</p>
                 <div className="flex flex-row justify-between mx-8 mt-4">
