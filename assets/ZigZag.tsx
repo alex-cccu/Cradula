@@ -55,9 +55,10 @@ export default function ZigzagUnderline({
             }}
             initial={{ clipPath: "inset(0 100% 0 0)" }}
             animate={{
-              clipPath: (animated ? isHovered : true)
-                ? "inset(0 0% 0 0)"
-                : "inset(0 100% 0 0)",
+              clipPath:
+                !animated || isHovered
+                  ? "inset(0 0% 0 0)"
+                  : "inset(0 100% 0 0)",
             }}
             transition={{
               duration: 0.6,
