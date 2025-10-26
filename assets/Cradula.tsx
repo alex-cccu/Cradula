@@ -15,7 +15,7 @@ const letters = [
   },
 ];
 
-const Cradula = ({ isColour }: { isColour: boolean }) => {
+const Cradula = ({ isColour = true }: { isColour: boolean }) => {
   if (isColour) {
     return (
       <div className="gap-1 sm:text-8xl text-7xl sm:dark:text-8xl inline-block font-bold dark:uppercase">
@@ -35,7 +35,7 @@ const Cradula = ({ isColour }: { isColour: boolean }) => {
         {letters.map((l, i) => (
           <span
             key={i}
-            className={`inline-block transition-transform p-1 md:p-0.5 dark:px-2 ease dark:text-neutral-100 text-neutral-100 ${l.effect}`}
+            className={`inline-block transition-transform p-0.5 dark:px-1 ease dark:text-neutral-100 text-neutral-100 ${l.effect}`}
           >
             {l.char}
           </span>
