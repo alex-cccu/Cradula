@@ -51,7 +51,7 @@ export default function RootLayout({
             >
               <ThemeToggle />
             </header>
-            <main className="">{children}</main>
+            <main className="min-h-[calc(100vh-300px)]">{children}</main>
             <footer>
               <Footer />
             </footer>
