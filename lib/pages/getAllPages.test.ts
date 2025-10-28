@@ -14,10 +14,6 @@ vi.mock("fs", async () => {
   };
 });
 
-vi.mock("gray-matter", () => ({
-  default: vi.fn(),
-}));
-
 describe("Given I am trying to get all misc pages", () => {
   let mockReaddirSync: Mock;
   beforeEach(() => {

@@ -51,8 +51,6 @@ const getAllFromCategory = async (
       })
     );
 
-    console.log("Unsorted Articles:", unsortedArticles);
-
     // Strip out articles with a future date
     const date = new Date();
     unsortedArticles = unsortedArticles.filter(
