@@ -1,7 +1,6 @@
 import { Mock, beforeEach, describe, expect, it, vi, afterEach } from "vitest";
 import getAllFromCategory from "./getAllFromCategory";
 import * as fs from "fs";
-import * as getReadTime from "./getReadTime";
 
 const mockArticleOne = {
   metadata: {
