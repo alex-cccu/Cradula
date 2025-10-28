@@ -45,8 +45,8 @@ describe("Given I want to get all categories", () => {
       });
     });
 
-    it("Should return all categories", () => {
-      const categories = getAllCategories();
+    it("Should return all categories", async () => {
+      const categories = await getAllCategories();
 
       expect(mockGetAllFromCategory).toHaveBeenCalledTimes(2);
       expect(categories).toHaveLength(2);
@@ -62,8 +62,8 @@ describe("Given I want to get all categories", () => {
       mockReaddirSync.mockReturnValue([]);
     });
 
-    it("Should return an empty array", () => {
-      const categories = getAllCategories();
+    it("Should return an empty array", async () => {
+      const categories = await getAllCategories();
 
       expect(mockGetAllFromCategory).toHaveBeenCalledTimes(0);
       expect(categories).toHaveLength(0);
@@ -80,8 +80,8 @@ describe("Given I want to get all categories", () => {
       });
     });
 
-    it("Should return only the valid categories", () => {
-      const categories = getAllCategories();
+    it("Should return only the valid categories", async () => {
+      const categories = await getAllCategories();
 
       expect(mockGetAllFromCategory).toHaveBeenCalledTimes(1);
       expect(categories).toHaveLength(1);

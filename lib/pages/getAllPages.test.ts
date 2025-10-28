@@ -36,26 +36,31 @@ describe("Given I am trying to get all misc pages", () => {
 
   describe("When pages exist", () => {
     beforeEach(() => {
-      mockReaddirSync.mockReturnValue(["page1.md", "page2.md"]);
-      mockReadFileSync.mockReturnValue("mocked content");
-      mockMatter.mockReturnValue({
-        content: "hello world",
-        data: {},
-      });
+      mockReaddirSync.mockReturnValue(["page1.mdx", "page2.mdx"]);
+      vi.doMock("@/miscPages/page1.mdx", () => ({
+        metadata: {
+          title: "Page One",
+        },
+      }));
+      vi.doMock("@/miscPages/page2.mdx", () => ({
+        metadata: {
+          title: "Page Two",
+        },
+      }));
     });
 
-    it("Should return a category with a limited number of articles", () => {
-      const result = getAllPages();
+    it("Should return a category with a limited number of articles", async () => {
+      const result = await getAllPages();
 
       expect(result).toHaveLength(2);
       expect(result).toEqual([
         {
           id: "page1",
-          title: undefined,
+          title: "Page One",
         },
         {
           id: "page2",
-          title: undefined,
+          title: "Page Two",
         },
       ]);
     });
@@ -64,12 +69,10 @@ describe("Given I am trying to get all misc pages", () => {
   describe("When no pages exist", () => {
     beforeEach(() => {
       mockReaddirSync.mockReturnValue([]);
-      mockReadFileSync.mockReturnValue("");
-      mockMatter.mockReturnValue({});
     });
 
-    it("Should return an empty array", () => {
-      const result = getAllPages();
+    it("Should return an empty array", async () => {
+      const result = await getAllPages();
 
       expect(result).toEqual([]);
     });

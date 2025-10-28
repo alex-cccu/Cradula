@@ -1,11 +1,22 @@
----
-title: "About Me"
----
+import { Suspense } from 'react';
+import Image from "next/image";
+
+export const metadata = {
+    title: "About Me",
+}
 
 # About Me
 
-![A picture of Alex and Goose the Golden Retriever](/AlexAndGoose.jpeg)
+<Image
+    height={400}
+    width={300}
+    src="/AlexAndGoose.jpeg"
+    alt="Moon Icon"
+/>
 
+{/* <Suspense>
+    ![A picture of Alex and Goose the Golden Retriever](/AlexAndGoose.jpeg)
+</Suspense> */}
 ```
 Oh! Hello World! 👋
 ```
