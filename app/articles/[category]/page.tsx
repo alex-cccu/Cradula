@@ -4,6 +4,7 @@ import Splodge from "@/assets/Splodge";
 import ArticleItemList from "@/components/HomePage/ArticleListItem";
 import getAllFromCategory from "@/lib/articles/getAllFromCategory";
 import getShuffledColours from "@/lib/utils/getShuffledColours";
+import getAllCategoryLocations from "@/lib/articles/getAllCategoryLocations";
 
 const Category = async ({ params }: { params: { category: string } }) => {
   const loadedParams = await params;
@@ -60,3 +61,9 @@ const Category = async ({ params }: { params: { category: string } }) => {
 };
 
 export default Category;
+
+export function generateStaticParams() {
+  return getAllCategoryLocations();
+}
+
+export const dynamicParams = false;

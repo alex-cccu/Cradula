@@ -2,11 +2,13 @@ import Link from "next/link";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import Splodge from "@/assets/Splodge";
 import Splodge2 from "@/assets/Splodge2";
-import getPageContent from "@/lib/pages/getPageContent";
+import getAllPageLocations from "@/lib/pages/getAllPageLocations";
 
 const Page = async ({ params }: { params: { slug: string } }) => {
   const loadedParams = await params;
-  const pageContent = await getPageContent(loadedParams.slug);
+  const { default: Post } = await import(
+    `@/miscPages/${loadedParams.slug}.mdx`
+  );
 
   return (
     <div className="relative overflow-x-hidden overflow-y-hidden min-h-svh w-screen">
@@ -23,10 +25,9 @@ const Page = async ({ params }: { params: { slug: string } }) => {
             <p>Back to safety</p>
           </Link>
         </div>
-        <article
-          className="article z-2 animate-appear"
-          dangerouslySetInnerHTML={{ __html: pageContent.contentHtml }}
-        />
+        <article className="article z-2 animate-appear">
+          <Post />
+        </article>
       </section>
       <div className="z-1 absolute md:-right-[180px] -right-[300px] top-1/4 lg:top-1/6 animate-appear-slow">
         <Splodge />
@@ -39,3 +40,9 @@ const Page = async ({ params }: { params: { slug: string } }) => {
 };
 
 export default Page;
+
+export function generateStaticParams() {
+  return getAllPageLocations();
+}
+
+export const dynamicParams = false;

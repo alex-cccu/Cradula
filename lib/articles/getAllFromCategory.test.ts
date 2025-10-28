@@ -1,7 +1,34 @@
 import { Mock, beforeEach, describe, expect, it, vi, afterEach } from "vitest";
 import getAllFromCategory from "./getAllFromCategory";
-import matter from "gray-matter";
 import * as fs from "fs";
+import * as getReadTime from "./getReadTime";
+
+const mockArticleOne = {
+  metadata: {
+    title: "Mocked Title 1",
+    subtitle: "Mocked Subtitle 1",
+    date: "01-20-2000",
+    category: "existing-category",
+  },
+};
+
+const mockArticleTwo = {
+  metadata: {
+    title: "Mocked Title 2",
+    subtitle: "Mocked Subtitle 2",
+    date: "01-20-2000",
+    category: "existing-category",
+  },
+};
+
+const mockArticleThree = {
+  metadata: {
+    title: "Mocked Title 3",
+    subtitle: "Mocked Subtitle 3",
+    date: "01-20-2000",
+    category: "existing-category",
+  },
+};
 
 vi.mock("fs", async () => {
   const actualFs = await vi.importActual("fs");
@@ -12,21 +39,23 @@ vi.mock("fs", async () => {
   };
 });
 
-vi.mock("gray-matter", () => ({
-  default: vi.fn(),
-}));
+vi.mock("./getReadTime", () => {
+  return {
+    default: vi.fn(() => "0 min read"),
+  };
+});
 
 describe("Given I am trying to get all articles from a category", () => {
   let mockReaddirSync: Mock;
-  let mockMatter: Mock;
 
   beforeEach(() => {
     mockReaddirSync = vi.mocked(fs.readdirSync);
-    mockMatter = vi.mocked(matter);
   });
 
   afterEach(() => {
     vi.clearAllMocks();
+    vi.restoreAllMocks();
+    vi.resetModules();
   });
 
   describe("When a limit is provided", () => {
@@ -35,10 +64,10 @@ describe("Given I am trying to get all articles from a category", () => {
         mockReaddirSync.mockReturnValue(null);
       });
 
-      it("Should error with 404", () => {
-        expect(() =>
+      it("Should error with 404", async () => {
+        await expect(() =>
           getAllFromCategory("nonexistent-category", 2)
-        ).toThrowError("NEXT_HTTP_ERROR_FALLBACK;404");
+        ).rejects.toThrowError("NEXT_HTTP_ERROR_FALLBACK;404");
       });
     });
 
@@ -46,23 +75,28 @@ describe("Given I am trying to get all articles from a category", () => {
       describe("And articles exist in that category", () => {
         beforeEach(() => {
           mockReaddirSync.mockReturnValue([
-            "article1.md",
-            "article2.md",
-            "article3.md",
+            "article1.mdx",
+            "article2.mdx",
+            "article3.mdx",
           ]);
-          mockMatter.mockReturnValue({
-            data: {
-              title: undefined,
-              subtitle: undefined,
-              date: "01-20-2000",
-              category: undefined,
-            },
-            content: "mocked content",
-          });
+
+          vi.doMock(
+            "@/articles/existing-category/article2.mdx",
+            () => mockArticleTwo
+          );
+          vi.doMock(
+            "@/articles/existing-category/article3.mdx",
+            () => mockArticleThree
+          );
         });
 
-        it("Should return a category with a limited number of articles", () => {
-          const result = getAllFromCategory("existing-category", 2);
+        it("Should return a category with a limited number of articles", async () => {
+          vi.doMock(
+            "@/articles/existing-category/article1.mdx",
+            () => mockArticleOne
+          );
+
+          const result = await getAllFromCategory("existing-category", 2);
 
           expect(result.articles).toHaveLength(2);
 
@@ -70,46 +104,44 @@ describe("Given I am trying to get all articles from a category", () => {
             category: "existing-category",
             articles: [
               {
-                category: undefined,
+                category: "existing-category",
                 date: "January 20th 2000",
                 id: "article3",
-                readTime: "1 min read",
-                title: undefined,
-                subtitle: undefined,
+                readTime: "0 min read",
+                title: "Mocked Title 3",
+                subtitle: "Mocked Subtitle 3",
               },
               {
-                category: undefined,
+                category: "existing-category",
                 date: "January 20th 2000",
                 id: "article2",
-                readTime: "1 min read",
-                title: undefined,
-                subtitle: undefined,
+                readTime: "0 min read",
+                title: "Mocked Title 2",
+                subtitle: "Mocked Subtitle 2",
               },
             ],
           });
 
           expect(result.articles).not.toContain({
-            category: undefined,
-            date: undefined,
+            category: "existing-category",
+            date: "January 20th 2000",
             id: "article1",
-            readTime: "1 min read",
-            title: undefined,
-            subtitle: undefined,
+            readTime: "0 min read",
+            title: "Mocked Title 1",
+            subtitle: "Mocked Subtitle 1",
           });
         });
 
-        it("Should not return articles with a future date", () => {
-          mockMatter.mockReturnValueOnce({
-            data: {
-              title: "future article",
-              subtitle: "future subtitle",
-              date: "01-20-2100",
-              category: undefined,
-            },
-            content: "mocked content",
-          });
+        it("Should not return articles with a future date", async () => {
+          const mockFutureArticle = {
+            metadata: { ...mockArticleOne.metadata, date: "01-20-2100" },
+          };
+          vi.doMock(
+            "@/articles/existing-category/article1.mdx",
+            () => mockFutureArticle
+          );
 
-          const result = getAllFromCategory("existing-category");
+          const result = await getAllFromCategory("existing-category");
 
           expect(result.articles).toHaveLength(2);
 
@@ -117,31 +149,31 @@ describe("Given I am trying to get all articles from a category", () => {
             category: "existing-category",
             articles: [
               {
-                category: undefined,
+                category: "existing-category",
                 date: "January 20th 2000",
                 id: "article3",
-                readTime: "1 min read",
-                title: undefined,
-                subtitle: undefined,
+                readTime: "0 min read",
+                title: "Mocked Title 3",
+                subtitle: "Mocked Subtitle 3",
               },
               {
-                category: undefined,
+                category: "existing-category",
                 date: "January 20th 2000",
                 id: "article2",
-                readTime: "1 min read",
-                title: undefined,
-                subtitle: undefined,
+                readTime: "0 min read",
+                title: "Mocked Title 2",
+                subtitle: "Mocked Subtitle 2",
               },
             ],
           });
 
           expect(result.articles).not.toContain({
-            category: undefined,
+            category: "existing-category",
             date: "January 20th 2100",
             id: "article1",
-            readTime: "1 min read",
-            title: undefined,
-            subtitle: undefined,
+            readTime: "0 min read",
+            title: "Mocked Title 1",
+            subtitle: "Mocked Subtitle 1",
           });
         });
       });
@@ -151,8 +183,8 @@ describe("Given I am trying to get all articles from a category", () => {
           mockReaddirSync.mockReturnValue([]);
         });
 
-        it("Should return the category with an empty articles array", () => {
-          const result = getAllFromCategory("empty-category", 2);
+        it("Should return the category with an empty articles array", async () => {
+          const result = await getAllFromCategory("empty-category", 2);
 
           expect(result).toEqual({
             category: "empty-category",
@@ -169,10 +201,10 @@ describe("Given I am trying to get all articles from a category", () => {
         mockReaddirSync.mockReturnValue(null);
       });
 
-      it("Should error with 404", () => {
-        expect(() => getAllFromCategory("nonexistent-category")).toThrowError(
-          "NEXT_HTTP_ERROR_FALLBACK;404"
-        );
+      it("Should error with 404", async () => {
+        await expect(() =>
+          getAllFromCategory("nonexistent-category")
+        ).rejects.toThrowError("NEXT_HTTP_ERROR_FALLBACK;404");
       });
     });
 
@@ -180,23 +212,27 @@ describe("Given I am trying to get all articles from a category", () => {
       describe("And articles exist in that category", () => {
         beforeEach(() => {
           mockReaddirSync.mockReturnValue([
-            "article1.md",
-            "article2.md",
-            "article3.md",
+            "article1.mdx",
+            "article2.mdx",
+            "article3.mdx",
           ]);
-          mockMatter.mockReturnValue({
-            data: {
-              title: undefined,
-              subtitle: undefined,
-              date: "01-20-2000",
-              category: undefined,
-            },
-            content: "mocked content",
-          });
         });
 
-        it("Should return a category with a limited number of articles", () => {
-          const result = getAllFromCategory("existing-category");
+        it("Should return a category with a limited number of articles", async () => {
+          vi.doMock(
+            "@/articles/existing-category/article1.mdx",
+            () => mockArticleOne
+          );
+          vi.doMock(
+            "@/articles/existing-category/article2.mdx",
+            () => mockArticleTwo
+          );
+          vi.doMock(
+            "@/articles/existing-category/article3.mdx",
+            () => mockArticleThree
+          );
+          vi.resetModules();
+          const result = await getAllFromCategory("existing-category");
 
           expect(result.articles).toHaveLength(3);
 
@@ -204,45 +240,51 @@ describe("Given I am trying to get all articles from a category", () => {
             category: "existing-category",
             articles: [
               {
-                category: undefined,
+                category: "existing-category",
                 date: "January 20th 2000",
                 id: "article3",
-                readTime: "1 min read",
-                title: undefined,
-                subtitle: undefined,
+                readTime: "0 min read",
+                title: "Mocked Title 3",
+                subtitle: "Mocked Subtitle 3",
               },
               {
-                category: undefined,
+                category: "existing-category",
                 date: "January 20th 2000",
                 id: "article2",
-                readTime: "1 min read",
-                title: undefined,
-                subtitle: undefined,
+                readTime: "0 min read",
+                title: "Mocked Title 2",
+                subtitle: "Mocked Subtitle 2",
               },
               {
-                category: undefined,
+                category: "existing-category",
                 date: "January 20th 2000",
                 id: "article1",
-                readTime: "1 min read",
-                title: undefined,
-                subtitle: undefined,
+                readTime: "0 min read",
+                title: "Mocked Title 1",
+                subtitle: "Mocked Subtitle 1",
               },
             ],
           });
         });
 
-        it("Should not return articles with a future date", () => {
-          mockMatter.mockReturnValueOnce({
-            data: {
-              title: "future article",
-              subtitle: "future subtitle",
-              date: "01-20-2100",
-              category: undefined,
-            },
-            content: "mocked content",
-          });
+        it("Should not return articles with a future date", async () => {
+          const mockFutureArticle = {
+            metadata: { ...mockArticleOne.metadata, date: "01-20-2100" },
+          };
+          vi.doMock(
+            "@/articles/existing-category/article1.mdx",
+            () => mockFutureArticle
+          );
+          vi.doMock(
+            "@/articles/existing-category/article2.mdx",
+            () => mockArticleTwo
+          );
+          vi.doMock(
+            "@/articles/existing-category/article3.mdx",
+            () => mockArticleThree
+          );
 
-          const result = getAllFromCategory("existing-category");
+          const result = await getAllFromCategory("existing-category");
 
           expect(result.articles).toHaveLength(2);
 
@@ -250,31 +292,31 @@ describe("Given I am trying to get all articles from a category", () => {
             category: "existing-category",
             articles: [
               {
-                category: undefined,
+                category: "existing-category",
                 date: "January 20th 2000",
                 id: "article3",
-                readTime: "1 min read",
-                title: undefined,
-                subtitle: undefined,
+                readTime: "0 min read",
+                title: "Mocked Title 3",
+                subtitle: "Mocked Subtitle 3",
               },
               {
-                category: undefined,
+                category: "existing-category",
                 date: "January 20th 2000",
                 id: "article2",
-                readTime: "1 min read",
-                title: undefined,
-                subtitle: undefined,
+                readTime: "0 min read",
+                title: "Mocked Title 2",
+                subtitle: "Mocked Subtitle 2",
               },
             ],
           });
 
           expect(result.articles).not.toContain({
-            category: undefined,
+            category: "existing-category",
             date: "January 20th 2100",
             id: "article1",
-            readTime: "1 min read",
-            title: undefined,
-            subtitle: undefined,
+            readTime: "0 min read",
+            title: "Mocked Title 1",
+            subtitle: "Mocked Subtitle 1",
           });
         });
       });
@@ -284,8 +326,8 @@ describe("Given I am trying to get all articles from a category", () => {
           mockReaddirSync.mockReturnValue([]);
         });
 
-        it("Should return the category with an empty articles array", () => {
-          const result = getAllFromCategory("empty-category");
+        it("Should return the category with an empty articles array", async () => {
+          const result = await getAllFromCategory("empty-category");
 
           expect(result).toEqual({
             category: "empty-category",

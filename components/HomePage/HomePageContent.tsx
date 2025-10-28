@@ -3,15 +3,16 @@ import ArticleItemList from "./ArticleListItem";
 import Link from "next/link";
 import getAllCategories from "@/lib/articles/getAllCategories";
 
-const HomePageContent = () => {
+const HomePageContent = async () => {
   const categories = getAllCategories();
-  const cols = categories.length > 1 ? "md:grid-cols-2" : "md:grid-cols-1";
+  const cols =
+    (await categories).length > 1 ? "md:grid-cols-2" : "md:grid-cols-1";
   return (
     <section
       className={`md:grid ${cols} flex flex-col gap-15 lg:gap-10 z-2 animate-appear`}
     >
       {categories !== null &&
-        categories.map((category: Category) => (
+        (await categories).map((category: Category) => (
           <div
             className="flex flex-col gap-5 text-center"
             key={category.category}

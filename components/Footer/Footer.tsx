@@ -4,7 +4,7 @@ import Cradula from "../../assets/Cradula";
 import Link from "next/link";
 import getAllPages from "@/lib/pages/getAllPages";
 
-const Footer = () => {
+const Footer = async () => {
   const pages = getAllPages();
 
   return (
@@ -29,7 +29,7 @@ const Footer = () => {
               </Link>
             </div>
             <div className="grid grid-cols-3 gap-8 sm:gap-6 sm:grid-cols-3 items-center text-center font-body font-extrabold">
-              {pages.map((page) => {
+              {(await pages).map((page) => {
                 return (
                   <Link
                     href={`/${encodeURIComponent(page.id)}`}

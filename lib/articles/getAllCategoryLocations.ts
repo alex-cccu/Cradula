@@ -1,11 +1,12 @@
 import * as fs from "fs";
 import path from "path";
 import { articlesDirectory } from "./constants";
-import getAllFromCategory from "./getAllFromCategory";
 
-import type { Category } from "@/globalTypes";
+type CategoryLocation = {
+  category: string;
+};
 
-const getAllCategories = async (): Promise<Category[]> => {
+const getAllCategoryLocations = async (): Promise<CategoryLocation[]> => {
   const folderNames = fs.readdirSync(articlesDirectory).filter((name) => {
     const fullPath = path.join(articlesDirectory, name);
     const isDir = fs.statSync(fullPath).isDirectory();
@@ -16,9 +17,9 @@ const getAllCategories = async (): Promise<Category[]> => {
     return isDir && !isBracketed;
   });
 
-  return Promise.all(
-    folderNames.map((folder) => getAllFromCategory(folder, 5))
-  );
+  return folderNames.map((folder) => ({
+    category: folder,
+  }));
 };
 
-export default getAllCategories;
+export default getAllCategoryLocations;

@@ -1,24 +1,27 @@
 import * as fs from "fs";
-import matter from "gray-matter";
-import path from "path";
 import { Page } from "@/globalTypes";
 import { pageDirectory } from "./constants";
 
-const getAllPages = (): Page[] => {
+type PageMetadata = {
+  title: string;
+};
+
+const getAllPages = async (): Promise<Page[]> => {
   const fileNames = fs.readdirSync(pageDirectory);
 
-  const pages = fileNames.map((fileName) => {
-    const id = fileName.replace(/\.md$/, "");
-    const fullPath = path.join(pageDirectory, fileName);
+  const pages = await Promise.all(
+    fileNames.map(async (fileName) => {
+      const id = fileName.replace(/\.mdx$/, "");
 
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-    const articleData = matter(fileContents);
+      const articleData = await import(`@/miscPages/${fileName}`);
+      const articleMetadata = articleData.metadata as PageMetadata;
 
-    return {
-      id,
-      title: articleData.data.title,
-    };
-  });
+      return {
+        id,
+        title: articleMetadata.title,
+      };
+    })
+  );
 
   return pages;
 };

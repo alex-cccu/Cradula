@@ -3,6 +3,16 @@ import * as fs from "fs";
 import matter from "gray-matter";
 import getArticleContent from "./getArticleContent";
 
+const mockArticle = {
+  metadata: {
+    title: "Mocked Title 1",
+    subtitle: "Mocked Subtitle 1",
+    date: "01-20-2000",
+    category: "existing-category",
+  },
+  default: "<p>hello world</p>",
+};
+
 vi.mock("fs", async () => {
   const actualFs = await vi.importActual("fs");
   return {
@@ -31,30 +41,26 @@ describe("Given I want to get the content of an article", () => {
   describe("When valid data is provided", () => {
     beforeEach(() => {
       mockFileSync.mockReturnValue("mocked content");
+
+      vi.doMock("@/articles/existing-category/article1.mdx", () => mockArticle);
+
       mockMatter.mockReturnValue({
         content: "hello world",
-        data: {
-          title: "mocked title",
-          subtitle: "mocked subtitle",
-          category: "mocked category",
-          date: "01-20-2000",
-        },
       });
     });
 
     it("Should return the content of the article", async () => {
       const result = await getArticleContent({
-        category: "category 1",
-        article: "article 1",
+        category: "existing-category",
+        article: "article1",
       });
       expect(result).toStrictEqual({
-        article: "article 1",
-        category: "mocked category",
-        contentHtml: "<p>hello world</p>\n",
+        content: "<p>hello world</p>",
+        title: "Mocked Title 1",
+        subtitle: "Mocked Subtitle 1",
+        category: "existing-category",
         date: "January 20th 2000",
         readTime: "1 min read",
-        subtitle: "mocked subtitle",
-        title: "mocked title",
       });
     });
   });
@@ -81,56 +87,47 @@ describe("Given I want to get the content of an article", () => {
   describe("When the article has a date in the future", () => {
     beforeEach(() => {
       mockFileSync.mockReturnValue("mocked content");
-      mockMatter.mockReturnValue({
-        data: {
-          title: "future article",
-          subtitle: "future subtitle",
+      vi.doMock("@/articles/existing-category/article1.mdx", () => ({
+        ...mockArticle,
+        metadata: {
+          ...mockArticle.metadata,
           date: "01-20-2100",
-          category: undefined,
         },
-      });
+      }));
     });
 
     it("Should error with a 404 response", async () => {
       await expect(
         getArticleContent({
-          category: "category",
+          category: "existing-category",
           article: "unreleased article",
         })
       ).rejects.toThrow("NEXT_HTTP_ERROR_FALLBACK;404");
-
-      expect(mockMatter).toHaveBeenCalledOnce();
     });
   });
 
   describe("When the article has no content", () => {
     beforeEach(() => {
       mockFileSync.mockReturnValue("mocked content");
-      mockMatter.mockReturnValue({
-        content: "",
-        data: {
-          title: "",
-          subtitle: "",
-          category: "",
-          date: "",
-        },
-      });
+      vi.doMock("@/articles/existing-category/article1.mdx", () => ({
+        metadata: {},
+        default: "",
+      }));
     });
 
     // TODO: This needs to be improved.
     it("Should return with no content", async () => {
       const result = await getArticleContent({
-        category: "category 1",
-        article: "article 1",
+        category: "existing-category",
+        article: "article1",
       });
       expect(result).toStrictEqual({
-        article: "article 1",
-        category: "",
-        contentHtml: "",
+        category: undefined,
+        content: "",
         date: "Invalid date",
         readTime: "1 min read",
-        title: "",
-        subtitle: "",
+        subtitle: undefined,
+        title: undefined,
       });
     });
   });

@@ -3,7 +3,6 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 
 export default function ThemeToggle() {
