@@ -1,7 +1,6 @@
 import { Mock, beforeEach, describe, expect, it, vi, afterEach } from "vitest";
 import getAllPages from "./getAllPages";
 import * as fs from "fs";
-import matter from "gray-matter";
 
 vi.mock("fs", async () => {
   const actualFs = await vi.importActual("fs");
@@ -21,13 +20,8 @@ vi.mock("gray-matter", () => ({
 
 describe("Given I am trying to get all misc pages", () => {
   let mockReaddirSync: Mock;
-  let mockReadFileSync: Mock;
-  let mockMatter: Mock;
-
   beforeEach(() => {
     mockReaddirSync = vi.mocked(fs.readdirSync);
-    mockReadFileSync = vi.mocked(fs.readFileSync);
-    mockMatter = vi.mocked(matter);
   });
 
   afterEach(() => {

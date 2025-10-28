@@ -13,11 +13,10 @@ const mockArticle = {
   default: "<p>hello world</p>",
 };
 
-vi.mock("fs", () => {
-  const actualFs = require("fs");
+vi.mock("fs", async () => {
+  const actualFs = await vi.importActual("fs");
   return {
     ...actualFs,
-    default: actualFs,
     readFileSync: vi.fn(() => "mocked content"),
   };
 });

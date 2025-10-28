@@ -47,11 +47,9 @@ vi.mock("./getReadTime", () => {
 
 describe("Given I am trying to get all articles from a category", () => {
   let mockReaddirSync: Mock;
-  let mockGetReadTime: Mock;
 
   beforeEach(() => {
     mockReaddirSync = vi.mocked(fs.readdirSync);
-    mockGetReadTime = vi.mocked(getReadTime.default);
   });
 
   afterEach(() => {
