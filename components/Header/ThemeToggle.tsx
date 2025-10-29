@@ -1,7 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
@@ -9,21 +9,26 @@ export default function ThemeToggle() {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [flash, setFlash] = useState(false);
+  const timeoutsRef = useRef<number[]>([]);
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+
+    return () => {
+      timeoutsRef.current.forEach((timeoutId) => clearTimeout(timeoutId));
+      timeoutsRef.current = [];
+    };
+  }, []);
 
   const toggleTheme = () => {
     setFlash(true);
-    const flashTimeout = setTimeout(() => setFlash(false), 600); // duration matches flash + rumble
-    const themeTimeout = setTimeout(
+    const flashTimeout = window.setTimeout(() => setFlash(false), 600); // duration matches flash + rumble
+    const themeTimeout = window.setTimeout(
       () => setTheme(theme === "dark" ? "light" : "dark"),
       300
     );
 
-    return () => {
-      clearTimeout(flashTimeout);
-      clearTimeout(themeTimeout);
-    };
+    timeoutsRef.current.push(flashTimeout, themeTimeout);
   };
 
   return (
