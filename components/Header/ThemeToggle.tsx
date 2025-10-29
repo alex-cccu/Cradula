@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 export default function ThemeToggle() {
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [flash, setFlash] = useState(false);
   const timeoutsRef = useRef<number[]>([]);
@@ -24,7 +24,7 @@ export default function ThemeToggle() {
     setFlash(true);
     const flashTimeout = window.setTimeout(() => setFlash(false), 600); // duration matches flash + rumble
     const themeTimeout = window.setTimeout(
-      () => setTheme(theme === "dark" ? "light" : "dark"),
+      () => setTheme(resolvedTheme === "dark" ? "light" : "dark"),
       300
     );
 
