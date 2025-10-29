@@ -1,21 +1,34 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 export default function ThemeToggle() {
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [flash, setFlash] = useState(false);
+  const timeoutsRef = useRef<number[]>([]);
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+
+    return () => {
+      timeoutsRef.current.forEach((timeoutId) => clearTimeout(timeoutId));
+      timeoutsRef.current = [];
+    };
+  }, []);
 
   const toggleTheme = () => {
     setFlash(true);
-    setTimeout(() => setFlash(false), 600); // duration matches flash + rumble
-    setTimeout(() => setTheme(theme === "dark" ? "light" : "dark"), 300);
+    const flashTimeout = window.setTimeout(() => setFlash(false), 600); // duration matches flash + rumble
+    const themeTimeout = window.setTimeout(
+      () => setTheme(resolvedTheme === "dark" ? "light" : "dark"),
+      300
+    );
+
+    timeoutsRef.current.push(flashTimeout, themeTimeout);
   };
 
   return (
@@ -39,7 +52,7 @@ export default function ThemeToggle() {
           </g>
         </svg>
         <div className="z-2 pb-0.5 pl-0.5">
-          {!mounted || !resolvedTheme ? null : theme === "dark" ? (
+          {!mounted || !resolvedTheme ? null : resolvedTheme === "dark" ? (
             <Image
               height={96}
               width={96}
@@ -74,7 +87,7 @@ export default function ThemeToggle() {
               times: [0, 0.2, 0.4, 0.6, 1],
               ease: "easeInOut",
             }}
-            className="fixed inset-0 bg-white pointer-events-none z-50 shadow-[0_0_60px_30px_rgba(255,255,200,0.7)]"
+            className="fixed inset-0 bg-neutral-300 pointer-events-none z-50 shadow-[0_0_60px_30px_rgba(255,255,200,0.7)]"
           />
         )}
       </AnimatePresence>

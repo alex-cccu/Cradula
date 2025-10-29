@@ -3,6 +3,7 @@ import Github from "@/assets/Github";
 import Cradula from "../../assets/Cradula";
 import Link from "next/link";
 import getAllPages from "@/lib/pages/getAllPages";
+import FooterThemeToggle from "./FooterThemeToggle";
 
 const Footer = async () => {
   const pages = getAllPages();
@@ -58,6 +59,9 @@ const Footer = async () => {
               <div>
                 <Github />
                 <span className="sr-only">Github page</span>
+              </div>
+              <div>
+                <FooterThemeToggle />
               </div>
             </div>
             <span className="text-md dark:text-xl text-center text-neutral-100 font-title dark:font-titleDark">
