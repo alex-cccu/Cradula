@@ -14,8 +14,16 @@ export default function FooterThemeToggle() {
 
   const toggleTheme = () => {
     setFlash(true);
-    setTimeout(() => setFlash(false), 600); // duration matches flash + rumble
-    setTimeout(() => setTheme(theme === "dark" ? "light" : "dark"), 300);
+    const flashTimeout = setTimeout(() => setFlash(false), 600); // duration matches flash + rumble
+    const themeTimeout = setTimeout(
+      () => setTheme(theme === "dark" ? "light" : "dark"),
+      300
+    );
+
+    return () => {
+      clearTimeout(flashTimeout);
+      clearTimeout(themeTimeout);
+    };
   };
 
   return (
@@ -26,7 +34,7 @@ export default function FooterThemeToggle() {
         className="hover:scale-115 ease-in-out transition-transform duration-500 cursor-pointer"
       >
         <div className="z-2 pb-0.5 pl-0.5">
-          {!mounted || !resolvedTheme ? null : theme === "dark" ? (
+          {!mounted || !resolvedTheme ? null : resolvedTheme === "dark" ? (
             <Image
               height={96}
               width={96}
@@ -61,7 +69,7 @@ export default function FooterThemeToggle() {
               times: [0, 0.2, 0.4, 0.6, 1],
               ease: "easeInOut",
             }}
-            className="fixed inset-0 bg-white pointer-events-none z-50 shadow-[0_0_60px_30px_rgba(255,255,200,0.7)]"
+            className="fixed inset-0 bg-neutral-300 pointer-events-none z-50 shadow-[0_0_60px_30px_rgba(255,255,200,0.7)]"
           />
         )}
       </AnimatePresence>
