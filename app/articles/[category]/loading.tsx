@@ -1,5 +1,5 @@
+import BackArrow from "@/assets/BackArrow";
 import LoadingTextBlock from "@/components/Loading/LoadingTextBlock";
-import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 
 const CategoryLoading = () => {
@@ -11,10 +11,7 @@ const CategoryLoading = () => {
             href={"/"}
             className="group hover:scale-105 ease-in-out transition-transform duration-500 flex flex-row gap-1 place-items-center"
           >
-            <ArrowLeftIcon
-              width={20}
-              className="opacity-100 stroke-cradula-green fill-cradula-green dark:stroke-cradula-red dark:fill-cradula-red group-hover:animate-back-bounce"
-            />
+            <BackArrow />
             <p className="opacity-100">Back to safety</p>
           </Link>
         </div>

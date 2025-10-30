@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import Splodge from "@/assets/Splodge";
 import Splodge2 from "@/assets/Splodge2";
 import getAllPageLocations from "@/lib/pages/getAllPageLocations";
+import BackArrow from "@/assets/BackArrow";
 
 const Page = async ({ params }: { params: { slug: string } }) => {
   const loadedParams = await params;
@@ -18,10 +18,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
             href={"/"}
             className="group hover:scale-105 ease-in-out transition-transform duration-500 flex flex-row gap-1 place-items-center animate-appear-fast"
           >
-            <ArrowLeftIcon
-              width={20}
-              className="stroke-cradula-green fill-cradula-green dark:stroke-cradula-red dark:fill-cradula-red group-hover:animate-back-bounce"
-            />
+            <BackArrow />
             <p>Back to safety</p>
           </Link>
         </div>

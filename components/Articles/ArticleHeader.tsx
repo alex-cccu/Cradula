@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeftIcon } from "@heroicons/react/24/solid";
+import BackArrow from "@/assets/BackArrow";
 
 const ArticleHeader = ({
   category,
@@ -26,11 +26,7 @@ const ArticleHeader = ({
         href={"/"}
         className="group hover:scale-105 ease-in-out transition-transform duration-500 flex flex-row gap-1 place-items-center"
       >
-        <ArrowLeftIcon
-          width={20}
-          className="stroke-cradula-green fill-cradula-green dark:stroke-cradula-red dark:fill-cradula-red 
-          group-hover:animate-back-bounce"
-        />
+        <BackArrow />
         <p>Back to safety</p>
       </Link>
       <Link

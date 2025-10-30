@@ -1,6 +1,6 @@
+import BackArrow from "@/assets/BackArrow";
 import Splodge from "@/assets/Splodge";
 import Splodge2 from "@/assets/Splodge2";
-import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 
 const FourZeroFour = () => {
@@ -20,10 +20,7 @@ const FourZeroFour = () => {
               href={"/"}
               className="group hover:scale-105 ease-in-out transition-transform duration-500 flex flex-row gap-1 place-items-center"
             >
-              <ArrowLeftIcon
-                width={20}
-                className="stroke-cradula-green fill-cradula-green dark:stroke-cradula-red dark:fill-cradula-red group-hover:animate-back-bounce"
-              />
+              <BackArrow />
               <p className="text-neutral-900 dark:text-neutral-100">
                 Back to safety
               </p>
