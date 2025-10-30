@@ -36,7 +36,7 @@ export default function ThemeToggle() {
       <button
         onClick={toggleTheme}
         aria-label="Toggle dark mode"
-        className="flex items-center justify-center rounded-full bg-cradula-green dark:bg-neutral-900 hover:scale-115 hover:-rotate-6 transition-transform ease-in-out duration-500 animate-appear"
+        className="flex items-center justify-center rounded-full bg-cradula-green dark:bg-neutral-900 hover:scale-110 hover:-rotate-6 transition-transform ease-in-out duration-500 animate-appear"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

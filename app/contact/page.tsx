@@ -1,8 +1,8 @@
+import BackArrow from "@/assets/BackArrow";
 import Splodge from "@/assets/Splodge";
 import Splodge2 from "@/assets/Splodge2";
 import ZigZag from "@/assets/ZigZag";
 import getShuffledColours from "@/lib/utils/getShuffledColours";
-import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 
 const Contact = () => {
@@ -15,10 +15,7 @@ const Contact = () => {
             href={"/"}
             className="group hover:scale-105 ease-in-out transition-transform duration-500 flex flex-row gap-1 place-items-center"
           >
-            <ArrowLeftIcon
-              width={20}
-              className="stroke-cradula-green fill-cradula-green dark:stroke-cradula-red dark:fill-cradula-red group-hover:animate-back-bounce"
-            />
+            <BackArrow />
             <p>Back to safety</p>
           </Link>
         </div>

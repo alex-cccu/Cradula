@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import Splodge from "@/assets/Splodge";
 import ArticleItemList from "@/components/HomePage/ArticleListItem";
 import getAllFromCategory from "@/lib/articles/getAllFromCategory";
 import getShuffledColours from "@/lib/utils/getShuffledColours";
 import getAllCategoryLocations from "@/lib/articles/getAllCategoryLocations";
+import BackArrow from "@/assets/BackArrow";
 
 const Category = async ({ params }: { params: { category: string } }) => {
   const loadedParams = await params;
@@ -22,17 +22,14 @@ const Category = async ({ params }: { params: { category: string } }) => {
   const articlePlural = articles.length > 1 ? " articles" : " article";
 
   return (
-    <div className="relative overflow-x-hidden overflow-y-hidden min-h-svh w-screen">
+    <div className="relative w-screen">
       <section className="mx-auto w-10/12 md:w-1/2 mt-20 flex flex-col gap-5">
         <div className="flex justify-between font-body">
           <Link
             href={"/"}
             className="group hover:scale-105 ease-in-out transition-transform duration-500 flex flex-row gap-1 place-items-center"
           >
-            <ArrowLeftIcon
-              width={20}
-              className="stroke-cradula-green fill-cradula-green dark:stroke-cradula-red dark:fill-cradula-red group-hover:animate-back-bounce"
-            />
+            <BackArrow />
             <p>Back to safety</p>
           </Link>
           <span className="animate-appear">
