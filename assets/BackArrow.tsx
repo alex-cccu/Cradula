@@ -35,7 +35,7 @@ const BackArrow = () => {
       : "fill-cradula-red stroke-cradula-red"; // Red for dark theme
 
   return (
-    <div style={{ position: "relative", width: 20, height: 20 }}>
+    <div className="relative w-5 h-5">
       {/* SVG Fallback - hidden once image loads */}
       {!imageLoaded && (
         <ArrowLeftIcon
@@ -50,8 +50,9 @@ const BackArrow = () => {
         src={imageSrc}
         alt="Back arrow"
         onLoad={() => setImageLoaded(true)}
-        style={{ opacity: imageLoaded ? 1 : 0 }}
-        className="group-hover:animate-back-bounce"
+        className={`group-hover:animate-back-bounce transition-opacity ${
+          imageLoaded ? "opacity-100" : "opacity-0"
+        }`}
       />
     </div>
   );
