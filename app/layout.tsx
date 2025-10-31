@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "./providers";
 import Footer from "@/components/Footer/Footer";
-import ThemeToggle from "@/components/Header/ThemeToggle";
+import HeaderThemeToggle from "@/components/ThemeToggle/HeaderThemeToggle";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const dreadful = localFont({
@@ -49,7 +49,7 @@ export default function RootLayout({
               className="absolute top-1 left-0 z-20 fill-black"
               suppressHydrationWarning
             >
-              <ThemeToggle />
+              <HeaderThemeToggle />
             </header>
             <main className="min-h-[calc(100vh-300px)]">{children}</main>
             <footer>
