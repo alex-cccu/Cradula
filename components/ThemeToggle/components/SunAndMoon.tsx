@@ -17,7 +17,7 @@ const SunAndMoon = ({
           width={96}
           src={resolvedTheme === "dark" ? "/Mooney.png" : "/Sunny.png"}
           className={`-rotate-20 ${className}`}
-          alt="Moon Icon"
+          alt="Theme toggle icon"
         />
       )}
     </div>
