@@ -11,7 +11,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
   );
 
   return (
-    <div className="relative overflow-x-hidden overflow-y-hidden min-h-svh w-screen">
+    <div className="relative w-screen overflow-x-hidden overflow-y-hidden">
       <section className="mx-auto w-10/12 md:w-1/2 mt-20 flex flex-col gap-5 z-2">
         <div className="flex justify-between font-body">
           <Link
@@ -26,10 +26,10 @@ const Page = async ({ params }: { params: { slug: string } }) => {
           <Post />
         </article>
       </section>
-      <div className="z-1 absolute md:-right-[180px] -right-[300px] top-1/4 lg:top-1/6 animate-appear-slow">
+      <div className="z-0 absolute md:-right-[180px] -right-[300px] top-0 lg:top-1/6 animate-appear-slow">
         <Splodge />
       </div>
-      <div className="z-1 absolute md:-left-[120px] top-3/4 -left-[180px] animate-appear-slow">
+      <div className="bottom-0 z-0 absolute md:-left-[120px] -left-[200px] animate-appear-slow">
         <Splodge2 />
       </div>
     </div>
