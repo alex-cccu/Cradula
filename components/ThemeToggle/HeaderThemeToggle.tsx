@@ -33,7 +33,7 @@ export default function HeaderThemeToggle() {
           })
         }
         aria-label="Toggle dark mode"
-        className="flex items-center justify-center rounded-full bg-cradula-green dark:bg-neutral-900 hover:scale-110 hover:-rotate-6 transition-transform ease-in-out duration-500 animate-appear"
+        className="flex items-center justify-center rounded-full bg-cradula-green dark:bg-neutral-900 hover:scale-110 hover:-rotate-6 transition-transform ease-in-out duration-500 animate-appear cursor-pointer"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
