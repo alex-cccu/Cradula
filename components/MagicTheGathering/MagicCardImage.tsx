@@ -7,19 +7,19 @@ import LoadingImage from "../Loading/LoadingImage";
 const scryfallURL = "https://api.scryfall.com/cards/named?fuzzy=";
 
 // Throttle to reduce number of calls to onMouseMove
-function throttle<T extends (...args: any[]) => any>(
+function throttle<T extends (e: MouseEvent<HTMLDivElement>) => void>(
   func: T,
   delay: number
-): (...args: Parameters<T>) => void {
+): T {
   let lastCall = 0;
-  return (...args: Parameters<T>) => {
+  return ((e: MouseEvent<HTMLDivElement>) => {
     const now = new Date().getTime();
     if (now - lastCall < delay) {
       return;
     }
     lastCall = now;
-    return func(...args);
-  };
+    func(e);
+  }) as T;
 }
 
 const MagicCardImage = ({ searchInput }: { searchInput: string }) => {
