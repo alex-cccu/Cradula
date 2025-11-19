@@ -22,7 +22,7 @@ const Category = async ({ params }: { params: { category: string } }) => {
   const articlePlural = articles.length > 1 ? " articles" : " article";
 
   return (
-    <div className="relative w-screen overflow-x-hidden overflow-y-hidden">
+    <div className="relative min-h-[400px] w-screen overflow-x-hidden overflow-y-hidden">
       <section className="mx-auto w-10/12 md:w-1/2 mt-20 flex flex-col gap-5">
         <div className="flex justify-between font-body">
           <Link
