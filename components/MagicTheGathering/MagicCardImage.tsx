@@ -6,27 +6,28 @@ import LoadingImage from "../Loading/LoadingImage";
 
 const scryfallURL = "https://api.scryfall.com/cards/named?fuzzy=";
 
-// Throttle to reduce number of calls to onMouseMove
-function throttle<T extends (e: MouseEvent<HTMLDivElement>) => void>(
-  func: T,
-  delay: number
-): T {
-  let lastCall = 0;
-  return ((e: MouseEvent<HTMLDivElement>) => {
-    const now = new Date().getTime();
-    if (now - lastCall < delay) {
-      return;
-    }
-    lastCall = now;
-    func(e);
-  }) as T;
-}
-
 const MagicCardImage = ({ searchInput }: { searchInput: string }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [responseData, setResponseData] = useState<any | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [rotate, setRotate] = useState({ x: 0, y: 0 });
   const searchTerm = searchInput.replaceAll(" ", "+");
+
+  // Throttle to reduce number of calls to onMouseMove
+  function throttle<T extends (e: MouseEvent<HTMLDivElement>) => void>(
+    func: T,
+    delay: number
+  ): T {
+    let lastCall = 0;
+    return ((e: MouseEvent<HTMLDivElement>) => {
+      const now = new Date().getTime();
+      if (now - lastCall < delay) {
+        return;
+      }
+      lastCall = now;
+      func(e);
+    }) as T;
+  }
 
   const onMouseMove = useCallback(
     throttle((e: MouseEvent<HTMLDivElement>) => {
@@ -52,23 +53,30 @@ const MagicCardImage = ({ searchInput }: { searchInput: string }) => {
     setIsLoading(true);
     try {
       const res = await fetch(`${scryfallURL}${searchTerm}`);
+      if (!res.ok) {
+        setResponseData(null);
+        setIsLoading(false);
+        console.error(`Error fetching data: ${res.status} ${res.statusText}`);
+        return;
+      }
       const resData = await res.json();
       setResponseData(resData);
     } catch (err) {
       console.error("Error fetching data:", err);
+      setResponseData(null);
+      setIsLoading(false);
     }
   };
 
   useEffect(() => {
     if (responseData) {
       setIsLoading(false);
-      console.log("Fetched data:", responseData);
     }
   }, [responseData]);
 
   useEffect(() => {
     callAPI();
-  }, []);
+  }, [searchTerm]);
 
   return (
     <div>
@@ -81,7 +89,7 @@ const MagicCardImage = ({ searchInput }: { searchInput: string }) => {
           width={280}
           height={400}
           className="shadow-xl rounded-2xl border-2 border-cradula-pink dark:border-cradula-dark-red hover:shadow-2xl/20 
-          transition-all duration-250 ease-in-outrelative transition-[all_400ms_cubic-bezier(0.03,0.98,0.52,0.99)_0s] will-change-transform"
+          duration-250 ease-in-out relative transition-[all_400ms_cubic-bezier(0.03,0.98,0.52,0.99)_0s] will-change-transform"
           onMouseMove={onMouseMove}
           onMouseLeave={onMouseLeave}
           style={{
