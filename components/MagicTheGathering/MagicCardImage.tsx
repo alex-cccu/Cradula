@@ -6,28 +6,38 @@ import LoadingImage from "../Loading/LoadingImage";
 
 const scryfallURL = "https://api.scryfall.com/cards/named?fuzzy=";
 
+interface ScryfallCard {
+  name: string;
+  image_uris?: {
+    normal: string;
+  };
+  card_faces?: Array<{
+    image_uris?: {
+      normal: string;
+    };
+  }>;
+}
+
+function throttle<T extends (e: MouseEvent<HTMLDivElement>) => void>(
+  func: T,
+  delay: number
+): T {
+  let lastCall = 0;
+  return ((e: MouseEvent<HTMLDivElement>) => {
+    const now = new Date().getTime();
+    if (now - lastCall < delay) {
+      return;
+    }
+    lastCall = now;
+    func(e);
+  }) as T;
+}
+
 const MagicCardImage = ({ searchInput }: { searchInput: string }) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [responseData, setResponseData] = useState<any | null>(null);
+  const [responseData, setResponseData] = useState<ScryfallCard | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [rotate, setRotate] = useState({ x: 0, y: 0 });
   const searchTerm = searchInput.replaceAll(" ", "+");
-
-  // Throttle to reduce number of calls to onMouseMove
-  function throttle<T extends (e: MouseEvent<HTMLDivElement>) => void>(
-    func: T,
-    delay: number
-  ): T {
-    let lastCall = 0;
-    return ((e: MouseEvent<HTMLDivElement>) => {
-      const now = new Date().getTime();
-      if (now - lastCall < delay) {
-        return;
-      }
-      lastCall = now;
-      func(e);
-    }) as T;
-  }
 
   const onMouseMove = useCallback(
     throttle((e: MouseEvent<HTMLDivElement>) => {
@@ -83,22 +93,34 @@ const MagicCardImage = ({ searchInput }: { searchInput: string }) => {
       {isLoading ? (
         <LoadingImage />
       ) : (
-        <Image
-          src={responseData.image_uris.normal}
-          alt={responseData.name}
-          width={280}
-          height={400}
-          className="shadow-xl rounded-2xl border-2 border-cradula-pink dark:border-cradula-dark-red hover:shadow-2xl/20 
+        (() => {
+          const imageUrl =
+            responseData?.image_uris?.normal ||
+            responseData?.card_faces?.[0]?.image_uris?.normal;
+          if (imageUrl) {
+            return (
+              <Image
+                src={imageUrl}
+                alt={responseData.name || "Magic: The Gathering Card"}
+                width={280}
+                height={400}
+                className="shadow-xl rounded-2xl border-2 border-cradula-pink dark:border-cradula-dark-red hover:shadow-2xl/20 
           duration-250 ease-in-out relative transition-[all_400ms_cubic-bezier(0.03,0.98,0.52,0.99)_0s] will-change-transform"
-          onMouseMove={onMouseMove}
-          onMouseLeave={onMouseLeave}
-          style={{
-            transform: `perspective(1000px) rotateX(${
-              rotate.x / 3
-            }deg) rotateY(${rotate.y / 3}deg) scale3d(1, 1, 1)`,
-            transition: "all 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s",
-          }}
-        />
+                onMouseMove={onMouseMove}
+                onMouseLeave={onMouseLeave}
+                style={{
+                  transform: `perspective(1000px) rotateX(${
+                    rotate.x / 3
+                  }deg) rotateY(${rotate.y / 3}deg) scale3d(1, 1, 1)`,
+                  transition:
+                    "all 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s",
+                }}
+              />
+            );
+          } else {
+            return <LoadingImage />;
+          }
+        })()
       )}
     </div>
   );
