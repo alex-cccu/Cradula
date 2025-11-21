@@ -129,10 +129,6 @@
   @apply pl-5 italic border-l-2 border-cradula-green/40 dark:border-cradula-red/40;
 }
 
-.article img {
-  @apply max-w-full sm:max-w-7/8 md:max-w-3/4 max-h-[400px] mx-auto;
-}
-
 .article > p > strong > em {
   @apply font-title dark:font-titleDark not-italic dark:uppercase text-xl leading-normal dark:tracking-wider;
 }
