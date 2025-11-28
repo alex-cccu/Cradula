@@ -7,7 +7,7 @@ const mockArticle = {
   metadata: {
     title: "Mocked Title 1",
     subtitle: "Mocked Subtitle 1",
-    date: "01-20-2000",
+    date: "20-01-2000",
     category: "existing-category",
   },
   default: "<p>hello world</p>",
@@ -91,7 +91,7 @@ describe("Given I want to get the content of an article", () => {
         ...mockArticle,
         metadata: {
           ...mockArticle.metadata,
-          date: "01-20-2100",
+          date: "20-01-2100",
         },
       }));
     });

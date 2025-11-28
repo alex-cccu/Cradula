@@ -52,9 +52,9 @@ const getAllFromCategory = async (
     );
 
     // Strip out articles with a future date
-    const date = new Date();
-    unsortedArticles = unsortedArticles.filter(
-      (article) => new Date(article.date) < date
+    const date = moment(); // Convert to Moment object
+    unsortedArticles = unsortedArticles.filter((article) =>
+      moment(article.date, dateFormat).isBefore(date)
     );
 
     let sortedArticles = sortArticles(unsortedArticles);
