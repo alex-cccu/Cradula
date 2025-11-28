@@ -1,4 +1,4 @@
 import path from "path";
 
-export const dateFormat = "MM-DD-YYYY";
+export const dateFormat = "DD-MM-YYYY";
 export const articlesDirectory = path.join(process.cwd(), "articles");
