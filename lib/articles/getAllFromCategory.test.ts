@@ -6,7 +6,7 @@ const mockArticleOne = {
   metadata: {
     title: "Mocked Title 1",
     subtitle: "Mocked Subtitle 1",
-    date: "01-20-2000",
+    date: "20-01-2000",
     category: "existing-category",
   },
 };
@@ -15,7 +15,7 @@ const mockArticleTwo = {
   metadata: {
     title: "Mocked Title 2",
     subtitle: "Mocked Subtitle 2",
-    date: "01-20-2000",
+    date: "20-01-2000",
     category: "existing-category",
   },
 };
@@ -24,7 +24,7 @@ const mockArticleThree = {
   metadata: {
     title: "Mocked Title 3",
     subtitle: "Mocked Subtitle 3",
-    date: "01-20-2000",
+    date: "20-01-2000",
     category: "existing-category",
   },
 };
@@ -96,6 +96,7 @@ describe("Given I am trying to get all articles from a category", () => {
           );
 
           const result = await getAllFromCategory("existing-category", 2);
+          console.log(result);
 
           expect(result.articles).toHaveLength(2);
 
