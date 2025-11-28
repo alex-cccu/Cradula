@@ -126,8 +126,8 @@
 }
 
 .article > blockquote {
-  @apply pl-5 italic border-l-2 border-cradula-green/40 dark:border-cradula-red/40;
-}
+  @apply pl-5 italic py-3 font-bold text-xl border-l-2 border-cradula-green/40 dark:border-cradula-red/40;
+} 
 
 .article > p > strong > em {
   @apply font-title dark:font-titleDark not-italic dark:uppercase text-xl leading-normal dark:tracking-wider;
