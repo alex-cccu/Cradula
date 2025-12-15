@@ -28,12 +28,6 @@ const FourZeroFour = () => {
           </div>
         </div>
       </section>
-      {/* <div className="z-1 absolute md:-right-[180px] -right-[300px] top-0">
-        <Splodge />
-      </div>
-      <div className="z-1 absolute md:-left-[120px] top-2/4 -left-[180px]">
-        <Splodge2 />
-      </div> */}
     </div>
   );
 };
