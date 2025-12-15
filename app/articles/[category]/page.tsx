@@ -50,9 +50,9 @@ const Category = async ({ params }: { params: { category: string } }) => {
           <ArticleItemList articles={articles} />
         </section>
       </section>
-      <div className="z-1 absolute md:-right-[180px] -right-[300px] top-1/4 lg:top-1/6 animate-appear">
+      {/* <div className="z-1 absolute md:-right-[180px] -right-[300px] top-1/4 lg:top-1/6 animate-appear">
         <Splodge />
-      </div>
+      </div> */}
     </div>
   );
 };

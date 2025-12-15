@@ -7,7 +7,6 @@ const Splodge = () => {
         preserveAspectRatio="xMidYMid meet"
         width="500"
         height="500"
-        className="animate-splodges"
       >
         <g id="Objects">
           <path
