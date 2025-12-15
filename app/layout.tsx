@@ -5,6 +5,8 @@ import "./globals.css";
 import { Providers } from "./providers";
 import Footer from "@/components/Footer/Footer";
 import HeaderThemeToggle from "@/components/ThemeToggle/HeaderThemeToggle";
+import Splodge from "@/assets/Splodge";
+import Splodge2 from "@/assets/Splodge2";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const dreadful = localFont({
@@ -41,7 +43,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className="bg-neutral-100 dark:bg-neutral-900 overflow-x-hidden overflow-y-visible max-w-screen bg-size-[150px] 
-      bg-[url('/CradulaBackgroundLight.png')] dark:bg-[url('/CradulaBackgroundDark.png')]"
+  bg-[url('/CradulaBackgroundLight.png')] dark:bg-[url('/CradulaBackgroundDark.png')]"
       >
         <Providers>
           <div>
@@ -51,7 +53,15 @@ export default function RootLayout({
             >
               <HeaderThemeToggle />
             </header>
-            <main className="min-h-[calc(100vh-300px)]">{children}</main>
+            <main className="min-h-[calc(100vh-300px)] relative">
+              {children}
+              <div className="z-1 absolute md:-right-[180px] -right-[300px] top-[20%] animate-appear-slow transition-all duration-500">
+                <Splodge />
+              </div>
+              <div className="z-1 absolute md:-left-[120px] -left-[200px] top-[70%] animate-appear-slow">
+                <Splodge2 />
+              </div>
+            </main>
             <footer>
               <Footer />
             </footer>

@@ -7,7 +7,7 @@ const Splodge2 = () => {
         preserveAspectRatio="xMidYMid meet"
         width="400"
         height="400"
-        className="animate-splodges-reverse max-w-[300px] sm:max-w-[400px] fill-cradula-orange dark:fill-cradula-dark-red"
+        className="max-w-[300px] sm:max-w-[400px] fill-cradula-orange dark:fill-cradula-dark-red"
       >
         <g>
           <g>

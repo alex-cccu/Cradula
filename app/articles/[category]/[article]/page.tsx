@@ -49,12 +49,6 @@ const Article = async ({
           <RecommendedArticles articles={recommendedArticles} />
         </div>
       </section>
-      <div className="z-0 absolute md:-right-[180px] -right-[300px] top-1/4 lg:top-1/6 animate-appear-slow">
-        <Splodge />
-      </div>
-      <div className="bottom-60 z-0 absolute md:-left-[120px] -left-[200px] animate-appear-slow">
-        <Splodge2 />
-      </div>
     </div>
   );
 };

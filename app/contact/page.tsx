@@ -106,12 +106,6 @@ const Contact = () => {
           </form>
         </div>
       </section>
-      <div className="z-0 absolute md:-right-[180px] -right-[300px] top-0 lg:top-1/6 animate-appear-slow">
-        <Splodge />
-      </div>
-      <div className="bottom-0 z-0 absolute md:-left-[120px] -left-[200px] animate-appear-slow">
-        <Splodge2 />
-      </div>
     </div>
   );
 };
