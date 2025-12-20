@@ -1,6 +1,4 @@
 import Link from "next/link";
-import Splodge from "@/assets/Splodge";
-import Splodge2 from "@/assets/Splodge2";
 import getAllPageLocations from "@/lib/pages/getAllPageLocations";
 import BackArrow from "@/assets/BackArrow";
 

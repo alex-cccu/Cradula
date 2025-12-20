@@ -81,46 +81,58 @@ const MagicCardImage = ({ searchInput }: { searchInput: string }) => {
     rotate.y / 4
   }deg) scale3d(1, 1, 1)`;
   const transitionStyle = "all 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s";
-  const imageClass = // Need to extract this out to a css file
-    "shadow-xl rounded-2xl border-2 border-cradula-pink dark:border-cradula-dark-red hover:shadow-2xl/20 duration-250 ease-in-out relative transition-[all_400ms_cubic-bezier(0.03,0.98,0.52,0.99)_0s] will-change-transform object-contain";
+  const imageClass =
+    "rounded-2xl border-2 border-cradula-pink dark:border-cradula-dark-red duration-250 ease-in-out relative transition-[all_400ms_cubic-bezier(0.03,0.98,0.52,0.99)_0s] will-change-transform object-contain";
 
   return (
     <div
       onClick={handleCardClick}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`relative w-fit mx-auto cursor-pointer transition-transform duration-500 ${
+      className={`relative w-fit mx-auto ${
         isFlipped ? "[&_.card-content]:rotate-y-180" : ""
-      } ${isDoubleFaced ? "hover:shadow-2xl" : ""}`}
+      } ${isDoubleFaced ? "cursor-pointer" : ""}`}
     >
-      <div className="card-content relative w-fit transition-transform duration-500 [transform-style:preserve-3d]">
-        {/* Front Side */}
-        <div className="[backface-visibility:hidden] w-fit">
-          <Image
-            src={frontImageUrl}
-            alt={responseData?.name || "Magic: The Gathering Card"}
-            width={280}
-            height={400}
-            className={imageClass}
-            style={{ transform, transition: transitionStyle }}
-          />
-        </div>
+      {/* 3D Transform wrapper */}
+      <div
+        className="relative w-fit [transform-style:preserve-3d]"
+        style={{ transform, transition: transitionStyle }}
+      >
+        {/* Shadow layer inside 3D space */}
+        <div
+          className="absolute inset-0 rounded-2xl bg-black/50 blur-xl pointer-events-none -z-1"
+          style={{
+            transform: "translateZ(-50px) scale(0.98)",
+          }}
+        />
 
-        {/* Back Side */}
-        {isDoubleFaced && backImageUrl && (
-          <div className="absolute inset-0 rotate-y-180 [backface-visibility:hidden] w-fit">
+        <div className="card-content relative w-fit transition-transform duration-500 [transform-style:preserve-3d]">
+          {/* Front Side */}
+          <div className="[backface-visibility:hidden] w-fit">
             <Image
-              src={backImageUrl}
-              alt={`${
-                responseData?.name || "Magic: The Gathering Card"
-              } (Back)`}
+              src={frontImageUrl}
+              alt={responseData?.name || "Magic: The Gathering Card"}
               width={280}
               height={400}
               className={imageClass}
-              style={{ transform, transition: transitionStyle }}
             />
           </div>
-        )}
+
+          {/* Back Side */}
+          {isDoubleFaced && backImageUrl && (
+            <div className="absolute inset-0 rotate-y-180 [backface-visibility:hidden] w-fit">
+              <Image
+                src={backImageUrl}
+                alt={`${
+                  responseData?.name || "Magic: The Gathering Card"
+                } (Back)`}
+                width={280}
+                height={400}
+                className={imageClass}
+              />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

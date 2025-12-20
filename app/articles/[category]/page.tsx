@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Splodge from "@/assets/Splodge";
 import ArticleItemList from "@/components/HomePage/ArticleListItem";
 import getAllFromCategory from "@/lib/articles/getAllFromCategory";
 import getShuffledColours from "@/lib/utils/getShuffledColours";
