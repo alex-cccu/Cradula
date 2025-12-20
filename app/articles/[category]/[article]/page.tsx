@@ -1,5 +1,3 @@
-import Splodge from "@/assets/Splodge";
-import Splodge2 from "@/assets/Splodge2";
 import getShuffledColours from "@/lib/utils/getShuffledColours";
 import ZigZag from "@/assets/ZigZag";
 import ArticleHeader from "@/components/Articles/ArticleHeader";

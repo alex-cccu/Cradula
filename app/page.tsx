@@ -1,5 +1,3 @@
-import Splodge from "@/assets/Splodge";
-import Splodge2 from "@/assets/Splodge2";
 import HomePageContent from "@/components/HomePage/HomePageContent";
 import Title from "@/components/Title/Title";
 

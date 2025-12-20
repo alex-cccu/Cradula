@@ -1,6 +1,4 @@
 import BackArrow from "@/assets/BackArrow";
-import Splodge from "@/assets/Splodge";
-import Splodge2 from "@/assets/Splodge2";
 import Link from "next/link";
 
 const FourZeroFour = () => {

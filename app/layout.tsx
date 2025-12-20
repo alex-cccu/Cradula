@@ -42,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className="bg-neutral-100 dark:bg-neutral-900 overflow-x-hidden overflow-y-visible max-w-screen bg-size-[150px] 
+        className="bg-neutral-100 dark:bg-neutral-900 max-w-screen bg-size-[150px] overflow-x-hidden
   bg-[url('/CradulaBackgroundLight.png')] dark:bg-[url('/CradulaBackgroundDark.png')]"
       >
         <Providers>
