@@ -4,7 +4,7 @@ type SymbolName =
   | "black"
   | "red"
   | "green"
-  | "colourless"
+  | "colorless"
   | "one";
 
 type SymbolProps =
@@ -25,7 +25,7 @@ const symbolMap: Record<SymbolName, string> = {
   black: "/Symbols/black.svg",
   red: "/Symbols/red.svg",
   green: "/Symbols/green.svg",
-  colourless: "/Symbols/colourless.svg",
+  colorless: "/Symbols/colorless.svg",
   one: "/Symbols/one.svg",
 };
 
@@ -38,11 +38,10 @@ const MagicSymbols = ({ name, names, size = 18 }: SymbolProps) => {
         <img
           key={`${symbolName}-${index}`}
           src={symbolMap[symbolName]}
-          alt={symbolName}
+          alt={`${symbolName} mana symbol`}
           width={size}
           height={size}
           className="inline-block align-middle mx-0.5 pb-0.5"
-          style={{ display: "inline" }}
         />
       ))}
     </>
